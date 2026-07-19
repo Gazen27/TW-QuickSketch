@@ -3,3 +3,5 @@
 ## Functionalities
 # Getting started
 # Technologies
+## Languages
+## Frameworks and Tools
