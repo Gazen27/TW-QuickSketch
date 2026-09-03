@@ -13,19 +13,12 @@ A web platform where creativity and intuition meet in a challenging drawing chal
 ### Prerequisites
 **Node.js** and **npm** are required.
 ### Installation
-1. Install backend dependencies\
-Navigate to *../backend/*
-```
-npm install
-```
-2. Install frontend dependencies\
-Navigate to *../frontend/*
+1. Install dependencies (do this in both backend and frontend folders)
 ```
 npm install
 ```
 ### Executing
-3. Starting local server\
-Navigate to *../backend/*
+2. Starting local server (navigate to *backend* folder)
 ```
 npm run dev
 ```
