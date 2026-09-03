@@ -14,8 +14,8 @@ A web platform where creativity and intuition meet in a challenging drawing chal
 **Node.js** and **npm** are required
 ### Installation
 1. Install backend dependencies
+Navigate to ../backend
 ```
-In ../backend/
 npm install
 ```
 2. Install frontend dependencies
