@@ -18,9 +18,8 @@ A web platform where creativity and intuition meet in a challenging drawing chal
 npm install
 ```
 ### Executing
-2. Starting local server
+2. Starting local server (in backend)
 ```
-cd ..\backend\
 npm run dev
 ```
 4. Starting Angular frontend
