@@ -13,7 +13,7 @@ A web platform where creativity and intuition meet in a challenging drawing chal
 ### Prerequisites
 **Node.js** and **npm** are required.
 ### Installation
-1. Install dependencies (do this in both backend and frontend folders)
+1. Install dependencies > (do this in both backend and frontend folders)
 ```
 npm install
 ```
