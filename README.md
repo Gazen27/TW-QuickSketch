@@ -3,7 +3,7 @@ Draw it. Guess it. Sketch it.\
 A web platform where creativity and intuition meet in a challenging drawing challenge.
 ## Overview
 ## Functionalities
-# Getting started
+## Getting started
 # Technologies
 ## Languages
 ## Frameworks and Tools
