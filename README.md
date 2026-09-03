@@ -4,7 +4,7 @@ A web platform where creativity and intuition meet in a challenging drawing chal
 ## Overview
 QuickSketch is a full-stack web application where registered users can create sketches by choosing a word from a predefined set and drawing it on a canvas within a limited amount of time. Once published, sketches become available to other users, who can try to guess the associated word with up to 10 attempts.
 
-The platform also provides leaderboards and personal statistics, allowing users to track and compare their performance.
+The platform also provides leaderboards and statistics, allowing users to track and compare their performance.
 ## Functionalities
 ## Technologies
 - **Enviroment:** Node.js
