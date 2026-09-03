@@ -10,7 +10,6 @@ A web platform where creativity and intuition meet in a challenging drawing chal
 - **ORM:** Prisma
 - **Database:** SQLite3
 ## Getting started
-### Prerequisites
 **Node.js** and **npm** are required.
 ### Installation
 1. Install dependencies *(both in backend and frontend)*
