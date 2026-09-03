@@ -1,5 +1,5 @@
 # QuickSketch
-Draw it. Guess it. Sketch it.
+Draw it. Guess it. Sketch it.\
 A web platform where creativity and intuition meet in a challenging drawing challenge.
 ## Overview
 ## Functionalities
