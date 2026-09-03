@@ -13,7 +13,7 @@ A web platform where creativity and intuition meet in a challenging drawing chal
 ### Prerequisites
 **Node.js** and **npm** are required.
 ### Installation
-1. Install dependencies
+1. Install dependencies (both in backend and frontend)
 ```
 npm install
 ```
@@ -22,9 +22,8 @@ npm install
 ```
 npm run dev
 ```
-4. Starting Angular frontend
+4. Starting Angular frontend (in frontend)
 ```
-cd ..\frontend\
 ng serve
 ```
 5. Open http://localhost:4200 in your browser
