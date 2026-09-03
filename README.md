@@ -11,5 +11,5 @@ Every main technology used in this project is listed below.
 - **ORM:** Prisma
 - **Database:** SQLite3
 ## Getting started
-## TODO List
+## Work in progress
 - Implementing [entities.txt](https://github.com/user-attachments/files/31801896/entities.txt) in backend
