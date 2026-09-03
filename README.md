@@ -11,9 +11,9 @@ A web platform where creativity and intuition meet in a challenging drawing chal
 - **Database:** SQLite3
 ## Getting started
 ### Prerequisites
-**Node.js** and **npm** are required
+**Node.js** and **npm** are required.
 ### Installation
-1. Install backend dependencies
+1. Install backend dependencies\
 Navigate to ../backend
 ```
 npm install
