@@ -5,6 +5,5 @@ A web platform where creativity and intuition meet in a challenging drawing chal
 ## Functionalities
 ## Getting started
 ## Technologies
-
-## TEMP
+## TO-DO List
 [entities.txt](https://github.com/user-attachments/files/31801896/entities.txt)
