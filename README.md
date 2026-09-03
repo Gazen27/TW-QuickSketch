@@ -12,4 +12,4 @@ All the main technologies used in this project are listed below:
 - **Database:** SQLite3
 ## Getting started
 ## TODO List
-[entities.txt](https://github.com/user-attachments/files/31801896/entities.txt)
+- Implement the [entities.txt](https://github.com/user-attachments/files/31801896/entities.txt) in backend
