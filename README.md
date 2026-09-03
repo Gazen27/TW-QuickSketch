@@ -4,7 +4,7 @@ A web platform where creativity and intuition meet in a challenging drawing chal
 ## Overview
 ## Functionalities
 ## Technologies
-All the main technologies used in this project are listed below:
+Every main technology used in this project is listed below:
 - **Enviroment:** Node.js
 - **Languages:** Typescript, HTML, CSS
 - **Frameworks:** Angular
