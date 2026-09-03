@@ -22,11 +22,11 @@ npm install
 ```
 npm run dev
 ```
-4. Starting Angular frontend *(in frontend)*
+3. Starting Angular frontend *(in frontend)*
 ```
 ng serve
 ```
-5. Open http://localhost:4200 in your browser
+4. Open http://localhost:4200 in your browser
 ## Work in progress
 - Implementing [entities.txt](https://github.com/user-attachments/files/31801896/entities.txt) in backend
 ## License
