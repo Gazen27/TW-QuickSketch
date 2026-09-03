@@ -32,3 +32,5 @@ ng serve
 ## Work in progress
 - Implementing [entities.txt](https://github.com/user-attachments/files/31801896/entities.txt) in backend
 ## License
+This project is licensed under the MIT License.\
+See the [LICENSE](https://github.com/Gazen27/TW-QuickSketch/blob/main/LICENSE) file for more information.
