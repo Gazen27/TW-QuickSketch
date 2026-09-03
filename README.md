@@ -1,15 +1,27 @@
 # QuickSketch
-Draw it. Guess it. Sketch it.\
+Draw it. Guess it.\
 A web platform where creativity and intuition meet in a challenging drawing challenge.
 ## Overview
 ## Functionalities
 ## Technologies
-Every main technology used in this project is listed below.
 - **Enviroment:** Node.js
 - **Languages:** Typescript, HTML, CSS
 - **Frameworks:** Angular
 - **ORM:** Prisma
 - **Database:** SQLite3
 ## Getting started
+### Prerequisites
+**Node.js** and **npm** are required
+### Installation
+1. Install backend dependencies
+
+2. Install frontend dependencies
+
+### Executing
+3. Starting the local server
+
+4. Starting Angular frontend
+
+5. Open http://localhost:4200 in your browser
 ## Work in progress
 - Implementing [entities.txt](https://github.com/user-attachments/files/31801896/entities.txt) in backend
