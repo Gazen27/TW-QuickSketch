@@ -16,16 +16,16 @@ A web platform where creativity and intuition meet in a challenging drawing chal
 1. Install dependencies
 ```
 npm install
-*(do this in both backend and frontend folders)*
 ```
 ### Executing
-2. Starting local server (navigate to *backend* folder)
+2. Starting local server
 ```
+cd ..\backend\
 npm run dev
 ```
-4. Starting Angular frontend\
-Navigate to *../frontend/*
+4. Starting Angular frontend
 ```
+cd ..\frontend\
 ng serve
 ```
 5. Open http://localhost:4200 in your browser
