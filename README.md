@@ -14,24 +14,24 @@ A web platform where creativity and intuition meet in a challenging drawing chal
 **Node.js** and **npm** are required.
 ### Installation
 1. Install backend dependencies\
-Navigate to ../backend
+Navigate to *../backend/*
 ```
 npm install
 ```
-2. Install frontend dependencies
+2. Install frontend dependencies\
+Navigate to *../frontend/*
 ```
-In ../frontend/
 npm install
 ```
 ### Executing
-3. Starting the local server
+3. Starting local server\
+Navigate to *../backend/*
 ```
-In ../backend/
 npm run dev
 ```
-4. Starting Angular frontend
+4. Starting Angular frontend\
+Navigate to *../frontend/*
 ```
-In ../frontend/
 ng serve
 ```
 5. Open http://localhost:4200 in your browser
