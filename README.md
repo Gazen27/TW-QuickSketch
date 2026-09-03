@@ -4,13 +4,9 @@ A web platform where creativity and intuition meet in a challenging drawing chal
 ## Overview
 ## Functionalities
 ## Technologies
-### Global
 - **Enviroment:** Node.js
-### Frontend
 - **Languages:** Typescript, HTML, CSS
 - **Frameworks:** Angular
-### Backend
-- **Languages:** Typescript
 - **ORM:** Prisma
 - **Database:** SQLite3
 ## Getting started
