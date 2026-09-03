@@ -4,9 +4,7 @@ A web platform where creativity and intuition meet in a challenging drawing chal
 ## Overview
 ## Functionalities
 ## Getting started
-# Technologies
-## Languages
-## Frameworks and Tools
+## Technologies
 
 ## TEMP
 [entities.txt](https://github.com/user-attachments/files/31801896/entities.txt)
