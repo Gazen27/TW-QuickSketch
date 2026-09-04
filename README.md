@@ -14,7 +14,7 @@ The platform also provides leaderboards and statistics, allowing users to track 
 ## Technologies
 - **Enviroment:** Node.js
 - **Languages:** Typescript, HTML, CSS
-- **Frameworks:** Angular
+- **Frameworks:** Angular, Express
 - **ORM:** Prisma
 - **Database:** SQLite3
 ## Getting started
