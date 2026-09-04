@@ -1,6 +1,6 @@
 # QuickSketch
 Draw it. Guess it.\
-A web platform where creativity and intuition meet in a challenging drawing challenge.
+A web platform where creativity and intuition meet in a drawing challenge.
 ## Overview
 QuickSketch is a full-stack web application where registered users can create sketches by choosing a word from a predefined set and drawing it on a canvas within a limited amount of time. Once published, sketches become available to other users, who can try to guess the associated word with up to 10 attempts.
 
@@ -8,12 +8,12 @@ The platform also provides leaderboards and statistics, allowing users to track 
 ## Functionalities
 - **Create sketches:** authenticated users can choose a word and draw it on a canvas within a time limit.
 - **Explore:** all users, including unregistered ones, can browse published sketches.
-- **Guess words:** authenticated users can try to guess the word associated to a sketch within 10 attempts.
+- **Guess words:** authenticated users can try to guess the word associated with a sketch with up to 10 attempts.
 - **Leaderboards:** rankings for the best artists and best players.
 - **Personal statistics:** authenticated users can view statistics about their sketches and guesses.
 ## Technologies
-- **Enviroment:** Node.js
-- **Languages:** Typescript, HTML, CSS
+- **Environment:** Node.js
+- **Languages:** TypeScript, HTML, CSS
 - **Frameworks:** Angular, Express
 - **ORM:** Prisma
 - **Database:** SQLite3
@@ -25,11 +25,11 @@ The platform also provides leaderboards and statistics, allowing users to track 
 npm install
 ```
 ### Execution
-2. Starting local server *(in backend)*
+2. Start the local server *(in backend)*
 ```
 npm run dev
 ```
-3. Starting Angular frontend *(in frontend)*
+3. Start the Angular frontend *(in frontend)*
 ```
 ng serve
 ```
