@@ -147,6 +147,8 @@ vite.config.ts.timestamp-*
 # Database
 dev.db
 
+# Prisma
+/backend/generated/prisma
 
 ####### V FRONTEND V #######
 
