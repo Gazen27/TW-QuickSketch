@@ -6,6 +6,11 @@ QuickSketch is a full-stack web application where registered users can create sk
 
 The platform also provides leaderboards and statistics, allowing users to track and compare their performance.
 ## Functionalities
+- **Create sketches:** authenticated users can choose a word and draw it on a canvas within a time limit.
+- **Explore:** all users, including unregistered ones, can browse published sketches.
+- **Guess words:** authenticated users can try to guess the word associated to a sketch within 10 attempts.
+- **Leaderboards:** rankings for the best artists and best players.
+- **Personal statistics:** authenticated users can view statistics about their sketches and guesses.
 ## Technologies
 - **Enviroment:** Node.js
 - **Languages:** Typescript, HTML, CSS
@@ -13,7 +18,7 @@ The platform also provides leaderboards and statistics, allowing users to track 
 - **ORM:** Prisma
 - **Database:** SQLite3
 ## Getting started
-**Node.js** and **npm** are required.
+*Node.js and npm are required.*
 ### Installation
 1. Install dependencies *(both in backend and frontend)*
 ```
