@@ -24,7 +24,7 @@ The platform also provides leaderboards and statistics, allowing users to track 
 ```
 npm install
 ```
-### Executing
+### Execution
 2. Starting local server *(in backend)*
 ```
 npm run dev
