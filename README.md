@@ -1,7 +1,3 @@
-![license: MIT](https://badgen.net/badge/license/MIT/blue)
-![status: under development](https://badgen.net/badge/status/under_development/green)
-![release: none](https://badgen.net/badge/release/none/purple)
-![academic year: 2026](https://badgen.net/badge/academic%20year/2026/orange)
 # QuickSketch
 Draw it. Guess it.\
 A web platform where creativity and intuition meet in a drawing challenge.
