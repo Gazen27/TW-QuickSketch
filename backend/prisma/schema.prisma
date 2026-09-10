@@ -6,3 +6,55 @@ generator client {
 datasource db {
   provider = "sqlite"
 }
+
+model User{
+  id           String   @id @default(uuid())
+  username     String 
+  email        String   @unique
+  password     String
+  sketchCount  Int      @default(0)
+  drawingScore Float    @default(0)
+  guessedScore Int      @default(0)
+  sketches     Sketch[]
+  guesses      Guess[]
+}
+
+model Word{
+  id       String   @id @default(uuid())
+  text     String   @unique
+  aliases  Alias[]    
+  category Category
+}
+
+model Alias{
+  id     String @id @default(uuid())
+  text   String @unique
+  wordId String
+  word   Word   @relation(fields: [wordId], references: [id], onDelete: Cascade)
+}
+
+model Sketch{
+  id         String @id @default(uuid())
+  drawing    String
+  authorId   String
+  author     User   @relation(fields: [authorId], references: [id], onDelete: Cascade)
+  guessCount Int    @default(0)
+  guesses    Guess[]
+}
+
+model Guess{
+  id        String @id @default(uuid())
+  text      String
+  userId    String
+  user      User   @relation(fields: [userId],   references: [id], onDelete: Cascade)
+  sketchId  String
+  sketch    Sketch @relation(fields: [sketchId], references: [id], onDelete: Cascade)
+  isCorrect Boolean
+}
+
+enum Category{
+  animals
+  objects
+  food
+  videogames
+}
