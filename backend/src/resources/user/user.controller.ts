@@ -1,12 +1,7 @@
-
-
-
-//login function
 export async function login(){
-
+  //TODO
 }
 
-//signup function
 export async function signup(){
-  
+  //TODO  
 }
