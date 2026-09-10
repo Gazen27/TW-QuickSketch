@@ -21,9 +21,10 @@ model User{
 
 model Word{
   id       String   @id @default(uuid())
-  text     String   @unique
-  aliases  Alias[]    
+  text     String   @unique    
   category Category
+  aliases  Alias[]
+  sketches Sketch[]
 }
 
 model Alias{
@@ -38,6 +39,8 @@ model Sketch{
   drawing    String
   authorId   String
   author     User   @relation(fields: [authorId], references: [id], onDelete: Cascade)
+  wordId     String
+  word       Word   @relation(fields: [wordId], references: [id])
   guessCount Int    @default(0)
   guesses    Guess[]
 }
