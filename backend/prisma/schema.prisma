@@ -11,6 +11,7 @@ model User{
   id           String   @id @default(uuid())
   username     String   @unique
   password     String
+  createdAt    DateTime @default(now())
   sketchCount  Int      @default(0)
   drawingScore Float    @default(0)
   guessedScore Int      @default(0)
@@ -34,24 +35,30 @@ model Alias{
 }
 
 model Sketch{
-  id         String @id @default(uuid())
+  id         String   @id @default(uuid())
   drawing    String
+  createdAt  DateTime @default(now())
+
   authorId   String
-  author     User   @relation(fields: [authorId], references: [id], onDelete: Cascade)
+  author     User     @relation(fields: [authorId], references: [id], onDelete: Cascade)
+  
   wordId     String
-  word       Word   @relation(fields: [wordId], references: [id])
-  guessCount Int    @default(0)
+  word       Word     @relation(fields: [wordId], references: [id])
+  
+  guessCount Int      @default(0)
   guesses    Guess[]
 }
 
 model Guess{
   id        String @id @default(uuid())
   text      String
+  isCorrect Boolean
+  
   userId    String
   user      User   @relation(fields: [userId],   references: [id], onDelete: Cascade)
+  
   sketchId  String
   sketch    Sketch @relation(fields: [sketchId], references: [id], onDelete: Cascade)
-  isCorrect Boolean
 }
 
 enum Category{
