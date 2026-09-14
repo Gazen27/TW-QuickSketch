@@ -13,7 +13,7 @@ app.use(cors({ origin: 'http://localhost:4200'}));
 app.use('/uploads', express.static('uploads'));
 app.use(express.json());
 
-app.use(userRouter);
-app.use(sketchRouter);
+app.use('/users', userRouter);
+app.use('/sketches', sketchRouter);
 
 app.listen(PORT, () => { console.log(`server running on port ${PORT}`); });
