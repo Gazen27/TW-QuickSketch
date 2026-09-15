@@ -10,5 +10,5 @@ export const errorHandler = (error : unknown, req: Request, res: Response, next:
 
   // error type: other
   console.error(error);
-  return res.status(500).json(APIResponse.error('Errore interno del server'));
+  return res.status(500).json(APIResponse.error('Errore esterno'));
 };
