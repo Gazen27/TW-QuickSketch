@@ -6,7 +6,8 @@ export const errorHandler = (error : unknown, req: Request, res: Response, next:
   
   // error type: AppError
   if (error instanceof AppError) {
-        return res.status(error.statusCode).json(APIResponse.error(error.message));}
+    return res.status(error.statusCode).json(APIResponse.error(error.message));
+  }
 
   // error type: other
   console.error(error);
