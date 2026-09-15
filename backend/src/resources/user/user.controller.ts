@@ -1,5 +1,6 @@
 import type { Request, Response } from 'express';
 import * as service from './user.service.js';
+import { APIResponse } from '../../common/utils/api.response.js';
 
 //signup function
 export async function signup(req: Request, res: Response){
@@ -7,10 +8,7 @@ export async function signup(req: Request, res: Response){
     const { username, password } = req.body;
     const token = await service.signup(username, password);
 
-    return res.status(201).json({
-      message: 'Utente creato',
-      token: token
-    });
+    return res.status(201).json(APIResponse.success('Utente creato', {token}));
   }
   catch(error){}
 }
