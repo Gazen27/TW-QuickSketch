@@ -30,5 +30,18 @@ export async function login(username : string, password : string){
 
 // account information retrieval service  //da finire / controllare
 export async function getInfo(id : string){
-  return prisma.user.findUnique({where: {id}});
+  const user = await prisma.user.findUnique({
+    where: {id},
+    select: {
+      id: true,
+      username: true,
+      sketchCount: true,
+      drawingScore: true,
+      guessedScore: true
+    }
+  });
+  
+  if(!user){ throw new AppError('Utente non trovato', 404) }
+
+  return user;
 }
