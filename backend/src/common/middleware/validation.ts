@@ -1,16 +1,12 @@
 import type { NextFunction, Request, Response } from 'express';
-import type { ZodType } from 'zod';
-
-import { AppError } from '../errors/app.error.js';
+import type { ZodType                         } from 'zod';
 
 export function validate(schema: ZodType){
   return (req: Request, res: Response, next: NextFunction) => {
-    const result = schema.safeParse(req.body);
-
-    if (!result.success){
-      return next(new AppError('Dati della richiesta non validi', 400));
+    try {
+      req.body = schema.safeParse(req.body);
+      next();
     }
-
-    next();
+    catch(error){ next(error); }
   }
 };

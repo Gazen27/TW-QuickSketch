@@ -25,6 +25,6 @@ export async function login(req: Request, res: Response, next: NextFunction){
 }
 
 // information retrieval function
-export async function getInfo(req: Request, res: Response){
-   //TODO
+export async function getInfo(req: Request, res: Response, next: NextFunction){
+
 }
