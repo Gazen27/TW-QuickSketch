@@ -23,12 +23,12 @@ export async function signup(username : string, password : string){
 export async function login(username : string, password : string){
   const user = await prisma.user.findUnique({where: {username}});
   if(!user || !(await compare(password, user.password))){
-    throw new Error; } //controllare questo errore !!!!!!!!!!
-  
+    throw new AppError('Nome utente o password errati', 401);}
+
   return createToken(user.id);
 }
 
-// account information retrieval service
+// account information retrieval service  //da finire / controllare
 export async function getInfo(id : string){
   return prisma.user.findUnique({where: {id}});
 }
