@@ -3,6 +3,6 @@ import      { APIResponse                     } from '../../common/utils/api.res
 import      { AppError                        } from '../../common/errors/app.error.js';
 
 // getting three random words from a category
-export async function getRandomWords(){
+export async function getRandomWords(category : string){
   //TODO
 }
