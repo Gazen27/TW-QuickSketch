@@ -2,10 +2,10 @@ import { Router        } from 'express';
 import { signup, login } from './user.controller.js';
 import { getInfo       } from './user.controller.js';
 import { validate      } from '../../common/middleware/validation.js';
-import { signupSchema  } from './user.schema.js';
+import { credentials   } from './user.schema.js';
 
 export const userRouter = Router();
 
-userRouter.post('/', validate(signupSchema),signup);
-userRouter.post('/login', login);
+userRouter.post('/', validate(credentials), signup);
+userRouter.post('/login', validate(credentials), login);
 userRouter.get('/:id', getInfo);
