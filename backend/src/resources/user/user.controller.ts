@@ -1,6 +1,7 @@
 import type { Request, Response, NextFunction } from 'express';
 import      { APIResponse                     } from '../../common/utils/api.response.js';
 import * as service                             from './user.service.js';
+import { AppError } from '../../common/errors/app.error.js';
 
 // signup function
 export async function signup(req: Request, res: Response, next: NextFunction){
@@ -26,5 +27,12 @@ export async function login(req: Request, res: Response, next: NextFunction){
 
 // information retrieval function
 export async function getInfo(req: Request, res: Response, next: NextFunction){
+  try{
+    const {id} = req.params;
+    if(!id || typeof id !== 'string'){ throw new AppError('Utente mancante', 400); }
+    const userdata = await service.getInfo(id);
 
+    return res.status(200).json(APIResponse.success('Informazioni prelevate', userdata));
+  }
+  catch(error){ next(error); }
 }
