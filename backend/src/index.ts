@@ -2,6 +2,7 @@ import express from 'express';
 import cors from 'cors';
 import 'dotenv/config';
 import { userRouter   } from './resources/user/user.router.js';
+import { wordRouter   } from './resources/word/word.router.js';
 import { sketchRouter } from './resources/sketch/sketch.router.js';
 import { errorHandler } from './common/middleware/error.handler.js';
 
@@ -16,6 +17,7 @@ app.use(express.json());
 
 // routes
 app.use('/users', userRouter);
+app.use('/words', wordRouter);
 app.use('/sketches', sketchRouter);
 
 // error handler

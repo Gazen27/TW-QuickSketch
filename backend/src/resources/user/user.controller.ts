@@ -1,7 +1,7 @@
 import type { Request, Response, NextFunction } from 'express';
 import      { APIResponse                     } from '../../common/utils/api.response.js';
+import      { AppError                        } from '../../common/errors/app.error.js';
 import * as service                             from './user.service.js';
-import { AppError } from '../../common/errors/app.error.js';
 
 // signup function
 export async function signup(req: Request, res: Response, next: NextFunction){
