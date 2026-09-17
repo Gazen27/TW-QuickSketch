@@ -28,7 +28,7 @@ export async function login(username : string, password : string){
   return createToken(user.id);
 }
 
-// account information retrieval service  //da finire / controllare
+// account information retrieval service
 export async function getInfo(id : string){
   const user = await prisma.user.findUnique({
     where: {id},
