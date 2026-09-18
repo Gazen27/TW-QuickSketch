@@ -5,7 +5,14 @@ import * as service                             from './sketch.service.js'
 
 // post a new sketch function
 export async function postSketch(req: Request, res: Response, next: NextFunction){
-  // TODO
+  try {
+    const { wordId, drawing } = req.body;
+    if(!req.userId) { throw new AppError('Non autorizzato', 401); }
+    const newSketch = await service.postSketch(req.userId, wordId, drawing);
+
+    return res.status(201).json(APIResponse.success('Disegno creato', newSketch));
+  }
+  catch (error) { next(error); }
 }
 
 // sketches retrieval

@@ -45,3 +45,11 @@ export async function getInfo(id : string){
 
   return user;
 }
+
+// incremento del counter degli sketch
+export async function incrementSketchCount(userId: string) {
+  return prisma.user.update({
+    where: { id: userId },
+    data: { sketchCount: {increment: 1} }
+  });
+}
