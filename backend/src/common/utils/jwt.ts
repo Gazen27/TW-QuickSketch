@@ -6,7 +6,7 @@ const SECRET = process.env.JWT_SECRET as string;
 
 export function createToken(userId : string) : string{
   return jwt.sign(
-    {userId}, process.env.JWT_SECRET!, {expiresIn: '1h'}
+    {userId}, SECRET, {expiresIn: '1h'}
   );
 }
 
@@ -19,7 +19,7 @@ export function getToken(authorization : string | undefined): string {
 
 export function verifyToken(token: string) {
   const payload = jwt.verify(token, SECRET) as JwtPayload;
-  if(!payload.sub) throw new AppError('Non autorizzato', 401);
+  if(!payload.userId) throw new AppError('Non autorizzato', 401);
 
-  return payload.sub;
+  return payload.userId;
 }
