@@ -8,7 +8,6 @@ export async function getRandomWords(req: Request, res: Response, next: NextFunc
   try{
     const { category } = req.query;
     if(!category || typeof category !== 'string'){ throw new AppError('Categoria non valida', 400); }
-
     const words = await service.getRandomWords(category);
 
     return res.status(200).json(APIResponse.success('Parole recuperate', words));

@@ -1,6 +1,7 @@
 import { AppError } from '../../common/errors/app.error.js';
 import { prisma } from '../../common/utils/prisma.js';
 
+// retrieving words
 export async function getRandomWords(category: string) {
 
   const words = await prisma.$queryRaw<
