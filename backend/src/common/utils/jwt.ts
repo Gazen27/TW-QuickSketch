@@ -1,6 +1,6 @@
 import 'dotenv/config';
 import jwt, { type JwtPayload } from 'jsonwebtoken';
-import { AppError } from '../errors/app.error.js';
+import      { AppError        } from '../errors/app.error.js';
 
 const SECRET = process.env.JWT_SECRET as string;
 
