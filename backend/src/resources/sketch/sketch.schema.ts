@@ -1,8 +1,8 @@
 import { z } from 'zod';
 
-// sketch validation schema
 export const sketch = z.object({
-  // TODO
+    wordId: z.uuid(),
+    drawing: z.string().min(1)
 });
 
 // optional category in query validation
