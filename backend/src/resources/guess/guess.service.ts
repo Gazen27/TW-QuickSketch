@@ -1,6 +1,7 @@
+import { cpSync } from 'node:fs';
 import { AppError             } from '../../common/errors/app.error.js';
 import { prisma               } from '../../common/utils/prisma.js';
-import { sketch } from '../sketch/sketch.schema.js';
+import { normalizeText        } from '../../common/utils/text.normalizer.js';
 
 export async function postGuess(userId : string, sketchId : string, text : string){
   const sketch = await prisma.sketch.findUnique({
