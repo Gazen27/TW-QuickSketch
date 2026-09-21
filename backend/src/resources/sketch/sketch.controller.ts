@@ -7,10 +7,10 @@ import * as service                             from './sketch.service.js'
 export async function postSketch(req: Request, res: Response, next: NextFunction){
   try {
     const { wordId, drawing } = req.body;
-    if(!req.userId) { throw new AppError('Non autorizzato', 401); }
+    if(!req.userId) { throw new AppError('Not authorized', 401); }
     const newSketch = await service.postSketch(req.userId, wordId, drawing);
 
-    return res.status(201).json(APIResponse.success('Disegno creato', newSketch));
+    return res.status(201).json(APIResponse.success('Sketch created', newSketch));
   }
   catch (error) { next(error); }
 }
@@ -19,7 +19,7 @@ export async function postSketch(req: Request, res: Response, next: NextFunction
 export async function getSketches(req: Request, res: Response, next: NextFunction){
   try{
     const sketches = await service.getSketches();
-    return res.status(201).json(APIResponse.success('Sketch recuperati', sketches));
+    return res.status(201).json(APIResponse.success('Sketches retrieved', sketches));
   }
   catch(error){ next(error); }
 }

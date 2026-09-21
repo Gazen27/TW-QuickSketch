@@ -5,7 +5,7 @@ import { incrementSketchCount } from '../user/user.service.js';
 // posting a new sketch
 export async function postSketch(authorId : string, wordId: string, drawing : string){
   const word = await prisma.word.findUnique({where: { id: wordId }});
-  if(!word){ throw new AppError('Parola non trovata', 404); }
+  if(!word){ throw new AppError('Word not found', 404); }
   
   const sketch = await prisma.sketch.create({data: {authorId, wordId, drawing}});
   await incrementSketchCount(authorId);
@@ -13,8 +13,7 @@ export async function postSketch(authorId : string, wordId: string, drawing : st
   return sketch;
 }
 
-// retrieving sketches
+// retrieving all sketches
 export async function getSketches(){
   return prisma.sketch.findMany();
 }
-

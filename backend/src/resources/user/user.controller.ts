@@ -8,8 +8,7 @@ export async function signup(req: Request, res: Response, next: NextFunction){
   try{
     const {username, password} = req.body;
     const token = await service.signup(username, password);
-
-    return res.status(201).json(APIResponse.success('Utente creato', {token}));
+    return res.status(201).json(APIResponse.success('User created', {token}));
   }
   catch(error){ next(error); }
 }
@@ -20,7 +19,7 @@ export async function login(req: Request, res: Response, next: NextFunction){
     const {username, password} = req.body;
     const token = await service.login(username, password);
     
-    return res.status(200).json(APIResponse.success('Accesso effettuato', {token}));
+    return res.status(200).json(APIResponse.success('Access done', {token}));
   }
   catch(error){ next(error); }
 }
@@ -29,10 +28,10 @@ export async function login(req: Request, res: Response, next: NextFunction){
 export async function getInfo(req: Request, res: Response, next: NextFunction){
   try{
     const {id} = req.params;
-    if(!id || typeof id !== 'string'){ throw new AppError('Utente mancante', 400); }
+    if(!id || typeof id !== 'string'){ throw new AppError('User does not exists', 400); }
     const userdata = await service.getInfo(id);
 
-    return res.status(200).json(APIResponse.success('Informazioni prelevate', userdata));
+    return res.status(200).json(APIResponse.success('Informations retrieved', userdata));
   }
   catch(error){ next(error); }
 }

@@ -1,6 +1,6 @@
-import express from 'express';
-import cors from 'cors';
 import 'dotenv/config';
+import cors             from 'cors';
+import express          from 'express';
 import { userRouter   } from './resources/user/user.router.js';
 import { wordRouter   } from './resources/word/word.router.js';
 import { sketchRouter } from './resources/sketch/sketch.router.js';
