@@ -18,15 +18,8 @@ export async function postSketch(req: Request, res: Response, next: NextFunction
 // sketches retrieval
 export async function getSketches(req: Request, res: Response, next: NextFunction){
   try{
-    const { category } = req.query;
-    if(!category || typeof category !== 'string'){
-      const sketches = await service.getAllSketches();
-      return res.status(201).json(APIResponse.success('Sketch recuperati', sketches));
-    }
-    else{
-      const sketches = await service.getSelectedSketches(category);
-      return res.status(201).json(APIResponse.success('Sketch recuperati', sketches)); 
-    }
+    const sketches = await service.getSketches();
+    return res.status(201).json(APIResponse.success('Sketch recuperati', sketches));
   }
   catch(error){ next(error); }
 }

@@ -13,13 +13,8 @@ export async function postSketch(authorId : string, wordId: string, drawing : st
   return sketch;
 }
 
-// retrieving selcted sketches by category
-export async function getSelectedSketches(category : string){
-  return prisma.sketch.findMany({where: {word: { category: category }}});
-}
-
-// retrieving every sketch
-export async function getAllSketches(){
+// retrieving sketches
+export async function getSketches(){
   return prisma.sketch.findMany();
 }
 
