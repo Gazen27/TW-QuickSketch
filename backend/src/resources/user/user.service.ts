@@ -5,7 +5,7 @@ import { AppError      } from '../../common/errors/app.error.js';
 import { createToken } from '../../common/utils/jwt.js';
 
 // sketch-counter increment
-export async function incrementSketchCount(userId: string) {
+export async function incrementSketchCount(userId: string){
   return prisma.user.update({
     where: { id: userId },
     data: { sketchCount: {increment: 1} }

@@ -16,12 +16,8 @@ export async function postGuess(userId : string, sketchId : string, text : strin
   const aliases = sketch.word.aliases.map(alias => normalizeText(alias.text));
   let isCorrect: boolean;
 
-  if(text === word || aliases.includes(text)){
-    isCorrect = true;
-    await incrementGuessCount(userId);
-  }
+  if(text === word || aliases.includes(text)){ isCorrect = true; }
   else{ isCorrect = false; }
-
   const guess = await prisma.guess.create({data: {text, isCorrect, userId, sketchId}});
   return guess;
 }
