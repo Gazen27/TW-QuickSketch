@@ -3,6 +3,9 @@ import      { APIResponse                     } from '../../common/utils/api.res
 import      { AppError                        } from '../../common/errors/app.error.js';
 import * as service                             from './guess.service.js'
 
-export async function postGuess(){
-  // TODO
+export async function postGuess(req: Request, res: Response, next: NextFunction){
+  try{
+    // TODO
+  }
+  catch(error){ next(error); }
 }
