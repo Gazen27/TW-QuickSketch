@@ -4,6 +4,14 @@ import { prisma        } from '../../common/utils/prisma.js';
 import { AppError      } from '../../common/errors/app.error.js';
 import { createToken } from '../../common/utils/jwt.js';
 
+// sketch-counter increment
+export async function incrementSketchCount(userId: string) {
+  return prisma.user.update({
+    where: { id: userId },
+    data: { sketchCount: {increment: 1} }
+  });
+}
+
 // account creation service
 export async function signup(username : string, password : string){
   
@@ -42,12 +50,4 @@ export async function getInfo(id : string){
   if(!user){ throw new AppError('User not found', 404) }
 
   return user;
-}
-
-// sketch-counter increment
-export async function incrementSketchCount(userId: string) {
-  return prisma.user.update({
-    where: { id: userId },
-    data: { sketchCount: {increment: 1} }
-  });
 }
