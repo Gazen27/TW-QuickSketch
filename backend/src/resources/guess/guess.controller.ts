@@ -5,7 +5,11 @@ import * as service                             from './guess.service.js'
 
 export async function postGuess(req: Request, res: Response, next: NextFunction){
   try{
-    // TODO
+    const { sketchId, text } = req.body;
+    if(!req.userId){ throw new AppError('Not authorized', 401); }
+    const result = await service.postGuess(req.userId, sketchId, text);
+
+    return res.status(201).json(APIResponse.success('Guess registered', result));
   }
   catch(error){ next(error); }
 }
