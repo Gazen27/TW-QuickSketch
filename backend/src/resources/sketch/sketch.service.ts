@@ -17,3 +17,11 @@ export async function postSketch(authorId : string, wordId: string, drawing : st
 export async function getSketches(){
   return prisma.sketch.findMany();
 }
+
+// retrieving a specific sketch with associated word field
+export async function getSpecificSketch(sketchId : string){
+  return prisma.sketch.findUnique({
+    where:   { id: sketchId },
+    include: { word: { include: { aliases: true } } }
+  });
+}
