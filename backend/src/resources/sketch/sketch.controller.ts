@@ -27,9 +27,11 @@ export async function getSketches(req: Request, res: Response, next: NextFunctio
 // retrieving the word associated to a sketch
 export async function getSolution(req: Request, res: Response, next: NextFunction){
   try{
+    const { id: stringId } = req.params;
+    if (typeof stringId !== 'string') { throw new AppError('Invalid sketch id', 400); }
     if (!req.userId) { throw new AppError('Not authorized', 401); }
-    const { id } = req.params;
-    const solution = await service.getSolution(req.userId, id);
+
+    const solution = await service.getSolution(req.userId, stringId);
     return res.status(200).json(APIResponse.success('Solution retrieved', solution));
   }
   catch(error){ next(error); }
