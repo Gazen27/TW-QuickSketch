@@ -31,7 +31,7 @@ For a quick setup, you can download the provided `.env` and `dev.db` files and p
 npm install
 ```
 ### Database setup
-2. From the `backend/` directory, create the database and apply the migrations
+2. Create the database and apply the migrations from the `backend/` directory
 ```
 npx prisma migrate dev
 ```
