@@ -24,10 +24,10 @@ export async function calculateDrawingScore(sketchId: string){
     where:  { id: sketch.authorId },
     select: { sketchCount: true }
   });
+
   if(!user){ throw new AppError('User not found', 404); }
   
   const drawingScore = (guessedSketches / user.sketchCount) * 100;
-
   return prisma.user.update({
     where: { id: sketch.authorId },
     data: { drawingScore }
@@ -78,6 +78,5 @@ export async function getInfo(id : string){
   });
 
   if(!user){ throw new AppError('User not found', 404) }
-
   return user;
 }
