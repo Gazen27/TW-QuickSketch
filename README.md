@@ -26,20 +26,29 @@ For a quick setup, you can download the provided `.env` and `dev.db` files and p
 ## Getting started
 *Node.js and npm are required.*
 ### Installation
-1. Install dependencies *(both in backend and frontend)*
+1. Install dependencies in both `backend/` and `frontend/`
 ```
 npm install
 ```
+### Database setup
+2. From the `backend/` directory, create the database and apply the migrations
+```
+npx prisma migrate dev
+```
+3. Populate the database with the predefined words and aliases *(optional)*
+```
+npx prisma db seed
+```
 ### Execution
-2. Start the local server *(in backend)*
+4. Start the local server from the `backend/` directory:
 ```
 npm run dev
 ```
-3. Start the Angular frontend *(in frontend)*
+5. Start the Angular frontend from the `frontend/` directory:
 ```
 ng serve
 ```
-4. Open http://localhost:4200 in your browser
+6. Open http://localhost:4200 in your browser
 ## License
 This project is licensed under the MIT License.\
 See the [LICENSE](https://github.com/Gazen27/TW-QuickSketch/blob/main/LICENSE) file for more information.
