@@ -20,7 +20,8 @@ The platform also provides leaderboards and statistics, allowing users to track 
 ## Database and environment setup
 The project requires two files that are not included in the repository:
 - `.env` — environment configuration
-- `dev.db` — pre-populated SQLite database\
+- `dev.db` — pre-populated SQLite database
+
 Both files can be downloaded from the attachments below or you can create your own.\
 For more information, see the following guides:
 - [Setup using the provided files](docs/database-setup.md)
