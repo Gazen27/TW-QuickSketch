@@ -1,11 +1,12 @@
 import 'dotenv/config';
-import cors             from 'cors';
-import express          from 'express';
-import { userRouter   } from './resources/user/user.router.js';
-import { wordRouter   } from './resources/word/word.router.js';
-import { sketchRouter } from './resources/sketch/sketch.router.js';
-import { guessRouter  } from './resources/guess/guess.router.js'
-import { errorHandler } from './common/middleware/error.handler.js';
+import cors                    from 'cors';
+import express                 from 'express';
+import { userRouter          } from './resources/user/user.router.js';
+import { wordRouter          } from './resources/word/word.router.js';
+import { sketchRouter        } from './resources/sketch/sketch.router.js';
+import { guessRouter         } from './resources/guess/guess.router.js'
+import { leaderboardRouter   } from './resources/leaderboard/leaderboard.router.js';
+import { errorHandler        } from './common/middleware/error.handler.js';
 
 const app = express();
 const PORT = process.env.PORT || 3000;
@@ -21,6 +22,7 @@ app.use('/users', userRouter);
 app.use('/words', wordRouter);
 app.use('/sketches', sketchRouter);
 app.use('/guess', guessRouter);
+app.use('/leaderboard', leaderboardRouter);
 
 // error handler
 app.use(errorHandler);
