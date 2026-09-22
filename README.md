@@ -29,11 +29,11 @@ npm install
 ```
 npx prisma migrate dev
 ```
-3. Populate the database with the predefined words and aliases *(optional)*
+3. Populate the database with the predefined words and aliases
 ```
 npx prisma db seed
 ```
-*prisma client generation is already included in package.json postinstall*
+*Prisma Client generation is automatically handled by the `postinstall` script in `package.json`.*
 ### Execution
 4. Start the local server from the `backend/` directory:
 ```
