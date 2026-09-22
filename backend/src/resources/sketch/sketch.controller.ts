@@ -3,7 +3,7 @@ import      { APIResponse                     } from '../../common/utils/api.res
 import      { AppError                        } from '../../common/errors/app.error.js';
 import * as service                             from './sketch.service.js'
 
-// post a new sketch function
+// posting a new sketch
 export async function postSketch(req: Request, res: Response, next: NextFunction){
   try {
     const { wordId, drawing } = req.body;

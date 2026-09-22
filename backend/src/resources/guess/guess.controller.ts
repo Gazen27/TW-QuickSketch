@@ -3,6 +3,7 @@ import      { APIResponse                     } from '../../common/utils/api.res
 import      { AppError                        } from '../../common/errors/app.error.js';
 import * as service                             from './guess.service.js'
 
+// send a new guess
 export async function postGuess(req: Request, res: Response, next: NextFunction){
   try{
     const { sketchId, text } = req.body;
