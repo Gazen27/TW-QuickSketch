@@ -19,10 +19,8 @@ The platform also provides leaderboards and statistics, allowing users to track 
 - **Database:** SQLite3
 ## Database and environment setup
 The project requires two files that are not included in the repository:
-
 - `.env` — environment configuration
 - `dev.db` — pre-populated SQLite database
-
 Both files can be downloaded from the attachments below or you can create your own.
 ## Getting started
 *Node.js and npm are required.*
