@@ -19,7 +19,8 @@
     "dev": "nodemon --exec tsx src/index.ts",
     "build": "tsc",
     "start": "node dist/index.js",
-    "test": ""
+    "test": "",
+    "postinstall": "prisma generate"
   },
   "dependencies": {
     "@prisma/adapter-better-sqlite3": "^7.8.0",

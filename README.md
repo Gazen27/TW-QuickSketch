@@ -33,6 +33,7 @@ npx prisma migrate dev
 ```
 npx prisma db seed
 ```
+*prisma client generation is already included in package.json postinstall*
 ### Execution
 4. Start the local server from the `backend/` directory:
 ```
