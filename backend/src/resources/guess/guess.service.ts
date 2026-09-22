@@ -26,8 +26,9 @@ export async function postGuess(userId : string, sketchId : string, text : strin
   if(!sketch){ throw new AppError('Sketch not found', 404);}
   if(userId === sketch.authorId){ throw new AppError('Auto-guess not allowed', 400);}
   await alreadyGuessed(userId, sketchId);
-  const attempts = await hasAttempts(userId, sketchId);
   
+  const attempts = await hasAttempts(userId, sketchId);
+  const previousGuessCount = sketch.guessCount;
   text = normalizeText(text);
   const word = normalizeText(sketch.word.text);
   const aliases = sketch.word.aliases.map(alias => normalizeText(alias.text));
@@ -37,7 +38,7 @@ export async function postGuess(userId : string, sketchId : string, text : strin
     isCorrect = true;
     await incrementGuessedScore(userId);
     await incrementGuessCount(sketchId);
-    if(sketch.guessCount == 0){ await calculateDrawingScore(sketchId); }
+    if(previousGuessCount == 0){ await calculateDrawingScore(sketchId); }
   }
   else{ isCorrect = false; }
   const guess = await prisma.guess.create({data: {text, isCorrect, userId, sketchId}});
