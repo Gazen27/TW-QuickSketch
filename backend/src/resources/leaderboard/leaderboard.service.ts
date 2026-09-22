@@ -1,12 +1,23 @@
-import { AppError              } from '../../common/errors/app.error.js';
 import { prisma                } from '../../common/utils/prisma.js';
 
 // retrieving players leaderboard
 export async function getPlayersLeaderboard(){
-  // TODO
+  return prisma.user.findMany({
+    select: {
+      id: true,
+      username: true,
+      guessedScore: true},
+    orderBy: { guessedScore: 'desc' }
+  });
 }
 
 // retrieving artists leaderboard
 export async function getArtistsLeaderboard(){
-  // TODO
+  return prisma.user.findMany({
+    select: {
+      id: true,
+      username: true,
+      drawingScore: true},
+    orderBy: { drawingScore: 'desc' }
+  });
 }
