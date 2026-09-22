@@ -17,6 +17,7 @@ async function alreadyGuessed(userId: string, sketchId: string){
 async function hasAttempts(userId: string, sketchId: string){
   const attempts = await prisma.guess.count({where: {userId, sketchId}});
   if(attempts >= 10){ throw new AppError('Zero attempts left', 400);}
+  return attempts;
 }
 
 // posting a new guess attempt
@@ -25,7 +26,7 @@ export async function postGuess(userId : string, sketchId : string, text : strin
   if(!sketch){ throw new AppError('Sketch not found', 404);}
   if(userId === sketch.authorId){ throw new AppError('Auto-guess not allowed', 400);}
   await alreadyGuessed(userId, sketchId);
-  await hasAttempts(userId, sketchId);
+  const attempts = await hasAttempts(userId, sketchId);
   
   text = normalizeText(text);
   const word = normalizeText(sketch.word.text);
@@ -40,5 +41,6 @@ export async function postGuess(userId : string, sketchId : string, text : strin
   }
   else{ isCorrect = false; }
   const guess = await prisma.guess.create({data: {text, isCorrect, userId, sketchId}});
-  return guess;
+  const attemptsLeft = 10 - (attempts +1);
+  return { guess, attemptsLeft };
 }

@@ -35,5 +35,14 @@ export async function incrementGuessCount(sketchId: string){
 
 // getting the solution of a sketch
 export async function getSolution(userId: string, sketchId: string){
-  // TODO
+  const attempts = await prisma.guess.count({ where: {userId, sketchId} });
+  if (attempts < 10){ throw new AppError('Solution not available yet', 400); }
+
+  const sketch = await prisma.sketch.findUnique({
+    where: { id: sketchId },
+    include: { word: true }
+  });
+  if(!sketch){ throw new AppError('Sketch not found', 404); }
+  
+  return sketch.word.text;
 }
