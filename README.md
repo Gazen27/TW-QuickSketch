@@ -17,6 +17,12 @@ The platform also provides leaderboards and statistics, allowing users to track 
 - **Frameworks:** Angular, Express
 - **ORM:** Prisma
 - **Database:** SQLite3
+## Database and environment setup
+The project requires two files that are not included in the repository:
+- `.env` — environment configuration
+- `dev.db` — pre-populated SQLite database
+
+For a quick setup, you can download the provided `.env` and `dev.db` files and place both of them in the `backend/` directory.
 ## Getting started
 *Node.js and npm are required.*
 ### Installation
