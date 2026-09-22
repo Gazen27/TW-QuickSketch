@@ -1,7 +1,9 @@
-import { AppError             } from '../../common/errors/app.error.js';
-import { prisma               } from '../../common/utils/prisma.js';
-import { normalizeText        } from '../../common/utils/text.normalizer.js';
-import { getSpecificSketch    } from '../sketch/sketch.service.js';
+import { AppError              } from '../../common/errors/app.error.js';
+import { prisma                } from '../../common/utils/prisma.js';
+import { normalizeText         } from '../../common/utils/text.normalizer.js';
+import { getSpecificSketch     } from '../sketch/sketch.service.js';
+import { incrementGuessedScore } from '../user/user.service.js';
+import { incrementDrawingScore } from '../user/user.service.js';
 
 // posting a new guess attempt
 export async function postGuess(userId : string, sketchId : string, text : string){
@@ -16,7 +18,11 @@ export async function postGuess(userId : string, sketchId : string, text : strin
   const aliases = sketch.word.aliases.map(alias => normalizeText(alias.text));
   let isCorrect: boolean;
 
-  if(text === word || aliases.includes(text)){ isCorrect = true; }
+  if(text === word || aliases.includes(text)){
+    isCorrect = true;
+    await incrementGuessedScore(userId);
+    await incrementDrawingScore(sketchId);
+  }
   else{ isCorrect = false; }
   const guess = await prisma.guess.create({data: {text, isCorrect, userId, sketchId}});
   return guess;

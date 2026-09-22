@@ -4,11 +4,30 @@ import { prisma        } from '../../common/utils/prisma.js';
 import { AppError      } from '../../common/errors/app.error.js';
 import { createToken } from '../../common/utils/jwt.js';
 
+// guessed-score counter increment
+export async function incrementGuessedScore(userId: string){
+  return prisma.user.update({
+    where: { id: userId },
+    data:  { guessedScore: {increment: 1} }
+  });
+}
+
+// drawing score increment
+export async function incrementDrawingScore(sketchId: string){
+  const sketch = await prisma.sketch.findUnique({where: { id: sketchId }});
+  if (!sketch) { throw new AppError('Sketch not found', 404); }
+
+  return prisma.user.update({
+    where: { id: sketch.authorId },
+    data:  { drawingScore: {increment: 1}}
+  });
+}
+
 // sketch-counter increment
 export async function incrementSketchCount(userId: string){
   return prisma.user.update({
     where: { id: userId },
-    data: { sketchCount: {increment: 1} }
+    data:  { sketchCount: {increment: 1} }
   });
 }
 
