@@ -23,7 +23,7 @@ The project requires two files that are not included in the repository:
 - `.env` — environment configuration
 - `dev.db` — pre-populated SQLite database
 
-Both files can be downloaded from the attachments below to run an example or you can create your own.
+Both files can be downloaded from the attachments below or you can create your own.
 ## Getting started
 *Node.js and npm are required.*
 ### Installation
