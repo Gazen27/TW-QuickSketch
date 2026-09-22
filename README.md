@@ -23,6 +23,7 @@ The project requires two files that are not included in the repository:
 - `dev.db` — pre-populated SQLite database
 
 Both files can be downloaded from the attachments below or you can create your own.
+
 For more information, see the following guides:
 - [Database setup using the provided files](docs/database-setup.md)
 - [Database setup from scratch](docs/database-manual-setup.md)
