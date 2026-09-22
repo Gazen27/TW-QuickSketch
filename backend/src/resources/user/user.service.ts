@@ -12,14 +12,25 @@ export async function incrementGuessedScore(userId: string){
   });
 }
 
-// drawing score increment
-export async function incrementDrawingScore(sketchId: string){
+// drawing score calculation
+export async function calculateDrawingScore(sketchId: string){
   const sketch = await prisma.sketch.findUnique({where: { id: sketchId }});
-  if (!sketch) { throw new AppError('Sketch not found', 404); }
+  if(!sketch){ throw new AppError('Sketch not found', 404); }
+
+  const guessedSketches = await prisma.sketch.count({
+    where: { authorId: sketch.authorId, guessCount: { gt: 0 } } });
+
+  const user = await prisma.user.findUnique({
+    where:  { id: sketch.authorId },
+    select: { sketchCount: true }
+  });
+  if(!user){ throw new AppError('User not found', 404); }
+  
+  const drawingScore = (guessedSketches / user.sketchCount) * 100;
 
   return prisma.user.update({
     where: { id: sketch.authorId },
-    data:  { drawingScore: {increment: 1}}
+    data: { drawingScore }
   });
 }
 

@@ -4,7 +4,7 @@ import { normalizeText         } from '../../common/utils/text.normalizer.js';
 import { getSpecificSketch     } from '../sketch/sketch.service.js';
 import { incrementGuessCount   } from '../sketch/sketch.service.js';
 import { incrementGuessedScore } from '../user/user.service.js';
-import { incrementDrawingScore } from '../user/user.service.js';
+import { calculateDrawingScore } from '../user/user.service.js';
 
 // checking if a sketch has already been guessed by a specific user
 async function alreadyGuessed(userId: string, sketchId: string){
@@ -36,8 +36,8 @@ export async function postGuess(userId : string, sketchId : string, text : strin
   if(text === word || aliases.includes(text)){
     isCorrect = true;
     await incrementGuessedScore(userId);
-    await incrementDrawingScore(sketchId);
     await incrementGuessCount(sketchId);
+    if(sketch.guessCount == 0){ await calculateDrawingScore(sketchId); }
   }
   else{ isCorrect = false; }
   const guess = await prisma.guess.create({data: {text, isCorrect, userId, sketchId}});
