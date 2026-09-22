@@ -32,3 +32,8 @@ export async function incrementGuessCount(sketchId: string){
     data:  { guessCount: {increment: 1}}
   });
 }
+
+// getting the solution of a sketch
+export async function getSolution(userId: string, sketchId: string){
+  // TODO
+}
