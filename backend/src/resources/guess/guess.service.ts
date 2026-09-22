@@ -23,7 +23,7 @@ async function hasAttempts(userId: string, sketchId: string){
 export async function postGuess(userId : string, sketchId : string, text : string){
   const sketch = await getSpecificSketch(sketchId);
   if(!sketch){ throw new AppError('Sketch not found', 404);}
-
+  if(userId === sketch.authorId){ throw new AppError('Auto-guess not allowed', 400);}
   await alreadyGuessed(userId, sketchId);
   await hasAttempts(userId, sketchId);
   
@@ -31,7 +31,7 @@ export async function postGuess(userId : string, sketchId : string, text : strin
   const word = normalizeText(sketch.word.text);
   const aliases = sketch.word.aliases.map(alias => normalizeText(alias.text));
   let isCorrect: boolean;
-
+  
   if(text === word || aliases.includes(text)){
     isCorrect = true;
     await incrementGuessedScore(userId);
