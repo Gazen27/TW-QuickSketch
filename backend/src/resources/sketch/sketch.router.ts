@@ -9,4 +9,4 @@ export const sketchRouter = Router();
 
 sketchRouter.post('/', auth, validate.body(sketch), postSketch);
 sketchRouter.get('/', getSketches);
-sketchRouter.get('/:id', auth, getSolution);
+sketchRouter.get('/:id/solution', auth, getSolution);
