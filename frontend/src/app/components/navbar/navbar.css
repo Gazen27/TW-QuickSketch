@@ -14,32 +14,27 @@
 }
 
 .navbar-links {
-  font-size: 1rem;
-  font-weight: 850;
   display: flex;
   gap: 2rem;
   margin-left: 4rem;
-  color: #ffffff
+}
+
+.navbar-links a {
+  font-size: 1rem;
+  font-weight: 700;
+  color: #ffffff;
+  text-decoration: none;
 }
 
 .navbar-actions {
-  font-size: 1rem;
-  font-weight: 850;
   display: flex;
   gap: 1.5rem;
   margin-left: auto;
-  color: #ffffff
 }
 
-.menu-button {
-  display: none;
-  margin-left: auto;
-  border: none;
-  background: none;
-  font-size: 1.5rem;
-  cursor: pointer;
-}
-
-.mobile-menu {
-  display: none;
+.navbar-actions a {
+  font-size: 1rem;
+  font-weight: 700;
+  color: #ffffff;
+  text-decoration: none;
 }
