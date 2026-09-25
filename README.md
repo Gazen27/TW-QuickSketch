@@ -45,7 +45,7 @@ ng serve
 ```
 6. Open http://localhost:4200 in your browser
 ## Future improvements
-- **Sketches pagination:** add pagination and server-side sorting for the explore section to improve performance when handling a large number of sketches.
+- **Sketches pagination:** adding pagination and server-side sorting for the explore section.
 - **More category and words:** add more categories and a large number of new words.
 ## License
 This project is licensed under the MIT License.\
