@@ -1,1 +1,37 @@
-<p>navbar works!</p>
+<nav class="navbar">
+
+  <a class="navbar-logo" routerlink="/">QUICKSKETCH</a>
+
+  <div class="navbar-links">
+    <a routerlink="/explore">EXPLORE</a>
+    <a routerlink="/leaderboard">LEADERBOARD</a>
+  </div>
+
+  <div class="navbar-actions">
+    <a routerlink="/login">LOGIN</a>
+  </div>
+
+  <button
+    class="menu-button"
+    type="button"
+    (click)="toggleMenu()"
+    [attr.aria-expanded]="menuOpen"
+    aria-label="Open menu"
+  >
+    ☰
+  </button>
+
+</nav>
+
+@if(menuOpen){
+  <div class="mobile-menu">
+
+    <a href="/explore" (click)="closeMenu()">Explore</a>
+    <a href="/leaderboard" (click)="closeMenu()">Leaderboard</a>
+
+    <div class="mobile-menu-actions">
+      <a href="/login" (click)="closeMenu()">Login</a>
+    </div>
+
+  </div>
+}
