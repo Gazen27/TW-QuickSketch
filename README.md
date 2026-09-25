@@ -44,6 +44,9 @@ npm run dev
 ng serve
 ```
 6. Open http://localhost:4200 in your browser
+## Future improvements
+- **Sketches pagination:** add pagination and server-side sorting for the explore section to improve performance when handling a large number of sketches.
+- **More category and words:** add more categories and a large number of new words.
 ## License
 This project is licensed under the MIT License.\
 See the [LICENSE](https://github.com/Gazen27/TW-QuickSketch/blob/main/LICENSE) file for more information.
