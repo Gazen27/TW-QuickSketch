@@ -46,7 +46,7 @@ ng serve
 6. Open http://localhost:4200 in your browser
 ## Future improvements
 - **Sketches pagination:** adding pagination and server-side sorting for the explore section.
-- **More category and words:** add more categories and a large number of new words.
+- **More words:** adding more categories and a large number of new words.
 ## License
 This project is licensed under the MIT License.\
 See the [LICENSE](https://github.com/Gazen27/TW-QuickSketch/blob/main/LICENSE) file for more information.
