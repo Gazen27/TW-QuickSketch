@@ -1,3 +1,4 @@
+/********* General navbar *********/
 .navbar {
   display: flex;
   align-items: center;
@@ -6,13 +7,19 @@
   font-family: 'Nunito Sans', sans-serif;
 }
 
+/********* App logo *********/
 .navbar-logo {
   font-size: 1.5rem;
-  font-weight: 900;
+  font-weight: 950;
   text-decoration: none;
   color: #ff98a2
 }
 
+.navbar-logo:hover {
+  color: #ffffff;
+  cursor: pointer;
+}
+/********* App links *********/
 .navbar-links {
   display: flex;
   gap: 2rem;
@@ -21,11 +28,19 @@
 
 .navbar-links a {
   font-size: 1rem;
-  font-weight: 700;
+  font-weight: 750;
   color: #ffffff;
   text-decoration: none;
+  transition: transform 0.3s;
 }
 
+.navbar-links a:hover {
+  color: #ff98a2;
+  cursor: pointer;
+  transform: scale(1.2);
+}
+
+/********* Account actions *********/
 .navbar-actions {
   display: flex;
   gap: 1.5rem;
@@ -34,7 +49,14 @@
 
 .navbar-actions a {
   font-size: 1rem;
-  font-weight: 700;
+  font-weight: 750;
   color: #ffffff;
   text-decoration: none;
+  transition: transform 0.3s;
+}
+
+.navbar-actions a:hover {
+  color: #ff98a2;
+  cursor: pointer;
+  transform: scale(1.2);
 }
