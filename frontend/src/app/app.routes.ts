@@ -3,8 +3,8 @@ import { Homepage } from './views/homepage/homepage';
 
 export const routes: Routes = [
   {
-    path: "",
-    title: "Home Page",
+    path: '',
+    title: 'Home Page',
     component: Homepage
   }
 ];

@@ -1,0 +1,29 @@
+/********* General homepage *********/
+.homepage {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-height: 95vh;
+}
+
+/********* Main title *********/
+.title {
+  text-align: center;
+  font-family: 'Nunito Sans', sans-serif;
+  font-size: 4.3rem;
+  font-weight: 950;
+  color: #ffffff;
+  margin: 0;
+}
+
+/********* Subtitle *********/
+.subtitle {
+  text-align: center;
+  font-family: 'Nunito Sans', sans-serif;
+  font-size: 1.65rem;
+  font-weight: 800;
+  color: #ffffff;
+  margin: 0;
+  padding-top: 0.2rem;
+}
