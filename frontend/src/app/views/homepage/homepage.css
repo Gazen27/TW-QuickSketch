@@ -11,7 +11,7 @@
 .title {
   text-align: center;
   font-family: 'Nunito Sans', sans-serif;
-  font-size: 4.3rem;
+  font-size: 5rem;
   font-weight: 950;
   color: #ffffff;
   margin: 0;
@@ -21,9 +21,42 @@
 .subtitle {
   text-align: center;
   font-family: 'Nunito Sans', sans-serif;
-  font-size: 1.65rem;
+  font-size: 1.7rem;
   font-weight: 800;
   color: #ffffff;
   margin: 0;
-  padding-top: 0.2rem;
+  padding: 0 0 0.8rem;
+}
+
+/********* Buttons *********/
+.buttons {
+  display: flex;
+  align-items: center;
+  padding: 1.5rem 0 0.5rem;
+  gap: 0.5rem;
+}
+
+.playbutton {
+  min-width: 15rem;
+  min-height: 5rem;
+  border-radius: 15px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #ff98a2;
+  color: #000000;
+  font-family: 'Nunito Sans', sans-serif;
+  font-size: 1.3rem;
+  font-weight: 850;
+  transition: all 0.3s;
+}
+
+.playbutton:hover {
+  background: #ffffff;
+  cursor: pointer;
+  font-size: 1.8rem;
+}
+
+.leaderboard {
+  min-width: 30.5rem;
 }

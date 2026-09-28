@@ -27,36 +27,21 @@
   margin-left: 4rem;
 }
 
-.navbar-links a {
-  font-size: 1rem;
-  font-weight: 750;
-  color: #ffffff;
-  text-decoration: none;
-  transition: transform 0.3s;
-}
-
-.navbar-links a:hover {
-  color: #ff98a2;
-  cursor: pointer;
-  transform: scale(1.2);
-}
-
-/********* Account actions *********/
 .navbar-actions {
   display: flex;
   gap: 1.5rem;
   margin-left: auto;
 }
 
-.navbar-actions a {
+.link {
   font-size: 1rem;
-  font-weight: 750;
+  font-weight: 800;
   color: #ffffff;
   text-decoration: none;
   transition: transform 0.3s;
 }
 
-.navbar-actions a:hover {
+.link:hover {
   color: #ff98a2;
   cursor: pointer;
   transform: scale(1.2);
