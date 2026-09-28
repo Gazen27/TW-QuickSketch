@@ -1,6 +1,7 @@
-import { Routes   } from '@angular/router';
-import { Homepage } from './views/homepage/homepage';
-import { Explore  } from './views/explore/explore';
+import { Routes      } from '@angular/router';
+import { Homepage    } from './views/homepage/homepage';
+import { Explore     } from './views/explore/explore';
+import { Leaderboard } from './views/leaderboard/leaderboard';
 
 export const routes: Routes = [
   {
@@ -10,5 +11,9 @@ export const routes: Routes = [
   {
     path: 'explore',
     component: Explore
+  },
+  {
+    path: 'leaderboard',
+    component: Leaderboard
   }
 ];
