@@ -17,9 +17,17 @@
   padding-bottom: 1.5rem;
 }
 
-.info {
+.text {
   font-size: 1rem;
   font-weight: 600;
+  margin: 0;
+}
+
+/********* Right section *********/
+.more {
+  font-size: 1.2rem;
+  font-weight: 750;
+  color: #ffffff;
   margin: 0;
 }
 
