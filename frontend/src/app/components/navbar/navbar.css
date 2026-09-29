@@ -1,5 +1,7 @@
 /********* General navbar *********/
 .navbar {
+  top: 0;
+  position: sticky;
   display: flex;
   align-items: center;
   min-height: 5vh;
@@ -8,19 +10,19 @@
 }
 
 /********* App logo *********/
-.navbar-logo {
+.logo {
   font-size: 1.5rem;
   font-weight: 950;
   text-decoration: none;
   color: #ff98a2
 }
 
-.navbar-logo:hover {
+.logo:hover {
   color: #ffffff;
   cursor: pointer;
 }
 
-/********* App links *********/
+/********* Navigation links *********/
 .navbar-links {
   display: flex;
   gap: 2rem;
