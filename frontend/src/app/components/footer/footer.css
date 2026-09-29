@@ -1,0 +1,29 @@
+/********* General footer *********/
+.footer {
+  display: flex;
+  flex-direction: row;
+  padding: 1.5rem 1rem 1.5rem;
+  gap: 1rem;
+  background-color: #ff98a2;
+  font-family: 'Nunito Sans', sans-serif;
+}
+
+/********* Left section *********/
+.logo {
+  font-size: 1.5rem;
+  font-weight: 950;
+  color: #ffffff;
+  margin: 0;
+  padding-bottom: 1.5rem;
+}
+
+.info {
+  font-size: 1rem;
+  font-weight: 600;
+  margin: 0;
+}
+
+/********* Line *********/
+.line {
+  border-left: 0.1rem solid #ffffff;
+}
