@@ -26,21 +26,41 @@
 }
 
 .title {
-  font-size: 1.2rem;
+  font-size: 1.3rem;
   font-weight: 750;
   color: #ffffff;
   text-shadow: 1px 1px 1px black;
-  padding-bottom: 0.5rem;
+  padding: 0.5rem 0 0.5rem;
   margin: 0;
 }
 
 a {
-  color: inherit;
-} 
+  font-weight: 700;
+  margin-bottom: 0.7rem;
+  color: #121212;
+  cursor: pointer;
+  text-decoration: none;
+}
 
-/******* Information container *******/
+a:hover {
+  color: #555555;
+}
+
+/******* Info panels *******/
 .info-container {
+  display: flex;
+  flex-direction: column;
   width: 14rem;
+}
+
+/******* Icons *******/
+.link-icon {
+  width: 2rem;
+  height: 2rem;
+}
+
+.link-icon:hover {
+
 }
 
 /********* Line *********/
