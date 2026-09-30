@@ -11,7 +11,7 @@
 .title {
   text-align: center;
   font-family: 'Nunito Sans', sans-serif;
-  font-size: 5rem;
+  font-size: clamp(3.4rem, 8vw, 5rem);
   font-weight: 950;
   color: #ffffff;
   margin: 0;
@@ -21,7 +21,7 @@
 .subtitle {
   text-align: center;
   font-family: 'Nunito Sans', sans-serif;
-  font-size: 1.7rem;
+  font-size: clamp(1.3rem, 3vw, 1.7rem);
   font-weight: 800;
   color: #ffffff;
   margin: 0;
@@ -37,8 +37,8 @@
 }
 
 .button {
-  min-width: 15rem;
-  min-height: 5rem;
+  width: 15rem;
+  height: 5rem;
   border-radius: 15px;
   display: flex;
   justify-content: center;
@@ -49,6 +49,7 @@
   font-family: 'Nunito Sans', sans-serif;
   font-size: 1.3rem;
   font-weight: 870;
+  white-space: nowrap;
   transition: all 0.3s;
 }
 
@@ -59,6 +60,50 @@
 }
 
 .leaderboard {
-  min-width: 30.5rem;
+  width: 30.5rem;
   margin-bottom: 2.5rem;
+}
+
+/**********************************************************************/
+/* Tablet version */
+@media (max-width: 1024px) {
+
+  .button {
+    width: 12rem;
+    height: 4rem;
+    font-size: 1.1rem;
+  }
+
+  .button:hover {
+    font-size: 1.4rem;
+  }
+
+  .leaderboard {
+    width: 24.5rem;
+  }
+
+}
+
+/**********************************************************************/
+/* Mobile version */
+@media (max-width: 767px) {
+  
+  .playzone {
+    flex-direction: column;
+  }
+
+  .button {
+    width: 20rem;
+    height: 3.5rem;
+    font-size: 1.1rem;
+  }
+
+  .button:hover {
+    font-size: 1.4rem;
+  }
+
+  .leaderboard {
+    width: 20rem;
+    margin-top: 1.5rem;
+  }
 }

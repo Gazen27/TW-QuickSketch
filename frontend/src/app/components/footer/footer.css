@@ -85,6 +85,7 @@
 /********* Line *********/
 .line {
   border-left: 0.1rem solid #ffffff;
+  opacity: 0.5;
   margin-left: auto;
   margin-right: auto;
 }
