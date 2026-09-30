@@ -9,6 +9,11 @@ import { RouterLink } from '@angular/router';
 })
 export class Navbar {
   isScrolled = false;
+  isMenuOpen = false;
+
+  toggleMenu() : void {
+    this.isMenuOpen = !this.isMenuOpen
+  }
 
   @HostListener('window:scroll')
   onWindowScroll() : void {
