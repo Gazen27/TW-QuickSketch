@@ -45,7 +45,7 @@ ng serve
 ```
 6. Open http://localhost:4200 in your browser
 ## Future improvements
-- **Admin view:** admins will have access to an exlusive view and set of functionalities.
+- **Admin view:** admins will have access to exlusive functionalities.
 - **Frutiger Aero theme:** Frutiger Aero-style theme coming soon.
 - **More words:** more categories and a large number of new words will be added.
 ## License
