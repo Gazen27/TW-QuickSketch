@@ -20,11 +20,9 @@
   </button>
 
   <!-- Complete menu for reduced view -->
-  @if (isMenuOpen) {
-  <div class="side-menu">
-    <a routerLink="/explore">EXPLORE</a>
-    <a routerLink="/leaderboard">LEADERBOARD</a>
-    <a routerLink="/login">LOGIN</a>
+  <div class="side-menu" [class.menu-open]="isMenuOpen">
+    <a class="link" routerLink="/login" (click)="toggleMenu()">LOGIN</a>
+    <a class="link" routerLink="/explore" (click)="toggleMenu()">EXPLORE</a>
+    <a class="link" routerLink="/leaderboard" (click)="toggleMenu()">LEADERBOARD</a>
   </div>
-}
 </nav>
