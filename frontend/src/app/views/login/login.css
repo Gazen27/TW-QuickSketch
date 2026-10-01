@@ -11,13 +11,12 @@
   flex-direction: column;
   align-items: center;
   width: 320px;
-  height: 55vh;
   border-style: solid;
   border-width: thick;
   border-radius: 1.3rem;
   border-color: #ff98a2;
   padding: 2rem;
-  box-shadow: 0 0 2.5rem #000000;
+  box-shadow: 0 0 3rem #000000;
 }
 
 .form {
@@ -99,5 +98,6 @@
 }
 
 .signup a:hover {
+  cursor: pointer;
   color: #ffffff;
 }
