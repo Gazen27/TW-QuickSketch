@@ -100,8 +100,13 @@
     gap: 1rem;
   }
 
+  .panels {
+    flex-direction: column;
+    gap: 2rem;
+  }
+
   .info-container {
-    width: calc(50% - 1rem);
+    max-width: 100%;
   }
 
   .title {
