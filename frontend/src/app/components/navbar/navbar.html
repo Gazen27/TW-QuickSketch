@@ -14,5 +14,8 @@
   </div>
 
   <!-- Menu for small view -->
-  <button class="menu-button"><img src="icons/menu-icon.svg"></button>
+  <button class="menu-button" (click)="toggleMenu()">
+    @if (isMenuOpen){ <img src="icons/menu-icon.svg" alt="closedMenu"> }
+    @else { <img src="/icons/menu-open-icon.svg" alt="openMenu"> }
+  </button>
 </nav>
