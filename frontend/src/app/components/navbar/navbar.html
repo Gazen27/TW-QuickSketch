@@ -13,9 +13,18 @@
     <a class="link" routerLink="/login">LOGIN</a>
   </div>
 
-  <!-- Menu for small view -->
+  <!-- Menu button for reduced view -->
   <button class="menu-button" (click)="toggleMenu()">
-    @if (isMenuOpen){ <img src="icons/menu-icon.svg" alt="closedMenu"> }
-    @else { <img src="/icons/menu-open-icon.svg" alt="openMenu"> }
+    @if (isMenuOpen){ <img src="icons/menu-open-icon.svg" alt="closedMenu"> }
+    @else { <img src="/icons/menu-icon.svg" alt="openMenu"> }
   </button>
+
+  <!-- Complete menu for reduced view -->
+  @if (isMenuOpen) {
+  <div class="side-menu">
+    <a routerLink="/explore">EXPLORE</a>
+    <a routerLink="/leaderboard">LEADERBOARD</a>
+    <a routerLink="/login">LOGIN</a>
+  </div>
+}
 </nav>

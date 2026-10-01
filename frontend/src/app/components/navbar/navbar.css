@@ -60,6 +60,22 @@
   display: none;
 }
 
+.side-menu {
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 20rem;
+  height: 100vh;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  padding-top: 6rem;
+
+  background-color: white;
+}
+
 /*********************************** Tablet and mobile version ***********************************/
 @media (max-width: 1024px) {
 
