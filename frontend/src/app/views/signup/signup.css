@@ -14,7 +14,7 @@
   border-style: solid;
   border-width: thick;
   border-radius: 1.3rem;
-  border-color: #ff98a2;
+  border-color: var(--color-primary);
   padding: 2rem;
   box-shadow: 0 0 3rem #000000;
 }
@@ -64,7 +64,7 @@
   justify-content: center;
   align-items: center;
   width: 50%;
-  background-color: #ff98a2;
+  background-color: var(--color-primary);
   margin-top: 1rem;
   padding: 0.7rem;
   text-align: center;
@@ -91,7 +91,7 @@
 
 .login a {
   text-decoration: none;
-  color: #ff98a2;
+  color: var(--color-primary);
 }
 
 .login a:hover {

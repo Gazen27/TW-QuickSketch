@@ -20,7 +20,7 @@
   font-size: 1.5rem;
   font-weight: 950;
   text-decoration: none;
-  color: #ff98a2
+  color: var(--color-primary);
 }
 
 .logo:hover {
@@ -50,7 +50,7 @@
 }
 
 .link:hover {
-  color: #ff98a2;
+  color: var(--color-primary);
   cursor: pointer;
   transform: scale(1.2);
 }
@@ -67,7 +67,7 @@
   width: 48vw;
   height: 100vh;
   display: none;
-  background-color: #ff98a2;
+  background-color: var(--color-primary);
   transform: translateX(100%);
   transition: transform 0.3s ease;
 }
