@@ -17,6 +17,7 @@
   border-color: var(--color-primary);
   padding: 2rem;
   box-shadow: 0 0 3rem #000000;
+  margin-bottom: 1rem;
 }
 
 .form {
