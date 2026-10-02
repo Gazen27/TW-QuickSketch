@@ -10,7 +10,6 @@
 /********* Main title *********/
 .title {
   text-align: center;
-  font-family: 'Nunito Sans', sans-serif;
   font-size: clamp(3.4rem, 8vw, 5rem);
   font-weight: 950;
   color: #ffffff;
@@ -20,7 +19,6 @@
 /********* Subtitle *********/
 .subtitle {
   text-align: center;
-  font-family: 'Nunito Sans', sans-serif;
   font-size: clamp(1.3rem, 3vw, 1.7rem);
   font-weight: 800;
   color: #ffffff;
@@ -46,7 +44,6 @@
   background-color: #ff98a2;
   color: #000000;
   text-decoration: none;
-  font-family: 'Nunito Sans', sans-serif;
   font-size: 1.3rem;
   font-weight: 870;
   white-space: nowrap;

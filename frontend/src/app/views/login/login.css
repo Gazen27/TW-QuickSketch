@@ -28,7 +28,6 @@
 
 .title {
   text-align: center;
-  font-family: 'Nunito Sans', sans-serif;
   font-size: 2.8rem;
   font-weight: 900;
   color: #ff98a2;
@@ -42,7 +41,6 @@
 }
 
 .input-group label {
-  font-family: 'Nunito Sans', sans-serif;
   font-size: 1rem;
   color: #af9cac;
 }
@@ -72,7 +70,7 @@
   text-align: center;
   border: none;
   border-radius: 0.6rem;
-  font-family: 'Nunito Sans', sans-serif;
+  font-family: inherit;
   font-weight: 800;
   font-size: 1.2rem;
   color: #000000;
@@ -87,13 +85,11 @@
 .signup {
   margin-top: 2rem;
   text-align: center;
-  font-family: 'Nunito Sans', sans-serif;
   font-size:1rem;
   color: #af9cac;
 }
 
 .signup a {
-  font-family: inherit;
   text-decoration: none;
   color: #ff98a2;
 }
