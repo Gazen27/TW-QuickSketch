@@ -4,13 +4,15 @@
 
   <!-- View navigation links -->
   <div class="navbar-links">
+    @if(isLoggedIn){ <a class="link" routerLink="/draw">DRAW</a> }
     <a class="link" routerLink="/explore">EXPLORE</a>
     <a class="link" routerLink="/leaderboard">LEADERBOARD</a>
   </div>
 
   <!-- Login action -->
   <div class="navbar-actions">
-    <a class="link" routerLink="/login">LOGIN</a>
+    @if(isLoggedIn){ <a class="link" routerLink="/profile">PROFILE</a> }
+    @else          { <a class="link" routerLink="/login">LOGIN</a> }
   </div>
 
   <!-- Menu button for reduced view -->
@@ -21,8 +23,10 @@
 
   <!-- Complete menu for reduced view -->
   <div class="side-menu" [class.menu-open]="isMenuOpen">
-    <a class="link" routerLink="/login" (click)="toggleMenu()">LOGIN</a>
+    @if(isLoggedIn){ <a class="link" routerLink="/draw">DRAW</a> }
     <a class="link" routerLink="/explore" (click)="toggleMenu()">EXPLORE</a>
     <a class="link" routerLink="/leaderboard" (click)="toggleMenu()">LEADERBOARD</a>
+    @if(isLoggedIn){ <a class="link" routerLink="/profile" (click)="toggleMenu()">PROFILE</a> }
+    @else          { <a class="link" routerLink="/login" (click)="toggleMenu()">LOGIN</a> }
   </div>
 </nav>

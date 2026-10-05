@@ -1,5 +1,6 @@
 import { Component, HostListener  } from '@angular/core';
-import { RouterLink } from '@angular/router';
+import { AuthService              } from '../../services/auth.service';
+import { RouterLink               } from '@angular/router';
 
 @Component({
   selector: 'app-navbar',
@@ -11,8 +12,14 @@ export class Navbar {
   isScrolled = false;
   isMenuOpen = false;
 
+  constructor(private authService: AuthService){}
+
   toggleMenu() : void {
     this.isMenuOpen = !this.isMenuOpen
+  }
+
+  get isLoggedIn(): boolean {
+    return this.authService.isLoggedIn();
   }
 
   @HostListener('window:scroll')
