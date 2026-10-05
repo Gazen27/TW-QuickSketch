@@ -4,6 +4,7 @@ import { Explore     } from './views/explore/explore';
 import { Leaderboard } from './views/leaderboard/leaderboard';
 import { Login       } from './views/login/login';
 import { Signup      } from './views/signup/signup';
+import { Profile } from './views/profile/profile';
 
 export const routes: Routes = [
   {
@@ -25,5 +26,9 @@ export const routes: Routes = [
   {
     path: 'leaderboard',
     component: Leaderboard
+  },
+  {
+    path: 'profile',
+    component: Profile
   }
 ];
