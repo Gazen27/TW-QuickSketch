@@ -1,10 +1,13 @@
 import { Routes      } from '@angular/router';
+import { authGuard   } from './guards/auth.guard';
 import { Homepage    } from './views/homepage/homepage';
+import { Draw        } from './views/draw/draw';
 import { Explore     } from './views/explore/explore';
 import { Leaderboard } from './views/leaderboard/leaderboard';
 import { Login       } from './views/login/login';
 import { Signup      } from './views/signup/signup';
-import { Profile } from './views/profile/profile';
+import { Profile     } from './views/profile/profile';
+
 
 export const routes: Routes = [
   {
@@ -18,6 +21,11 @@ export const routes: Routes = [
   {
     path: 'signup',
     component: Signup
+  },
+  {
+    path: 'draw',
+    component: Draw,
+    canActivate: [authGuard]
   },
   {
     path: 'explore',
