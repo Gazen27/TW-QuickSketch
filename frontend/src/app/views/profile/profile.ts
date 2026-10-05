@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { AuthService } from '../../services/auth.service';
-import { UserService } from '../../services/user.service';
+import { AuthService       } from '../../services/auth.service';
+import { UserService       } from '../../services/user.service';
+import { Router            } from '@angular/router';
 
 @Component({
   selector: 'app-profile',
@@ -16,7 +17,8 @@ export class Profile implements OnInit {
 
   constructor(
     private authService: AuthService,
-    private userService: UserService
+    private userService: UserService,
+    private router: Router
   ){}
 
   ngOnInit(): void {
@@ -32,5 +34,10 @@ export class Profile implements OnInit {
       },
       error: (error) => { console.error(error); }
     });
+  }
+
+  logout(): void {
+    this.authService.logout();
+    this.router.navigate(['/']);
   }
 }

@@ -24,6 +24,10 @@ export class AuthService {
     return this.http.post<LoginResponse>(`${this.APIurl}/users`, { username, password });
   }
 
+  logout(): void {
+    localStorage.removeItem('token');
+  }
+
   saveToken(token: string) {
     localStorage.setItem('token', token);
   }
