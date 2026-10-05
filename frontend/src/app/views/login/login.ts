@@ -17,7 +17,7 @@ export class Login {
 
   onSubmit() {
     this.authService.login(this.username, this.password).subscribe({
-      next: (response) => { console.log(response); },
+      next: (response) => { this.authService.saveToken(response.data.token); },
       error: (error) => { console.error(error); }
     });
   }

@@ -1,6 +1,12 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 
+interface LoginResponse {
+  status: string;
+  message: string;
+  data: { token: string; };
+}
+
 @Injectable({
   providedIn: 'root'
 })
@@ -11,6 +17,10 @@ export class AuthService {
   constructor(private http: HttpClient) {}
 
   login(username: string, password: string) {
-  return this.http.post(`${this.APIurl}/users/login`, { username, password });
+    return this.http.post<LoginResponse>(`${this.APIurl}/users/login`, { username, password });
+  }
+
+  saveToken(token: string) {
+    localStorage.setItem('token', token);
   }
 }
