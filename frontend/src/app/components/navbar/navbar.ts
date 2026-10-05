@@ -1,6 +1,6 @@
 import { Component, HostListener  } from '@angular/core';
-import { AuthService              } from '../../services/auth.service';
 import { RouterLink               } from '@angular/router';
+import { AuthService              } from '../../services/auth.service';
 
 @Component({
   selector: 'app-navbar',

@@ -11,14 +11,14 @@
 
   <!-- Login action -->
   <div class="navbar-actions">
-    @if(isLoggedIn){ <a class="link" routerLink="/profile">PROFILE</a> }
+    @if(isLoggedIn){ <a class="link" routerLink="/profile"><img src="icons/profile-icon.svg"></a> }
     @else          { <a class="link" routerLink="/login">LOGIN</a> }
   </div>
 
   <!-- Menu button for reduced view -->
   <button class="menu-button" (click)="toggleMenu()">
     @if (isMenuOpen){ <img src="icons/menu-open-icon.svg" alt="openMenu"> }
-    @else { <img src="/icons/menu-icon.svg" alt="closedMenu"> }
+    @else           { <img src="/icons/menu-icon.svg" alt="closedMenu"> }
   </button>
 
   <!-- Complete menu for reduced view -->

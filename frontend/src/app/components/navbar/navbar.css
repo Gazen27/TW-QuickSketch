@@ -55,6 +55,11 @@
   transform: scale(1.2);
 }
 
+.link img {
+  width: 1.9rem;
+  height: 1.9rem;
+}
+
 /********* Right menu *********/
 .menu-button {
   display: none;
