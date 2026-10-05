@@ -20,7 +20,15 @@ export class AuthService {
     return this.http.post<LoginResponse>(`${this.APIurl}/users/login`, { username, password });
   }
 
+  signup(username: string, password: string) {
+    return this.http.post<LoginResponse>(`${this.APIurl}/users`, { username, password });
+  }
+
   saveToken(token: string) {
     localStorage.setItem('token', token);
+  }
+
+  isLoggedIn(): boolean {
+    return localStorage.getItem('token') !== null;
   }
 }
