@@ -8,7 +8,6 @@ import { Login       } from './views/login/login';
 import { Signup      } from './views/signup/signup';
 import { Profile     } from './views/profile/profile';
 
-
 export const routes: Routes = [
   {
     path: '',

@@ -31,4 +31,11 @@ export class AuthService {
   isLoggedIn(): boolean {
     return localStorage.getItem('token') !== null;
   }
+
+  getUserId(): string | null {
+    const token = localStorage.getItem('token');
+    if(!token){ return null; }
+    const payload = JSON.parse(atob(token.split('.')[1]));
+    return payload.sub;
+  }
 }
