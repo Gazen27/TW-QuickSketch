@@ -8,7 +8,7 @@ import {
   ɵɵdefineInjectable,
   ɵɵdefineService,
   ɵɵinject
-} from "./chunk-QJ6TYSTL.js";
+} from "./chunk-75XUJ6ME.js";
 
 // node_modules/@angular/common/fesm2022/_platform_location-chunk.mjs
 var _DOM = null;
@@ -189,7 +189,8 @@ export {
   DomAdapter,
   PlatformLocation,
   LOCATION_INITIALIZED,
+  BrowserPlatformLocation,
   parseCookieValue,
   XhrFactory
 };
-//# sourceMappingURL=chunk-56B3FMSR.js.map
+//# sourceMappingURL=chunk-APCXLJHM.js.map

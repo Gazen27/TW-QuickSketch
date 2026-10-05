@@ -1,5 +1,6 @@
-import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { Injectable      } from '@angular/core';
+import { HttpClient      } from '@angular/common/http';
+import { BehaviorSubject } from 'rxjs';
 
 interface LoginResponse {
   status: string;
@@ -13,6 +14,7 @@ interface LoginResponse {
 export class AuthService {
 
   private APIurl = 'http://localhost:3000';
+  private loggedIn = new BehaviorSubject<boolean>(localStorage.getItem('token') !== null);
 
   constructor(private http: HttpClient) {}
 
@@ -26,10 +28,12 @@ export class AuthService {
 
   logout(): void {
     localStorage.removeItem('token');
+    this.loggedIn.next(false);
   }
 
   saveToken(token: string) {
     localStorage.setItem('token', token);
+    this.loggedIn.next(true);
   }
 
   isLoggedIn(): boolean {
@@ -41,5 +45,9 @@ export class AuthService {
     if(!token){ return null; }
     const payload = JSON.parse(atob(token.split('.')[1]));
     return payload.sub;
+  }
+
+  isLoggedIn$() {
+    return this.loggedIn.asObservable();
   }
 }

@@ -4,14 +4,14 @@
 
   <!-- View navigation links -->
   <div class="navbar-links">
-    @if(isLoggedIn){ <a class="link" routerLink="/draw">DRAW</a> }
+    @if(isLoggedIn$ | async){ <a class="link" routerLink="/draw">DRAW</a> }
     <a class="link" routerLink="/explore">EXPLORE</a>
     <a class="link" routerLink="/leaderboard">LEADERBOARD</a>
   </div>
 
   <!-- Login action -->
   <div class="navbar-actions">
-    @if(isLoggedIn){ <a class="link" routerLink="/profile"><img src="icons/profile-icon.svg"></a> }
+    @if(isLoggedIn$ | async){ <a class="link" routerLink="/profile"><img src="icons/profile-icon.svg"></a> }
     @else          { <a class="link" routerLink="/login">LOGIN</a> }
   </div>
 
@@ -23,10 +23,10 @@
 
   <!-- Complete menu for reduced view -->
   <div class="side-menu" [class.menu-open]="isMenuOpen">
-    @if(isLoggedIn){ <a class="link" routerLink="/draw">DRAW</a> }
+    @if(isLoggedIn$ | async){ <a class="link" routerLink="/draw">DRAW</a> }
     <a class="link" routerLink="/explore" (click)="toggleMenu()">EXPLORE</a>
     <a class="link" routerLink="/leaderboard" (click)="toggleMenu()">LEADERBOARD</a>
-    @if(isLoggedIn){ <a class="link" routerLink="/profile" (click)="toggleMenu()">PROFILE</a> }
+    @if(isLoggedIn$ | async){ <a class="link" routerLink="/profile" (click)="toggleMenu()">PROFILE</a> }
     @else          { <a class="link" routerLink="/login" (click)="toggleMenu()">LOGIN</a> }
   </div>
 </nav>
