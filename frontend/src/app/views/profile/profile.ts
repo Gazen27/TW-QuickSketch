@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ChangeDetectorRef } from '@angular/core';
 import { AuthService       } from '../../services/auth.service';
 import { UserService       } from '../../services/user.service';
 import { Router            } from '@angular/router';
@@ -18,7 +19,8 @@ export class Profile implements OnInit {
   constructor(
     private authService: AuthService,
     private userService: UserService,
-    private router: Router
+    private router: Router,
+    private cdr: ChangeDetectorRef
   ){}
 
   ngOnInit(): void {
@@ -31,6 +33,8 @@ export class Profile implements OnInit {
         this.sketchCount = response.data.sketchCount;
         this.drawingScore = response.data.drawingScore;
         this.guessedScore = response.data.guessedScore;
+
+        this.cdr.detectChanges();
       },
       error: (error) => { console.error(error); }
     });
