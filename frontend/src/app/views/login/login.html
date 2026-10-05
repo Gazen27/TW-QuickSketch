@@ -6,16 +6,16 @@
 	  <p class="title">Login</p>
 
     <!-- Entire form -->
-	  <form class="form">
+	  <form class="form" (ngSubmit)="onSubmit()">
 		  <div class="input-group">
 			  <label for="username">Username</label>
-			  <input type="text" name="username" id="username" placeholder="">
+			  <input type="text" name="username" id="username" [(ngModel)]="username">
 		  </div>
 		  <div class="input-group">
 			  <label for="password">Password</label>
-			  <input type="password" name="password" id="password" placeholder="">
+			  <input type="password" name="password" id="password" [(ngModel)]="password">
 		  </div>
-		  <button class="sign-button">Sign in</button>
+		  <button class="sign-button" type="submit">Sign in</button>
 	  </form>
 
     <!-- Signup routing -->
