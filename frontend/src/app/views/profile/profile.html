@@ -2,13 +2,35 @@
 
   <!-- Profile side -->
   <div class="profile-side">
-    <img src="icons/cat-icon.svg">
-    <div class="username">{{ username }}</div>
-
+    <img class="icon" src="icons/cat-icon.svg">
+    <div class="username">TEST{{ username }}</div>
+    <!-- Logout button -->
+    <button class="logout-button">
+      <div class="sign"><img src="icons/logout-icon.svg"></div>
+      <div class="text">Logout</div>
+    </button>
   </div>
   
   <!-- Stats side -->
   <div class="stats-side">
-    
+    <div class="stats-box">
+
+      <!-- Title and info -->
+      <div class="box-header">
+        <p class="title">My stats</p>
+        <a class="info"><img src="icons/info-icon.svg"></a>
+      </div>
+
+      <!-- Horizontal divider -->
+      <div class="line"></div>
+
+      <!-- Stats -->
+      <div class="stats-container">
+        <p class="stat">Sketches:<br>{{ sketchCount }}</p>
+        <p class="stat">Likes:<br>coming soon</p>
+        <p class="stat">Guess score:<br>{{ guessedScore }}</p>
+        <p class="stat">Drawing score:<br>{{ drawingScore }}</p>
+      </div>
+    </div>
   </div>
 </main>
