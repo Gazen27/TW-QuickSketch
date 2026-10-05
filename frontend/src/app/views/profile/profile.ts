@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ChangeDetectorRef } from '@angular/core';
+import { signal            } from '@angular/core';
 import { AuthService       } from '../../services/auth.service';
 import { UserService       } from '../../services/user.service';
 import { Router            } from '@angular/router';
@@ -11,16 +11,15 @@ import { Router            } from '@angular/router';
   styleUrl: './profile.css'
 })
 export class Profile implements OnInit {
-  username = '';
-  sketchCount = 0;
-  drawingScore = 0;
-  guessedScore = 0;
+  username = signal('');
+  sketchCount = signal(0);
+  drawingScore = signal(0);
+  guessedScore = signal(0);
 
   constructor(
     private authService: AuthService,
     private userService: UserService,
-    private router: Router,
-    private cdr: ChangeDetectorRef
+    private router: Router
   ){}
 
   ngOnInit(): void {
@@ -29,12 +28,10 @@ export class Profile implements OnInit {
 
     this.userService.getInfo(userId).subscribe({
       next: (response) => {
-        this.username = response.data.username;
-        this.sketchCount = response.data.sketchCount;
-        this.drawingScore = response.data.drawingScore;
-        this.guessedScore = response.data.guessedScore;
-
-        this.cdr.detectChanges();
+        this.username.set(response.data.username);
+        this.sketchCount.set(response.data.sketchCount);
+        this.drawingScore.set(response.data.drawingScore);
+        this.guessedScore.set(response.data.guessedScore);
       },
       error: (error) => { console.error(error); }
     });

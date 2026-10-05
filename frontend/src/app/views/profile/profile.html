@@ -3,7 +3,7 @@
   <!-- Profile side -->
   <div class="profile-side">
     <img class="icon" src="icons/cat-icon.svg">
-    <div class="profile-username">{{ username }}</div>
+    <div class="username">{{ username() }}</div>
     <!-- Logout button -->
     <button class="logout-button" (click)="logout()">
       <div class="sign"><img src="icons/logout-icon.svg"></div>
@@ -26,10 +26,10 @@
 
       <!-- Stats -->
       <div class="stats-container">
-        <p class="stat">Sketches:<br>{{ sketchCount }}</p>
+        <p class="stat">Sketches:<br>{{ sketchCount() }}</p>
         <p class="stat">Likes:<br>coming soon</p>
-        <p class="stat">Guess score:<br>{{ guessedScore }}</p>
-        <p class="stat">Drawing score:<br>{{ drawingScore }}</p>
+        <p class="stat">Guess score:<br>{{ guessedScore() }}</p>
+        <p class="stat">Drawing score:<br>{{ drawingScore() }}</p>
       </div>
     </div>
   </div>
