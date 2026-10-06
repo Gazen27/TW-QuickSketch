@@ -30,8 +30,8 @@
 
 /********* Icon *********/
 .icon {
-  height: 12rem;
-  width: 12rem;
+  height: 13rem;
+  width: 13rem;
 }
 
 /********* Username *********/
@@ -40,7 +40,7 @@
   font-size: 2.5rem;
   font-weight: 800;
   margin-top: 0.5rem;
-  margin-bottom: 6rem;
+  margin-bottom: 4rem;
 }
 
 /********* Stats container *********/
@@ -127,11 +127,11 @@
 }
 
 .stat-name {
-  margin: 1rem 0 1rem 0;
+  margin: 1.3rem 0 1.3rem 0;
 }
 
 .stat-value {
-  margin: 1rem 0 1rem auto;
+  margin: 1.3rem 0 1.3rem auto;
 }
 
 .stat-line {
