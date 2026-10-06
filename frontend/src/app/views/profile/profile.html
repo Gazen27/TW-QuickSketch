@@ -7,7 +7,7 @@
     <!-- Logout button -->
     <button class="logout-button" (click)="logout()">
       <div class="sign"><img src="icons/logout-icon.svg"></div>
-      <div class="text">Logout</div>
+      <div class="button-text">Logout</div>
     </button>
   </div>
   
@@ -24,33 +24,34 @@
       <!-- Horizontal divider -->
       <div class="header-line"></div>
 
-      <!-- Number of sketches -->
-      <div class="stat-row">
-        <p class="stat-name">Sketches:</p>
-        <p class="stat-value">{{ sketchCount() }}</p>
-      </div>
-      <div class="stat-line"></div>
+      <div class="stat-inner-container">
+        <!-- Number of sketches -->
+        <div class="stat-row">
+          <p class="text stat-name">Sketches:</p>
+          <p class="text stat-value">{{ sketchCount() }}</p>
+        </div>
+        <div class="stat-line"></div>
 
-      <!-- Drawing score -->
-      <div class="stat-row">
-        <p class="stat-name">Drawing score:</p>
-        <p class="stat-value">{{ drawingScore() }}</p>
-      </div>
-      <div class="stat-line"></div>
-      
-      <!-- Guess score -->
-      <div class="stat-row">
-        <p class="stat-name">Guess score:</p>
-        <p class="stat-value">{{ guessedScore() }}</p>
-      </div>
-      <div class="stat-line"></div>
+        <!-- Drawing score -->
+        <div class="stat-row">
+          <p class="text stat-name">Drawing score:</p>
+          <p class="text stat-value">{{ drawingScore() }}</p>
+        </div>
+        <div class="stat-line"></div>
+        
+        <!-- Guess score -->
+        <div class="stat-row">
+          <p class="text stat-name">Guess score:</p>
+          <p class="text stat-value">{{ guessedScore() }}</p>
+        </div>
+        <div class="stat-line"></div>
 
-      <!-- Number of likes -->
-      <div class="stat-row">
-        <p class="stat-name">Likes:</p>
-        <p class="stat-value">coming soon</p>
+        <!-- Number of likes -->
+        <div class="stat-row">
+          <p class="text stat-name">Likes:</p>
+          <p class="text stat-value">coming soon</p>
+        </div>
       </div>
-      <div class="stat-line"></div>
     </div>
   </div>
 </main>
