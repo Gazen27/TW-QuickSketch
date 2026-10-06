@@ -9,7 +9,7 @@ export async function getPlayersLeaderboard(page: number, limit: number){
       id: true,
       username: true,
       guessedScore: true},
-    orderBy: { guessedScore: 'desc' },
+    orderBy: [{ guessedScore: 'desc' }, { id: 'asc' }],
     skip,
     take: limit
   });
@@ -26,7 +26,7 @@ export async function getArtistsLeaderboard(page: number, limit: number){
       id: true,
       username: true,
       drawingScore: true},
-    orderBy: { drawingScore: 'desc' },
+    orderBy: [{ drawingScore: 'desc' }, { id: 'asc' }],
     skip,
     take: limit
   });
