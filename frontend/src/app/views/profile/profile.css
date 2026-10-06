@@ -57,15 +57,30 @@
   border-color: var(--color-primary);
 }
 
-/********* Container header *********/
-.box-header {
+.header-row {
   width: 95%;
   display: flex;
   flex-direction: row;
-  align-items: center;
   justify-content: flex-start;
+  align-items: center;
   padding-top: 0.8rem;
   padding-bottom: 0.8rem;
+}
+
+.stats-container {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.stat-row {
+  width: 95%;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
 }
 
 /********* Stats title *********/
@@ -89,7 +104,7 @@
   width: 2rem;
 }
 
-.line {
+.header-line {
   width: 95%;
   border-bottom: 0.15rem solid var(--color-primary);
   opacity: 1;

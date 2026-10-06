@@ -16,21 +16,41 @@
     <div class="stats-box">
 
       <!-- Title and info -->
-      <div class="box-header">
+      <div class="header-row">
         <p class="title">My stats</p>
         <a class="info"><img src="icons/info-icon.svg"></a>
       </div>
 
       <!-- Horizontal divider -->
-      <div class="line"></div>
+      <div class="header-line"></div>
 
-      <!-- Stats -->
-      <div class="stats-container">
-        <p class="stat">Sketches:<br>{{ sketchCount() }}</p>
-        <p class="stat">Likes:<br>coming soon</p>
-        <p class="stat">Guess score:<br>{{ guessedScore() }}</p>
-        <p class="stat">Drawing score:<br>{{ drawingScore() }}</p>
+      <!-- Number of sketches -->
+      <div class="stat-row">
+        <p class="stat-name">Sketches:</p>
+        <p class="stat-value">{{ sketchCount() }}</p>
       </div>
+      <div class="stat-line"></div>
+
+      <!-- Drawing score -->
+      <div class="stat-row">
+        <p class="stat-name">Drawing score:</p>
+        <p class="stat-value">{{ drawingScore() }}</p>
+      </div>
+      <div class="stat-line"></div>
+      
+      <!-- Guess score -->
+      <div class="stat-row">
+        <p class="stat-name">Guess score:</p>
+        <p class="stat-value">{{ guessedScore() }}</p>
+      </div>
+      <div class="stat-line"></div>
+
+      <!-- Number of likes -->
+      <div class="stat-row">
+        <p class="stat-name">Likes:</p>
+        <p class="stat-value">coming soon</p>
+      </div>
+      <div class="stat-line"></div>
     </div>
   </div>
 </main>
