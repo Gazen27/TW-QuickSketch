@@ -4,6 +4,11 @@ import { prisma        } from '../../common/utils/prisma.js';
 import { AppError      } from '../../common/errors/app.error.js';
 import { createToken } from '../../common/utils/jwt.js';
 
+// counting total users
+export async function countUsers() {
+  return prisma.user.count();
+}
+
 // guessed-score counter increment
 export async function incrementGuessedScore(userId: string){
   return prisma.user.update({

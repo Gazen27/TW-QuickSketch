@@ -1,10 +1,10 @@
-import { prisma                } from '../../common/utils/prisma.js';
+import { prisma     } from '../../common/utils/prisma.js';
+import { countUsers } from '../user/user.service.js';
 
 // retrieving players leaderboard
 export async function getPlayersLeaderboard(page: number, limit: number){
   const skip = (page - 1) * limit;
-
-  return prisma.user.findMany({
+  const items = await prisma.user.findMany({
     select: {
       id: true,
       username: true,
@@ -13,13 +13,15 @@ export async function getPlayersLeaderboard(page: number, limit: number){
     skip,
     take: limit
   });
+  const total = await countUsers();
+  const totalPages = Math.ceil(total/limit);
+  return{ items, page, limit, total, totalPages };
 }
 
 // retrieving artists leaderboard
 export async function getArtistsLeaderboard(page: number, limit: number){
   const skip = (page - 1) * limit;
-
-  return prisma.user.findMany({
+  const items = await prisma.user.findMany({
     select: {
       id: true,
       username: true,
@@ -28,4 +30,7 @@ export async function getArtistsLeaderboard(page: number, limit: number){
     skip,
     take: limit
   });
+  const total = await countUsers();
+  const totalPages = Math.ceil(total/limit);
+  return{ items, page, limit, total, totalPages };
 }
