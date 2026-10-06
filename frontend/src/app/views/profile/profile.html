@@ -3,12 +3,14 @@
   <!-- Profile side -->
   <div class="profile-side">
     <img class="icon" src="icons/cat-icon.svg">
-    <div class="username">{{ username() }}</div>
-    <!-- Logout button -->
-    <button class="logout-button" (click)="logout()">
-      <div class="sign"><img src="icons/logout-icon.svg"></div>
-      <div class="button-text">Logout</div>
-    </button>
+    <div class="user-group">
+      <div class="username">{{ username() }}</div>
+      <!-- Logout button -->
+      <button class="logout-button" (click)="logout()">
+        <div class="sign"><img src="icons/logout-icon.svg"></div>
+        <div class="button-text">Logout</div>
+      </button>
+    </div>
   </div>
   
   <!-- Stats side -->

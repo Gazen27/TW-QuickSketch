@@ -17,7 +17,6 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  margin-left: auto;
 }
 
 .stats-side {
@@ -25,7 +24,6 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  margin-right: auto;
 }
 
 /********* Icon *********/
@@ -35,9 +33,16 @@
 }
 
 /********* Username *********/
+.user-group {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+}
+
 .username {
   color: #ffffff;
-  font-size: 2.5rem;
+  font-size: 2.8rem;
   font-weight: 800;
   margin-top: 0.5rem;
   margin-bottom: 4rem;
@@ -45,7 +50,7 @@
 
 /********* Stats container *********/
 .stats-box {
-  height: 24rem;
+  height: 23.5rem;
   width: 48rem;
   display: flex;
   flex-direction: column;
@@ -196,4 +201,39 @@
   width: 70%;
   transition-duration: .3s;
   padding-right: 0.5rem;
+}
+
+/************************ Tablet version ************************/
+@media (max-width: 1024px) {
+  .profile {
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 2rem;
+  }
+
+  .profile-side {
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+  }
+
+  .user-group {
+    margin-left: 2rem ;
+    align-items: flex-start;
+  }
+
+  .icon {
+    height: 10rem;
+    width: 10rem;
+  }
+
+  .username {
+    margin-bottom: 1.9rem;
+  }
+
+  .logout-button {
+    height: 2.4rem;
+    width: 2.4rem;
+  }
 }
