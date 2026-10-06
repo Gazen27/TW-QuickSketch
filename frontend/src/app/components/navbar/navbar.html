@@ -21,9 +21,9 @@
     @else           { <img src="/icons/menu-icon.svg" alt="closedMenu"> }
   </button>
 
-  <!-- Complete menu for reduced view -->
+  <!-- Side menu for reduced view -->
   <div class="side-menu" [class.menu-open]="isMenuOpen">
-    @if(isLoggedIn$ | async){ <a class="link" routerLink="/draw">DRAW</a> }
+    @if(isLoggedIn$ | async){ <a class="link" routerLink="/draw" (click)="toggleMenu()">DRAW</a> }
     <a class="link" routerLink="/explore" (click)="toggleMenu()">EXPLORE</a>
     <a class="link" routerLink="/leaderboard" (click)="toggleMenu()">LEADERBOARD</a>
     @if(isLoggedIn$ | async){ <a class="link" routerLink="/profile" (click)="toggleMenu()">PROFILE</a> }
