@@ -61,6 +61,16 @@
   margin-bottom: 2.5rem;
 }
 
+/********* Buttons *********/
+.line {
+  display: none;
+  width: 5rem;
+  border-bottom: 0.1rem solid #ffffff;
+  opacity: 0.8;
+  margin-top: 1rem;
+  margin-bottom: 1.5rem;
+}
+
 /*********************************** Tablet version ***********************************/
 @media (max-width: 1024px) {
 
@@ -99,6 +109,9 @@
 
   .leaderboard {
     width: 20rem;
-    margin-top: 2rem;
+  }
+
+  .line {
+    display: block;
   }
 }
