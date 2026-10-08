@@ -2,16 +2,16 @@
   <!-- App logo -->
   <a class="logo" routerLink="/">QUICKSKETCH</a>
 
-  <!-- View navigation links -->
+  <!-- Navigation and theme -->
   <div class="navbar-links">
     @if(isLoggedIn$ | async){ <a class="link" routerLink="/draw">DRAW</a> }
     <a class="link" routerLink="/explore">EXPLORE</a>
     <a class="link" routerLink="/leaderboard">LEADERBOARD</a>
+    <p class="link" (click)="toggleTheme()">THEME</p>
   </div>
 
   <!-- Login action -->
   <div class="navbar-actions">
-    <button class="theme-button" (click)="toggleTheme()"><img src="icons/moon/moon-light-icon.svg" alt="Change theme"></button>
     @if(isLoggedIn$ | async){ <a class="link" routerLink="/profile"><img src="icons/profile-icon.svg"></a> }
     @else                   { <a class="link" routerLink="/login">LOGIN</a> }
   </div>
