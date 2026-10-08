@@ -2,11 +2,11 @@ import { Component, OnInit } from '@angular/core';
 import { signal            } from '@angular/core';
 import { AuthService       } from '../../services/auth.service';
 import { UserService       } from '../../services/user.service';
-import { Router            } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-profile',
-  imports: [],
+  imports: [RouterLink],
   templateUrl: './profile.html',
   styleUrl: './profile.css'
 })
