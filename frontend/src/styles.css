@@ -2,8 +2,11 @@
 :root {
   --color-primary: #ff98a2;
   --color-secondary: #ffffff;
-  --color-tertiary: #1f1f1f;
   --color-contrast: #000000;
+
+  --color-static: #1f1f1f;
+  --color-base: #ffffff;
+  --color-neutral: #aaaaaa;
 
   --background:
     linear-gradient(
@@ -21,10 +24,20 @@
 .light-theme {
   --color-primary: #336291;
   --color-secondary: #000000;
-  --color-tertiary: #1f1f1f;
   --color-contrast: #ffffff;
 
-  --background: #ffffff;
+  --color-static: #1f1f1f;
+  --color-base: #ffffff;
+  --color-neutral: #aaaaaa;
+
+  --background:
+    linear-gradient(
+      to bottom,
+      #bfd3e6,
+      #dce8f2,
+      #f4f8fb
+    );
+    
   --background-decoration: url('/background-decoration-light.webp');
 
 }

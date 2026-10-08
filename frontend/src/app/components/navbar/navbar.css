@@ -47,6 +47,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  margin: 0;
   font-size: 1rem;
   font-weight: 800;
   color: var(--color-secondary);
@@ -63,6 +64,22 @@
 .link img {
   width: 1.9rem;
   height: 1.9rem;
+}
+
+.dark-icon {
+  display: none;
+}
+
+.white-icon {
+  display: block;
+}
+
+:host-context(.light-theme) .dark-icon {
+  display: block;
+}
+
+:host-context(.light-theme) .white-icon {
+  display: none;
 }
 
 /********* Right menu *********/

@@ -3,7 +3,7 @@
   display: flex;
   flex-direction: row;
   padding: 1.5rem 1.5rem 1.5rem 1rem;
-  background-color: #f47f8b;
+  background-color: var(--color-static);
   gap: 1rem;
 }
 
@@ -18,34 +18,33 @@
 .logo {
   font-size: 1.5rem;
   font-weight: 950;
-  color: var(--color-secondary);
-  text-shadow: 1px 1px 1px black;
+  color: var(--color-primary);
   margin: 0;
 }
 
 /********* Footer text *********/
 .text {
   font-size: 1rem;
-  font-weight: 600;
+  font-weight: 400;
   margin: 0;
+  color: var(--color-neutral);
 }
 
 .title {
   font-size: 1.3rem;
   font-weight: 750;
-  color: var(--color-secondary);
-  text-shadow: 1px 1px 1px #000000;
+  color: var(--color-primary);
   margin: 0;
 }
 
 .footer a {
-  font-weight: 750;
-  color: #000000;
+  font-weight: 600;
+  color: var(--color-neutral);
   cursor: pointer;
 }
 
 .footer a:hover {
-  color: #555555;
+  color: var(--color-base);
 }
 
 .list-link {
