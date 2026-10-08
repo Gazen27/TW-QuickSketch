@@ -1,5 +1,35 @@
+/********* light theme *********/
 :root {
-  --primary-pink: #ff98a2;
+  ----color-primary: #ff98a2;
+  --primary-blue: #336291;
+  --primary-black: #1f1f1f;
+
+  --background:
+    linear-gradient(
+      to bottom,
+      #000000,
+      #10050f,
+      #1a0817,
+      #290d24
+    );
+}
+
+.background-decoration {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+
+  background-image: url('/background-decoration-dark.webp');
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+
+  pointer-events: none;
+}
+
+/********* dark theme *********/
+.dark-theme {
+  --color-primary: #ff98a2;
 }
 
 /********* Background and style *********/
@@ -7,11 +37,5 @@ body {
   margin: 0;
   min-height: 100vh;
   font-family: 'Nunito Sans', sans-serif;
-  background: linear-gradient(
-    to bottom,
-    #000000,
-    #10050f,
-    #1a0817,
-    #290d24
-  );
+  background: var(--background);
 }
