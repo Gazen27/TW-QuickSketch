@@ -9,4 +9,11 @@ import { Footer       } from './components/footer/footer';
   templateUrl: './app.html',
   styleUrl: './app.css'
 })
-export class App {}
+export class App {
+  isLightTheme = false;
+
+  toggleTheme(): void {
+    this.isLightTheme = !this.isLightTheme;
+    document.body.classList.toggle('light-theme', this.isLightTheme);
+  }
+}

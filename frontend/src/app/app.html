@@ -1,4 +1,6 @@
-<div class="background-decoration"></div>
-<app-navbar></app-navbar>
-<router-outlet></router-outlet>
-<app-footer></app-footer>
+<div class="app">
+  <div class="background-decoration"></div>
+  <app-navbar (themeToggle)="toggleTheme()"></app-navbar>
+  <router-outlet></router-outlet>
+  <app-footer></app-footer>
+</div>

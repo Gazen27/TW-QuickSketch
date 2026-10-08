@@ -1,4 +1,5 @@
 import { Component, HostListener  } from '@angular/core';
+import { Output, EventEmitter     } from '@angular/core'; 
 import { RouterLink               } from '@angular/router';
 import { AsyncPipe                } from '@angular/common';
 import { AuthService              } from '../../services/auth.service';
@@ -15,12 +16,18 @@ export class Navbar {
   isMenuOpen = false;
   isLoggedIn$: Observable<boolean>;
 
+  @Output() themeToggle = new EventEmitter<void>();
+
   constructor(private authService: AuthService){
     this.isLoggedIn$ = this.authService.isLoggedIn$();
   }
 
   toggleMenu() : void {
-    this.isMenuOpen = !this.isMenuOpen
+    this.isMenuOpen = !this.isMenuOpen;
+  }
+
+  toggleTheme(): void {
+    this.themeToggle.emit();
   }
 
   @HostListener('window:scroll')

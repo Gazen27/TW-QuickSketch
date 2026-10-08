@@ -11,8 +11,9 @@
 
   <!-- Login action -->
   <div class="navbar-actions">
+    <button class="theme-button" (click)="toggleTheme()"><img src="icons/moon/moon-light-icon.svg" alt="Change theme"></button>
     @if(isLoggedIn$ | async){ <a class="link" routerLink="/profile"><img src="icons/profile-icon.svg"></a> }
-    @else          { <a class="link" routerLink="/login">LOGIN</a> }
+    @else                   { <a class="link" routerLink="/login">LOGIN</a> }
   </div>
 
   <!-- Menu button for reduced view -->

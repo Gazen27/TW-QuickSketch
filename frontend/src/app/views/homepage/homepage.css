@@ -12,7 +12,7 @@
   text-align: center;
   font-size: clamp(3.4rem, 8vw, 5rem);
   font-weight: 950;
-  color: #ffffff;
+  color: var(--color-secondary);
   margin: 0;
 }
 
@@ -21,7 +21,7 @@
   text-align: center;
   font-size: clamp(1.3rem, 3vw, 1.7rem);
   font-weight: 800;
-  color: #ffffff;
+  color: var(--color-secondary);
   margin: 0;
   padding: 0 0 0.8rem;
 }
@@ -42,7 +42,7 @@
   justify-content: center;
   align-items: center;
   background-color: var(--color-primary);
-  color: #000000;
+  color: var(--color-contrast);
   text-decoration: none;
   font-size: 1.3rem;
   font-weight: 870;
@@ -51,7 +51,7 @@
 }
 
 .button:hover {
-  background: #ffffff;
+  background: var(--color-secondary);
   cursor: pointer;
   font-size: 1.6rem;
 }
@@ -65,7 +65,7 @@
 .line {
   display: none;
   width: 5rem;
-  border-bottom: 0.1rem solid #ffffff;
+  border-bottom: 0.1rem solid var(--color-secondary);
   opacity: 0.8;
   margin-top: 1rem;
   margin-bottom: 1.5rem;

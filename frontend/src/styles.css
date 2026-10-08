@@ -13,23 +13,20 @@
       #1a0817,
       #290d24
     );
+
+  --background-decoration: url('/background-decoration-dark.webp');
 }
 
 /********* light theme *********/
 .light-theme {
-  --color-primary: #ff98a2;
-  --color-secondary: #ffffff;
+  --color-primary: #336291;
+  --color-secondary: #000000;
   --color-tertiary: #1f1f1f;
-  --color-contrast: #000000;
+  --color-contrast: #ffffff;
 
-  --background:
-    linear-gradient(
-      to bottom,
-      #000000,
-      #10050f,
-      #1a0817,
-      #290d24
-    );
+  --background: #ffffff;
+  --background-decoration: url('/background-decoration-light.webp');
+
 }
 
 /********* background decoration *********/
@@ -38,7 +35,7 @@
   inset: 0;
   z-index: -1;
 
-  background-image: url('/background-decoration-dark.webp');
+  background-image: var(--background-decoration);
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;

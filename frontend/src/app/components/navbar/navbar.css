@@ -25,7 +25,7 @@
 }
 
 .logo:hover {
-  color: #ffffff;
+  color: var(--color-secondary);
   cursor: pointer;
 }
 
@@ -45,7 +45,7 @@
 .link {
   font-size: 1rem;
   font-weight: 800;
-  color: #ffffff;
+  color: var(--color-secondary);
   text-decoration: none;
   transition: transform 0.3s;
 }
@@ -59,6 +59,16 @@
 .link img {
   width: 1.9rem;
   height: 1.9rem;
+}
+
+.theme-button {
+  background: none;
+  border: none;
+}
+
+.theme-button img {
+  width: 1rem;
+  height: 1rem;
 }
 
 /********* Right menu *********/
@@ -83,12 +93,12 @@
 }
 
 .side-menu .link {
-  color: #000000;
+  color: var(--color-contrast);
   font-size: 1.5rem;
 }
 
 .side-menu .link:hover {
-  color: #ffffff;
+  color: var(var(--color-secondary));
 }
 
 /*********************************** Tablet and mobile version ***********************************/

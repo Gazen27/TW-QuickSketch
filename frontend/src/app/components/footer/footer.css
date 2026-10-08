@@ -18,7 +18,7 @@
 .logo {
   font-size: 1.5rem;
   font-weight: 950;
-  color: #ffffff;
+  color: var(--color-secondary);
   text-shadow: 1px 1px 1px black;
   margin: 0;
 }
@@ -33,7 +33,7 @@
 .title {
   font-size: 1.3rem;
   font-weight: 750;
-  color: #ffffff;
+  color: var(--color-secondary);
   text-shadow: 1px 1px 1px #000000;
   margin: 0;
 }
@@ -84,7 +84,7 @@
 
 /********* Line *********/
 .line {
-  border-left: 0.1rem solid #ffffff;
+  border-left: 0.1rem solid var(--color-secondary);
   opacity: 0.4;
   margin-left: auto;
   margin-right: auto;
