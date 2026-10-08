@@ -14,7 +14,7 @@
   border-style: solid;
   border-width: thick;
   border-radius: 1.3rem;
-  border-color: var(----color-primary);
+  border-color: var(--color-primary);
   padding: 2rem;
   box-shadow: 0 0 3rem #000000;
   margin-bottom: 1rem;
@@ -31,7 +31,7 @@
   text-align: center;
   font-size: 2.8rem;
   font-weight: 900;
-  color: var(----color-primary);
+  color: var(--color-primary);
   margin: 1.5rem 0 2rem;
 }
 
@@ -65,7 +65,7 @@
   justify-content: center;
   align-items: center;
   width: 50%;
-  background-color: var(----color-primary);
+  background-color: var(--color-primary);
   margin-top: 1rem;
   padding: 0.7rem;
   text-align: center;
@@ -92,7 +92,7 @@
 
 .signup a {
   text-decoration: none;
-  color: var(----color-primary);
+  color: var(--color-primary);
 }
 
 .signup a:hover {
