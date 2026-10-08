@@ -32,13 +32,19 @@
   width: 13rem;
 }
 
+.blue-cat { display: none; }
+.pink-cat  { display: block;}
+
+:host-context(.light-theme) .blue-cat { display: block; }
+:host-context(.light-theme) .pink-cat { display: none; }
+
 /********* Username *********/
 .user-group {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: flex-start;
-  gap: 4rem;
+  gap: 2rem;
 }
 
 .username {
@@ -173,12 +179,18 @@
   width: 1.4rem;
 }
 
+.light-logout { display: none; }
+.dark-logout  { display: block;}
+
+:host-context(.light-theme) .light-logout { display: block; }
+:host-context(.light-theme) .dark-logout { display: none; }
+
 .button-text {
   position: absolute;
   right: 0%;
   width: 0%;
   opacity: 0;
-  color: #050505;
+  color: var(--color-contrast);
   font-size: 1.2em;
   font-weight: 800;
   transition-duration: .3s;

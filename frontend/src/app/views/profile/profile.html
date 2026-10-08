@@ -2,12 +2,16 @@
 
   <!-- Profile side -->
   <div class="profile-side">
-    <img class="icon" src="icons/cat-icon.svg">
+    <img class="icon pink-cat" src="icons/cat/cat-dark-icon.svg">
+    <img class="icon blue-cat" src="icons/cat/cat-light-icon.svg">
     <div class="user-group">
       <div class="username">{{ username() }}</div>
       <!-- Logout button -->
       <button class="logout-button" (click)="logout()">
-        <div class="sign"><img src="icons/logout-icon.svg"></div>
+        <div class="sign">
+          <img class="dark-logout" src="icons/logout/logout-dark-icon.svg">
+          <img class="light-logout" src="icons/logout/logout-light-icon.svg">
+        </div>
         <div class="button-text">Logout</div>
       </button>
     </div>
