@@ -45,9 +45,11 @@ ng serve
 ```
 6. Open http://localhost:4200 in your browser
 ## Future improvements
-- **Admin view:** admins will have access to exlusive functionalities.
-- **Frutiger Aero theme:** Frutiger Aero-style theme coming soon.
-- **More words:** more categories and a large number of new words will be added.
+- **Admin view:** admins will have access to exclusive functionalities.
+- **Profile Avatar:** users will be able to choose an icon as their avatar.
+- **Sketch Portfolio:** the profile section will provide a "my sketches" button.
+- **Likes:** users will have the possibility to like other users' profile.
+- **Frutiger Aero theme:** a Frutiger Aero-inspired theme is coming soon.
 ## License
 This project is licensed under the MIT License.\
 See the [LICENSE](https://github.com/Gazen27/TW-QuickSketch/blob/main/LICENSE) file for more information.
