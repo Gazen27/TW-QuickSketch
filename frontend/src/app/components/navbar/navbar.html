@@ -35,7 +35,7 @@
     @if(isLoggedIn$ | async){ <a class="link" routerLink="/draw" (click)="toggleMenu()">DRAW</a> }
     <a class="link" routerLink="/explore" (click)="toggleMenu()">EXPLORE</a>
     <a class="link" routerLink="/leaderboard" (click)="toggleMenu()">LEADERBOARD</a>
-    <p class="link" (click)="toggleTheme()">THEME</p>
+    <p class="link" (click)="toggleTheme()" (click)="toggleMenu()">THEME</p>
     @if(isLoggedIn$ | async){ <a class="link" routerLink="/profile" (click)="toggleMenu()">PROFILE</a> }
     @else          { <a class="link" routerLink="/login" (click)="toggleMenu()">LOGIN</a> }
   </div>
