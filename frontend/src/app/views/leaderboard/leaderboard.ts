@@ -58,4 +58,26 @@ export class Leaderboard implements OnInit{
       error: (error) => { console.error('Error loading artists leaderboard:', error); }
     });
   }
+
+  // Players leaderboard pages navigation
+  nextPlayersPage(): void {
+    this.playersCurrentPage.update(page => page + 1);
+    this.loadPlayers();
+  }
+
+  previousPlayersPage(): void {
+    this.playersCurrentPage.update(page => page - 1);
+    this.loadPlayers();
+  }
+
+  // Artists leaderboard pages navigation
+  nextArtistsPage(): void {
+    this.artistsCurrentPage.update(page => page + 1);
+    this.loadArtists();
+  }
+
+  previousArtistsPage(): void {
+    this.artistsCurrentPage.update(page => page + 1);
+    this.loadArtists();
+  }
 }

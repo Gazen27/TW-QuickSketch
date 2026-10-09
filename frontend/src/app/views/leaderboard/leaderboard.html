@@ -1,16 +1,15 @@
 <main class="leaderboard">
 
   <!-- left side -->
-  <div class="players-leaderboard">
+  <div class="leaderboard-side">
     <div class="leaderboard-container">
-      <div class="title-row"><span>TOP PLAYERS</span></div>
+      <div class="title-row"><span>PLAYERS</span></div>
       <div class="ranking">
         @for (player of players(); track player.id){
           <div class="user-row">
             <span class="position">{{ (playersCurrentPage() - 1) * playersPageSize + $index + 1 }}</span>
             <span class="username">{{ player.username }}</span>
-            <span class="score">{{ player.guessedScore }}</span>
-            <span> pt</span>
+            <span class="score">{{ player.guessedScore }}pt</span>
           </div>
         }
         @empty { <p>No players found</p> }
@@ -19,9 +18,9 @@
   </div>
 
   <!-- right side -->
-  <div class="artists-leaderboard">
+  <div class="leaderboard-side">
     <div class="leaderboard-container">
-      <div class="title-row"><span>TOP ARTISTS</span></div>
+      <div class="title-row"><span>ARTISTS</span></div>
       <div class="ranking">
         @for (artist of artists(); track artist.id){
           <div class="user-row">
