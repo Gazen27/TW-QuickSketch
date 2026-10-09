@@ -17,7 +17,7 @@
       #290d24
     );
 
-  --background-decoration: url('/background-decoration-dark.webp');
+  --background-decoration: url('/background/background-decoration-dark.webp');
 }
 
 /********* light theme *********/
@@ -38,7 +38,7 @@
       #f4f8fb
     );
     
-  --background-decoration: url('/background-decoration-light.webp');
+  --background-decoration: url('/background/background-decoration-light.webp');
 
 }
 
