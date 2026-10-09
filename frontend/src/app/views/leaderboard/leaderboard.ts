@@ -77,7 +77,7 @@ export class Leaderboard implements OnInit{
   }
 
   previousArtistsPage(): void {
-    this.artistsCurrentPage.update(page => page + 1);
+    this.artistsCurrentPage.update(page => page - 1);
     this.loadArtists();
   }
 }

@@ -5,6 +5,8 @@
   flex-direction: row;
   justify-content: center;
   align-items: center;
+  margin-top: 3rem;
+  margin-bottom: 3rem;
   gap: 2rem;
 }
 
@@ -24,9 +26,10 @@
   justify-content: flex-start;
   align-items: center;
   width: 33vw;
-  min-height: 70vh;
+  min-height: 96.5vh;
   border-radius: 1rem;
   box-shadow: 0 0 3rem var(--color-contrast);
+  background-color: var(--color-static);
 }
 
 /********* Title zone *********/
@@ -96,4 +99,35 @@
 
 .score {
   margin-left: auto;
+}
+
+/********* Paging *********/
+.paging {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+}
+
+.paging span {
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--color-secondary);
+}
+
+.paging button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1rem;
+  font-weight: 700;
+  background-color: var(--color-primary);
+  color: var(--color-contrast);
+  border: none;
+  border-radius: 15%;
+}
+
+.paging button:disabled {
+  opacity: 50%;
 }
