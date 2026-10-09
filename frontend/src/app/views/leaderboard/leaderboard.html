@@ -1,21 +1,39 @@
 <main class="leaderboard">
 
-  <div class="leaderboards">
-
-    <section class="leaderboard-box">
-      <h2 class="title">PLAYERS</h2>
-
+  <!-- left side -->
+  <div class="players-leaderboard">
+    <div class="leaderboard-container">
+      <div class="title-row"><span>TOP PLAYERS</span></div>
       <div class="ranking">
+        @for (player of players(); track player.id){
+          <div class="user-row">
+            <span class="position">{{ (playersCurrentPage() - 1) * playersPageSize + $index + 1 }}</span>
+            <span class="username">{{ player.username }}</span>
+            <span class="score">{{ player.guessedScore }}</span>
+            <span> pt</span>
+          </div>
+        }
+        @empty { <p>No players found</p> }
       </div>
-    </section>
+    </div>
+  </div>
 
-    <section class="leaderboard-box">
-      <h2 class="title">ARTISTS</h2>
-
+  <!-- right side -->
+  <div class="artists-leaderboard">
+    <div class="leaderboard-container">
+      <div class="title-row"><span>TOP ARTISTS</span></div>
       <div class="ranking">
+        @for (artist of artists(); track artist.id){
+          <div class="user-row">
+            <span class="position">{{ (artistsCurrentPage() - 1) * artistsPageSize + $index + 1 }}</span>
+            <span class="username">{{ artist.username }}</span>
+            <span class="score">{{ artist.drawingScore }}</span>
+            <span> pt</span>
+          </div>
+        }
+        @empty { <p>No artists found</p> }
       </div>
-    </section>
-
+    </div>
   </div>
 
 </main>
