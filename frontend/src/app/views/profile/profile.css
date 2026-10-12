@@ -126,6 +126,10 @@
   width: 2rem;
 }
 
+.info:hover {
+  opacity: 0.7;
+}
+
 /********* Stats *********/
 .text {
   color: var(--color-base);
