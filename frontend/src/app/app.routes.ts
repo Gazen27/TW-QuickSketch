@@ -7,6 +7,7 @@ import { Leaderboard } from './views/leaderboard/leaderboard';
 import { Login       } from './views/login/login';
 import { Signup      } from './views/signup/signup';
 import { Profile     } from './views/profile/profile';
+import { Info        } from './views/info/info';
 
 export const routes: Routes = [
   {
@@ -37,5 +38,9 @@ export const routes: Routes = [
   {
     path: 'profile',
     component: Profile
+  },
+  {
+    path: 'info',
+    component: Info
   }
 ];
