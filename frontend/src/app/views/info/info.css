@@ -1,0 +1,62 @@
+/***** General info *****/
+.info {
+  min-height: 95vh;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+/***** Container *****/
+.infobox {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+
+  width: 95%;
+  height: 95%;
+  padding-top: 1rem;
+  padding-bottom: 1.5rem;
+  margin-top: 1.3rem;
+  margin-bottom: 5rem;
+  background-color: var(--color-static);
+}
+
+/***** Single sections *****/
+.inner-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+
+  width: 95%;
+  padding-bottom: 1rem;
+  margin-bottom: 1rem;
+  border-bottom: solid 1px var(--color-neutral);
+}
+
+.inner-container:last-child {
+  border-bottom: none;
+}
+
+/***** Text *****/
+.title {
+  margin-top: 1rem;
+  margin-bottom: 0;
+
+  font-weight: 800;
+  font-size: 3rem;
+  color: var(--color-base);
+}
+
+.text {
+  font-weight: 400;
+  font-size: 1rem;
+  color: var(--color-neutral);
+}
+
+span {
+  font-weight: bold;
+}
