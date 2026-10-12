@@ -10,7 +10,7 @@
 /********* Main title *********/
 .title {
   text-align: center;
-  font-size: clamp(3.4rem, 8vw, 5rem);
+  font-size: clamp(3.5rem, 8vw, 5rem);
   font-weight: 950;
   color: var(--color-secondary);
   margin: 0;
