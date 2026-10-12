@@ -22,4 +22,8 @@
 		<a routerLink="/login">Sign in</a>
 	  </p>
   </div>
+
+  @if(errorMessage()){
+    <p class="error-message" role="alert">{{errorMessage()}}</p>
+  }
 </main>
