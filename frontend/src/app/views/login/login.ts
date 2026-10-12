@@ -3,6 +3,7 @@ import { Router      } from '@angular/router';
 import { RouterLink  } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { AuthService } from '../../services/auth.service';
+import { signal      } from '@angular/core';
 
 @Component({
   selector: 'app-login',
@@ -13,6 +14,7 @@ import { AuthService } from '../../services/auth.service';
 export class Login {
   username = '';
   password = '';
+  errorMessage = signal('');
 
   constructor(private authService: AuthService, private router: Router){}
 
@@ -22,7 +24,11 @@ export class Login {
         this.authService.saveToken(response.data.token);
         this.router.navigate(['/']);
       },
-      error: (error) => { console.error(error); }
+      error: (error) => {
+        this.errorMessage.set('');
+        if(error.error?.message){ this.errorMessage.set(error.error.message)}
+        else                    { this.errorMessage.set('Login failed. Please try again.')}
+      }
     });
   }
 }
