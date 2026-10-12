@@ -1,9 +1,13 @@
 <main class="leaderboard">
 
-  <!-- left side -->
-  <div class="leaderboard-side">
+  <!-- players side -->
+  <div class="leaderboard-side" [class.mobile-hidden]="selectedLeaderboard() !== 'players'">
     <div class="leaderboard-container">
-      <div class="title-row"><span>PLAYERS</span></div>
+      <div class="title-row">
+        <button class="navigation" (click)="navigateLeaderboard()">&#9668;</button>
+        <span>PLAYERS</span>
+        <button class="navigation" (click)="navigateLeaderboard()">&#9658;</button>
+      </div>
       <div class="ranking">
         @for (player of players(); track player.id){
           <div class="user-row">
@@ -22,10 +26,14 @@
     </div>
   </div>
 
-  <!-- right side -->
-  <div class="leaderboard-side">
+  <!-- artists side -->
+  <div class="leaderboard-side" [class.mobile-hidden]="selectedLeaderboard() !== 'artists'">
     <div class="leaderboard-container">
-      <div class="title-row"><span>ARTISTS</span></div>
+      <div class="title-row">
+        <button class="navigation" (click)="navigateLeaderboard()">&#9668;</button>
+        <span>ARTISTS</span>
+        <button class="navigation" (click)="navigateLeaderboard()">&#9658;</button>
+      </div>
       <div class="ranking">
         @for (artist of artists(); track artist.id){
           <div class="user-row">

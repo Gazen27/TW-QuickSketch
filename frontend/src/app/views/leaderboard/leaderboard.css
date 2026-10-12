@@ -7,7 +7,8 @@
   align-items: center;
   margin-top: 3rem;
   margin-bottom: 3rem;
-  gap: 2.5rem;
+  gap: 3rem;
+  box-sizing: border-box;
 }
 
 /********* Leaderboard zone *********/
@@ -25,8 +26,8 @@
   flex-direction: column;
   justify-content: flex-start;
   align-items: center;
-  width: 33vw;
-  min-height: 96.5vh;
+  width: clamp(10rem, 38vw, 40rem);
+  min-height: 96.6vh;
   border-radius: 1rem;
   box-shadow: 0 0 3rem var(--color-contrast);
   background-color: var(--color-static);
@@ -49,6 +50,20 @@
   font-weight: 800;
   font-size: 2rem;
   color: var(--color-contrast);
+}
+
+.title-row button {
+  background: none;
+  border: none;
+  font-size: 2rem;
+  color: var(--color-contrast);
+  display: none;
+  margin: auto;
+}
+
+.title-row button:hover {
+  cursor: pointer;
+  opacity: 0.7;
 }
 
 /********* Ranking zone *********/
@@ -130,4 +145,24 @@
 
 .paging button:disabled {
   opacity: 50%;
+}
+
+/*********************************** Tablet and mobile versions ***********************************/
+@media (max-width: 1024px) {
+
+  .mobile-hidden {
+    display: none;
+  }
+
+  .title-row button {
+    display: block;
+  }
+
+  .leaderboard-side {
+    width: 100%;
+  }
+
+  .leaderboard-container {
+    width: 80%;
+  }
 }

@@ -11,6 +11,9 @@ import { Artist, Player            } from '../../models/leaderboard.model.js';
 })
 export class Leaderboard implements OnInit{
 
+  // Leaderboard for mobile version
+  selectedLeaderboard = signal<'players' | 'artists'>('players');
+
   // Players leaderboard
   players = signal<Player[]>([]);
   playersCurrentPage = signal(1);
@@ -80,4 +83,11 @@ export class Leaderboard implements OnInit{
     this.artistsCurrentPage.update(page => page - 1);
     this.loadArtists();
   }
+
+  // Selecting leaderboards
+  navigateLeaderboard(): void {
+  this.selectedLeaderboard.update(current =>
+    current === 'players' ? 'artists' : 'players'
+  );
+}
 }
