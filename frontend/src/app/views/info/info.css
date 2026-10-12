@@ -60,3 +60,10 @@
 span {
   font-weight: bold;
 }
+
+/******************************** Mobile version ********************************/
+@media (max-width: 767px) {
+  .title{
+    font-size: 2.4rem;
+  }
+}
