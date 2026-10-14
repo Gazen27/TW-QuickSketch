@@ -10,7 +10,7 @@
 /********* Main title *********/
 .title {
   text-align: center;
-  font-size: clamp(3.5rem, 8vw, 5rem);
+  font-size: clamp(3.5rem, 8vw, 5.5rem);
   font-weight: 950;
   color: var(--color-secondary);
   margin: 0;
@@ -75,7 +75,7 @@
 @media (max-width: 1024px) {
 
   .button {
-    width: 12rem;
+    width: 13rem;
     height: 4rem;
     font-size: 1.1rem;
   }
@@ -85,7 +85,7 @@
   }
 
   .leaderboard {
-    width: 24.5rem;
+    width: 26.5rem;
   }
 
 }
