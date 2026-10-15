@@ -32,7 +32,7 @@ export class Draw {
   selectedCategory = signal<string | null>(null);
   selectedWord = signal<SingleWord | null>(null);
   
-  selectedColor = signal('#222222');
+  selectedColor = signal('#171717');
   selectedTool = signal<'pen' | 'eraser'>('pen');
 
   countdown = signal<number | null>(null);
