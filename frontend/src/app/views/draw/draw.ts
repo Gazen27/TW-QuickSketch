@@ -147,6 +147,7 @@ export class Draw {
   // Pen color selection
   setPenColor(color: string): void {
     this.selectedColor.set(color);
+    if (this.selectedTool() === 'eraser') { this.selectPen() }
     if (this.signaturePad) { this.signaturePad.penColor = color; }
   }
 

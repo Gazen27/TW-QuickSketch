@@ -201,7 +201,17 @@ span {
   gap: 0.3rem;
 }
 
-.header-label {
+.selected-word-label {
+  align-self: flex-start;
+  
+  margin: 0;
+  font-size: 0.9rem;
+  font-weight: 700;
+}
+
+.timer-label {
+  align-self: center;
+  
   margin: 0;
   font-size: 0.9rem;
   font-weight: 700;
