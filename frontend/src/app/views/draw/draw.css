@@ -15,14 +15,42 @@
   margin-right: auto;
 }
 
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  min-width: 25rem;
+  min-height: 30rem;
+  border-radius: 1rem;
+  background-color: var(--color-static);
+
+  padding: 2rem;
+  gap: 1.2rem;
+}
+
+.title-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  gap: 0.5rem;
+}
+
 .title {
-  font-size: 2rem;
+  font-size: 2.1rem;
   font-weight: 850;
   color: var(--color-base);
 }
 
+.title-label {
+  font-size: 1.2rem;
+  margin: 0;
+}
+
 .text {
-  font-size: 1rem;
   color: var(--color-neutral);
 }
 
@@ -45,6 +73,11 @@
 .button:hover {
   background: var(--color-secondary);
   cursor: pointer;
+}
+
+.inner-container {
+  min-width: 25rem;
+  min-height: 23.7rem;
 }
 
 span {
@@ -78,6 +111,7 @@ span {
 }
 
 .tutorial-text {
+  font-size: 1rem;
   margin: 0;
 }
 
@@ -89,19 +123,6 @@ span {
 }
 
 /******* Categories *******/
-.draw-categories {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-
-  padding: 2rem;
-  gap: 1rem;
-
-  border-radius: 1rem;
-  background-color: var(--color-static);
-}
-
 .categories-container {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
@@ -135,6 +156,24 @@ span {
 :host-context(.light-theme) .dark-icon { display: none; }
 
 /******* Words *******/
+.words-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  gap: 1.3rem;
+}
+
+.words-button {
+  height: 6.3rem;
+  width: 100%;
+}
+
+.words-label {
+  margin: 0;
+  font-size: 2rem;
+}
 
 /******* Drawing *******/
 
