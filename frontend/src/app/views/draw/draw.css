@@ -76,8 +76,8 @@
 }
 
 .inner-container {
-  min-width: 25rem;
-  min-height: 23.7rem;
+  width: 25rem;
+  height: 23.7rem;
 }
 
 span {
@@ -172,7 +172,8 @@ span {
 
 .words-label {
   margin: 0;
-  font-size: 2rem;
+  font-size: 1.8rem;
+
 }
 
 /******* Drawing *******/
