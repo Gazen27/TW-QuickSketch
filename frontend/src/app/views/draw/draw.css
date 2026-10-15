@@ -8,17 +8,6 @@
   min-height: 95vh;
 }
 
-.container {
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
-
-  padding: 1rem;
-  border-radius: 0.8rem;
-  background-color: var(--color-static);
-}
-
 .line {
   border-left: 0.1rem solid var(--color-secondary);
   opacity: 0.4;
@@ -63,13 +52,25 @@ span {
 }
 
 /******* Introduction *******/
+.tutorial-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+
+  gap: 1rem;
+  padding: 1rem;
+  border-radius: 0.8rem;
+  background-color: var(--color-static);
+}
+
 .tutorial {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: flex-start;
 
-  gap: 1rem;
+  gap: 1.2rem;
 }
 
 .tutorial-title {
@@ -81,7 +82,9 @@ span {
 }
 
 .start-drawing {
+  width: 100%;
   margin-left: auto;
+  margin-right: auto;
   font-size: 1rem;
 }
 
