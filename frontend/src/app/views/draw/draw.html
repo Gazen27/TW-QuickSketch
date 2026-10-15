@@ -3,7 +3,32 @@
   <!-- INTRO -->
   @if (currentPhase() === 'intro') {
     <section class="draw-intro">
-      ...
+      <!-- Sample image of drawing phase -->
+      <div class="container tutorial-container">
+        <div class="tutorial-image"><img src="" alt="tutorial-preview"></div>
+        
+        <div class="line"></div>
+        
+        <!-- Explanation -->
+        <div class="tutorial">
+          <h1 class="title tutorial-title">GET STARTED</h1>
+          <p class="text tutorial-text">
+            In <span>QUICKSKETCH</span> you can create your own masterpiece!
+            <br><br>
+            <span>1. Choose a category</span> that inspires you.<br>
+            <span>2. Pick a word</span> from the three options.<br>
+            <span>3. Draw it your way</span> before the timer runs out!
+            <br><br>
+            You have <span>90 seconds</span> to bring your word to life.<br>
+            Don't worry about perfection, just have fun!
+            <br><br>
+            <span>Ready, set, draw!</span>
+          </p>
+
+          <!-- Start drawing button -->
+          <button class="start-drawing" (click)="showCategories()">START</button>
+        </div>
+      </div>
     </section>
   }
 

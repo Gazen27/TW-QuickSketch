@@ -1,4 +1,4 @@
-/****** General page ******/
+/****** General ******/
 .draw{
   display: flex;
   flex-direction: column;
@@ -8,7 +8,58 @@
   min-height: 95vh;
 }
 
+.container {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+
+  padding: 1rem;
+  border-radius: 0.8rem;
+  background-color: var(--color-static);
+}
+
+.line {
+  border-left: 0.1rem solid var(--color-secondary);
+  opacity: 0.4;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.title {
+  font-size: 2rem;
+  font-weight: 850;
+  color: var(--color-base);
+}
+
+.text {
+  font-size: 1rem;
+  color: var(--color-neutral);
+}
+
+.button {
+
+}
+
+span {
+  font-weight: 700;
+}
+
 /****** Introduction ******/
+.tutorial {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+.tutorial-title {
+  margin: 0;
+}
+
+.start-drawing {
+
+}
 
 /****** Categories ******/
 
