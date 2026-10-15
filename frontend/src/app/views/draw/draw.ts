@@ -175,6 +175,16 @@ export class Draw {
     }
   }
 
+  undo(): void {
+    if(!this.signaturePad) { return; }
+
+    const signs = this.signaturePad.toData();
+    if(signs.length > 0) {
+      signs.pop();
+      this.signaturePad.fromData(signs);
+    }
+  }
+
   clearCanvas(): void {
     this.signaturePad?.clear();
   }
