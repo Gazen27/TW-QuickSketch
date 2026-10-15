@@ -1,5 +1,7 @@
 /********* dark theme *********/
 :root {
+  --font-standard: 'Nunito Sans', sans-serif;
+
   --color-primary: #ff98a2;
   --color-secondary: #ffffff;
   --color-contrast: #000000;

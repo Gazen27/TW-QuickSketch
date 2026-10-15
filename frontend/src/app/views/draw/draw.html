@@ -26,8 +26,46 @@
           </p>
 
           <!-- Start drawing button -->
-          <button class="start-drawing" (click)="showCategories()">START</button>
+          <button class="button start-drawing" (click)="showCategories()">READY</button>
         </div>
+      </div>
+    </section>
+  }
+
+  <!-- CATEGORIES -->
+  @if (currentPhase() === 'categories') {
+    <section class="draw-categories">
+      <h1 class="title categories-title">CHOOSE A CATEGORY</h1>
+
+      <div class="categories-container">
+        <!-- Category: animals -->
+        <button class="button categories-button">
+          <img class="dark-icon category-icon" src="icons/categories/animals-dark-icon.svg">
+          <img class="light-icon category-icon" src="icons/categories/animals-light-icon.svg">
+          <p class="categories-label">ANIMALS</p>
+        </button>
+
+        <!-- Category: food -->
+        <button class="button categories-button">
+          <img class="dark-icon category-icon" src="icons/categories/food-dark-icon.svg">
+          <img class="light-icon category-icon" src="icons/categories/food-light-icon.svg">
+          <p class="categories-label">FOOD</p>
+        </button>
+
+        <!-- Category: items -->
+        <button class="button categories-button">
+          <img class="dark-icon category-icon" src="icons/categories/items-dark-icon.svg">
+          <img class="light-icon category-icon" src="icons/categories/items-light-icon.svg">
+          <p class="categories-label">ITEMS</p>
+        </button>
+
+        <!-- Category: videogames -->
+        <button class="button categories-button">
+          <img class="dark-icon category-icon" src="icons/categories/videogames-dark-icon.svg">
+          <img class="light-icon category-icon" src="icons/categories/videogames-light-icon.svg">
+          <p class="categories-label">VIDEOGAMES</p>
+        </button>
+
       </div>
     </section>
   }

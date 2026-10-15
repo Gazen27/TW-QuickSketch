@@ -191,8 +191,9 @@
   width: 0%;
   opacity: 0;
   color: var(--color-contrast);
-  font-size: 1.2em;
-  font-weight: 800;
+  font-family: var(--font-standard);
+  font-size: 1.3em;
+  font-weight: 900;
   transition-duration: .3s;
 }
 
