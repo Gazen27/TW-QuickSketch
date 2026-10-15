@@ -211,7 +211,7 @@ span {
 
 .timer-label {
   align-self: center;
-  
+
   margin: 0;
   font-size: 0.9rem;
   font-weight: 700;
@@ -291,11 +291,13 @@ span {
   outline-offset: 3px;
 }
 
-.color-black { background-color: #171717; }
-.color-red { background-color: #e53935; }
-.color-blue { background-color: #1e88e5; }
+.color-black  { background-color: #171717; }
+.color-red    { background-color: #e53935; }
 .color-yellow { background-color: #fdd835; }
-.color-green { background-color: #43a047; }
+.color-green  { background-color: #43a047; }
+.color-blue   { background-color: #1e88e5; }
+.color-purple { background-color: #9C27B0; }
+.color-brown  { background-color: #795548; }
 
 .pencil-size {
   margin-left: auto;
