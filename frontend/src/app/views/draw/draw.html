@@ -109,9 +109,9 @@
 
           <!-- Drawing tools -->
           <div class="drawing-tools">
-            <button class="tool-button"><img class="tool-icon" src="icons/drawing/pencil-icon.svg"></button>
-            <button class="tool-button"><img class="tool-icon" src="icons/drawing/eraser-icon.svg"></button>
-            <button class="tool-button"><img class="tool-icon" src="icons/drawing/restart-icon.svg"></button>
+            <button class="tool-button" [class.selected]="selectedTool() === 'pen'" (click)="selectPen()"><img class="tool-icon" src="icons/drawing/pencil-icon.svg"></button>
+            <button class="tool-button" [class.selected]="selectedTool() === 'eraser'" (click)="selectEraser()"><img class="tool-icon" src="icons/drawing/eraser-icon.svg"></button>
+            <button class="tool-button" (click)="clearCanvas()"><img class="tool-icon" src="icons/drawing/restart-icon.svg"></button>
           </div>
 
         </div>

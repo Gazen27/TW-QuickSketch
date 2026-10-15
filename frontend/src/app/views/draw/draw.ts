@@ -31,7 +31,9 @@ export class Draw {
 
   selectedCategory = signal<string | null>(null);
   selectedWord = signal<SingleWord | null>(null);
+  
   selectedColor = signal('#222222');
+  selectedTool = signal<'pen' | 'eraser'>('pen');
 
   countdown = signal<number | null>(null);
   timer = signal<number | null>(null);
@@ -134,12 +136,42 @@ export class Draw {
     const context = canvas.getContext('2d');
     if (!context) return;
     context.scale(ratio, ratio);
-    this.signaturePad = new SignaturePad(canvas, { penColor: this.selectedColor()});
+    this.signaturePad = new SignaturePad(canvas, {
+      penColor: this.selectedColor(),
+      minWidth: 2,
+      maxWidth: 2,
+      velocityFilterWeight: 1
+    });
   }
 
   // Pen color selection
   setPenColor(color: string): void {
     this.selectedColor.set(color);
     if (this.signaturePad) { this.signaturePad.penColor = color; }
+  }
+
+  // Tool selection
+  selectPen(): void {
+    this.selectedTool.set('pen');
+
+    if (this.signaturePad) {
+      this.signaturePad.minWidth = 2;
+      this.signaturePad.maxWidth = 2;
+      this.signaturePad.penColor = this.selectedColor();
+    }
+  }
+
+  selectEraser(): void {
+    this.selectedTool.set('eraser');
+
+    if (this.signaturePad) {
+      this.signaturePad.minWidth = 10;
+      this.signaturePad.maxWidth = 10;
+      this.signaturePad.penColor = '#ffffff';
+    }
+  }
+
+  clearCanvas(): void {
+    this.signaturePad?.clear();
   }
 }
