@@ -35,6 +35,9 @@ export class Draw {
   selectedColor = signal('#171717');
   selectedTool = signal<'pen' | 'eraser'>('pen');
 
+  penSize = signal(2);
+  eraserSize = signal(10);
+
   countdown = signal<number | null>(null);
   timer = signal<number | null>(null);
 
@@ -156,8 +159,8 @@ export class Draw {
     this.selectedTool.set('pen');
 
     if (this.signaturePad) {
-      this.signaturePad.minWidth = 2;
-      this.signaturePad.maxWidth = 2;
+      this.signaturePad.minWidth = this.penSize();
+      this.signaturePad.maxWidth = this.penSize();
       this.signaturePad.penColor = this.selectedColor();
     }
   }
@@ -166,13 +169,24 @@ export class Draw {
     this.selectedTool.set('eraser');
 
     if (this.signaturePad) {
-      this.signaturePad.minWidth = 10;
-      this.signaturePad.maxWidth = 10;
+      this.signaturePad.minWidth = this.eraserSize();
+      this.signaturePad.maxWidth = this.eraserSize();
       this.signaturePad.penColor = '#ffffff';
     }
   }
 
   clearCanvas(): void {
     this.signaturePad?.clear();
+  }
+
+  // Change current tool size
+  changeToolSize(size: number): void {
+    if (this.selectedTool() === 'pen') { this.penSize.set(size); }
+    else { this.eraserSize.set(size); }
+
+    if (this.signaturePad) {
+      this.signaturePad.minWidth = size;
+      this.signaturePad.maxWidth = size;
+    }
   }
 }
