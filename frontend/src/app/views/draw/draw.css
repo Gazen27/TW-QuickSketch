@@ -173,9 +173,101 @@ span {
 .words-label {
   margin: 0;
   font-size: 1.8rem;
-
 }
 
 /******* Drawing *******/
 
+/* Header Zone */
+.drawing-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  width: 100%;
+  gap: 2rem;
+}
+
+.header-field {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  gap: 0.3rem;
+}
+
+.header-label {
+  margin: 0;
+  font-size: 0.9rem;
+  font-weight: 700;
+}
+
+.word-selected,
+.timer {
+  margin: 0;
+  color: var(--color-base);
+  font-size: 1.5rem;
+  font-weight: 850;
+}
+
+/* Toolbar Zone */
+
+/* Canvas Zone */
+
+/* Submit Zone */
+
 /******* Preview *******/
+
+/******* Countdown popup *******/
+.draw-session {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  height: 100%;
+  width: 100%;
+
+  position: relative;
+}
+
+.countdown-overlay {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+
+  height: 100%;
+  width: 100%;
+
+  background-color: rgba(125, 125, 125, 0.20);
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+}
+
+.countdown-popup {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  padding: 1.5rem;
+
+  background-color: var(--color-static);
+  border-radius: 1rem;
+
+  text-align: center;
+}
+
+.countdown-title {
+  color: var(--color-primary);
+  margin-bottom: 0;
+}
+
+.countdown-number {
+  margin: 0;
+  color: var(--color-base);
+  font-size: 3rem;
+  font-weight: bold;
+}

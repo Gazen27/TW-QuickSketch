@@ -62,10 +62,69 @@
 
       <div class="inner-container words-container">
         @for (word of words(); track word.id) {
-          <button class="button words-button"><p class="words-label">{{ word.text| uppercase }}</p></button>
+          <button class="button words-button" (click)="startDrawing(word)"><p class="words-label">{{ word.text| uppercase }}</p></button>
         }
       </div>
     </section>
+  }
+
+  <!-- DRAWING -->
+  @if (currentPhase() === 'drawing') {
+    <section class="draw-session">
+
+      <!-- Main drawing zone -->
+      <div class="container drawing-container">
+
+        <!-- Header -->
+        <div class="drawing-header">
+
+          <!-- Selected word -->
+          <div class="header-field">
+            <p class="text header-label">YOUR WORD</p>
+            <p class="word-selected">{{ selectedWord()?.text | uppercase }}</p>
+          </div>
+
+          <!-- Remaining time -->
+          <div class="header-field">
+            <p class="text header-label">TIME LEFT</p>
+            <p class="timer">{{ timer() }}s</p>
+          </div>
+
+        </div>
+
+        <!-- Toolbar -->
+        <div class="drawing-toolbar">
+
+        </div>
+
+        <!-- Canvas -->
+        <div class="drawing-canvas">
+
+        </div>
+
+        <!-- Submit -->
+        <div class="drawing-submit">
+
+        </div>
+
+      </div>
+
+      <!-- PRE-DRAWING COUNTDOWN -->
+      @if (countdown() !== null) {
+        <div class="countdown-overlay">
+          <div class="countdown-popup">
+            <h1 class="title countdown-title">START DRAWING<br>IN...</h1>
+            <p class="countdown-number">{{countdown()}}</p>
+          </div>
+        </div>
+      }
+
+    </section>
+  }
+
+  <!-- RESULTS -->
+  @if (currentPhase() === 'preview') {
+    ...
   }
 
 </main>
