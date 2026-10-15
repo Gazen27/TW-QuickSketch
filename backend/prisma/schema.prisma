@@ -63,7 +63,7 @@ model Guess{
 
 enum Category{
   animals
-  objects
   food
+  objects
   videogames
 }
