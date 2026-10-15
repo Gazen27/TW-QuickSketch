@@ -201,17 +201,11 @@ span {
   gap: 0.3rem;
 }
 
-.selected-word-label {
-  align-self: flex-start;
-  
-  margin: 0;
-  font-size: 0.9rem;
-  font-weight: 700;
+.word-field {
+  align-items: flex-start;
 }
 
-.timer-label {
-  align-self: center;
-
+.header-label {
   margin: 0;
   font-size: 0.9rem;
   font-weight: 700;
