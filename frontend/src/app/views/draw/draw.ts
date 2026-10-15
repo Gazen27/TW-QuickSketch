@@ -1,7 +1,13 @@
-import { Component, signal, inject } from '@angular/core';
-import { WordService               } from '../../services/word.service';
-import { UpperCasePipe             } from '@angular/common';
-import { SingleWord                } from '../../models/word.model';
+import { Component                       } from '@angular/core';
+import { signal, inject, effect          } from '@angular/core';
+import { WordService                     } from '../../services/word.service';
+import { UpperCasePipe                   } from '@angular/common';
+import { SingleWord                      } from '../../models/word.model';
+import { ElementRef                      } from '@angular/core';
+import { ViewChild, afterNextRender      } from '@angular/core';
+import { Injector, runInInjectionContext } from '@angular/core';
+
+import SignaturePad from 'signature_pad';
 
 type Phase =
   | 'intro'
@@ -17,6 +23,7 @@ type Phase =
   styleUrl: './draw.css',
 })
 export class Draw {
+
   private wordService = inject(WordService);
 
   categories = signal<string[]>([]);
@@ -24,6 +31,7 @@ export class Draw {
 
   selectedCategory = signal<string | null>(null);
   selectedWord = signal<SingleWord | null>(null);
+  selectedColor = signal('#222222');
 
   countdown = signal<number | null>(null);
   timer = signal<number | null>(null);
@@ -101,4 +109,37 @@ export class Draw {
     this.currentPhase.set('preview');
   }
 
+  ///////////////////////////// Signature Pad /////////////////////////////
+  @ViewChild('canvas') canvasRef?: ElementRef<HTMLCanvasElement>;
+  private injector = inject(Injector);
+  private signaturePad?: SignaturePad;
+
+  constructor() {
+    effect(() => {
+      if (this.currentPhase() === 'drawing') {
+        runInInjectionContext(this.injector, () => { afterNextRender(() => { this.initializeCanvas();});});
+      }
+    });
+  }
+
+  private initializeCanvas(): void {
+    const canvas = this.canvasRef?.nativeElement;
+    if (!canvas) return;
+
+    const rect = canvas.getBoundingClientRect();
+    const ratio = Math.max(window.devicePixelRatio || 1, 1);
+    canvas.width = rect.width * ratio;
+    canvas.height = rect.height * ratio;
+
+    const context = canvas.getContext('2d');
+    if (!context) return;
+    context.scale(ratio, ratio);
+    this.signaturePad = new SignaturePad(canvas, { penColor: this.selectedColor()});
+  }
+
+  // Pen color selection
+  setPenColor(color: string): void {
+    this.selectedColor.set(color);
+    if (this.signaturePad) { this.signaturePad.penColor = color; }
+  }
 }
