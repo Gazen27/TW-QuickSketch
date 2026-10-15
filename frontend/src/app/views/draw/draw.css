@@ -214,6 +214,13 @@ span {
 /* Canvas Zone */
 
 /* Submit Zone */
+.drawing-submit {
+  width: 100%;
+
+  font-family: var(--font-standard);
+  font-size: 1.1rem;
+  font-weight: 850;
+}
 
 /******* Preview *******/
 
