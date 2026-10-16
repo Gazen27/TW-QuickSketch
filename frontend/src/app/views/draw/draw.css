@@ -308,8 +308,9 @@ span {
 
 /* Canvas Zone */
 .drawing-canvas {
-  width: 100%;
-  height: 28rem;
+  width: 960px;
+  max-width: 100%;
+  aspect-ratio: 16 / 9;
 
   overflow: hidden;
   border: 2px solid var(--color-base);
@@ -321,12 +322,26 @@ span {
   display: block;
   width: 100%;
   height: 100%;
+  touch-action: none;
+}
+
+.drawing-surface {
+  display: block;
+  width: 100%;
+  height: 100%;
+  touch-action: none;
+}
+
+.drawing-surface {
+  display: block;
+  width: 100%;
+  height: 100%;
 
   touch-action: none;
 }
 
 /* Submit Zone */
-.drawing-submit {
+.finish-submit {
   width: 100%;
 
   font-family: var(--font-standard);
@@ -335,6 +350,60 @@ span {
 }
 
 /******* Preview *******/
+.title-field {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  gap: 1rem;
+  margin: 0;
+}
+
+.results-title { margin: 0; }
+.results-subtitle { margin: 0; }
+
+.drawing-preview {
+  margin: 0;
+}
+
+.buttons-field {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 0.4rem;
+  width: 100%;
+  margin: 0;
+}
+
+.publish-button {
+  flex: 1;
+
+  font-family: var(--font-standard);
+  font-size: 1.1rem;
+  font-weight: 850;
+}
+
+.delete-button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  border: 2px solid var(--color-neutral);
+  border-radius: 0.6rem;
+  background-color: var(--color-static);
+
+  padding: 0.4rem;
+}
+
+.delete-button:hover {
+  background-color: var(--color-neutral);
+}
+
+.delete-button img {
+  height: 1.7rem;
+  width: 1.7rem;
+}
 
 /******* Countdown popup *******/
 .draw-session {

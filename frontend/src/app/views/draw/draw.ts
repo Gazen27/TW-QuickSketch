@@ -137,10 +137,31 @@ export class Draw {
     const canvas = this.canvasRef?.nativeElement;
 
     if (canvas && this.signaturePad && !this.signaturePad.isEmpty()) {
-      this.sketchUrl.set(canvas.toDataURL('image/png'));
+    const rect = canvas.getBoundingClientRect();
+
+    const exportCanvas = document.createElement('canvas');
+    exportCanvas.width = Math.round(rect.width);
+    exportCanvas.height = Math.round(rect.height);
+
+    const context = exportCanvas.getContext('2d');
+
+    if (context) {
+      context.fillStyle = '#ffffff';
+      context.fillRect(0, 0, exportCanvas.width, exportCanvas.height);
+
+      context.drawImage(
+        canvas,
+        0, 0, canvas.width, canvas.height,
+        0, 0, exportCanvas.width, exportCanvas.height
+      );
+
+      this.sketchUrl.set(exportCanvas.toDataURL('image/png'));
     } 
     else { this.sketchUrl.set(null); }
 
+    }
+    else { this.sketchUrl.set(null); }
+    
     this.currentPhase.set('preview');
   }
 
@@ -163,12 +184,14 @@ export class Draw {
 
     const rect = canvas.getBoundingClientRect();
     const ratio = Math.max(window.devicePixelRatio || 1, 1);
-    canvas.width = rect.width * ratio;
-    canvas.height = rect.height * ratio;
+    canvas.width = Math.round(rect.width * ratio);
+    canvas.height = Math.round(rect.height * ratio);
 
     const context = canvas.getContext('2d');
     if (!context) return;
-    context.scale(ratio, ratio);
+    context.setTransform(ratio, 0, 0, ratio, 0, 0);
+    this.signaturePad?.off();
+
     this.signaturePad = new SignaturePad(canvas, {
       penColor: this.selectedColor(),
       minWidth: 2,

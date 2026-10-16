@@ -125,8 +125,8 @@
         </div>
 
         <!-- Submit -->
-        <div class="drawing-submit">
-          <button class="button drawing-submit" (click)="stopDrawing()">FINISH</button>
+        <div class="finish-submit">
+          <button class="button finish-submit" (click)="stopDrawing()">FINISH</button>
         </div>
 
       </div>
@@ -155,7 +155,23 @@
   <!-- RESULTS -->
   @if (currentPhase() === 'preview') {
     <section class="preview">
+      <div class="container results-container">
+        
+        <!-- Title field -->
+        <div class="title-field">
+          <h1 class="title results-title">YOUR MASTERPIECE</h1>
+          <p class="text results-subtitle">Finish! Do you want to publish it?</p>
+        </div>
+        
+        <!-- Result -->
+        <img class="drawing-preview" [src]="sketchUrl()!">
 
+        <!-- Buttons -->
+        <div class="buttons-field">
+          <button class="button delete-button"><img src="icons/drawing/restart-icon.svg"></button>
+          <button class="button publish-button">PUBLISH</button>
+        </div>
+      </div>
     </section>
   }
 
