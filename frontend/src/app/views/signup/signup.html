@@ -12,7 +12,13 @@
 		  </div>
 		  <div class="input-group">
 			  <label for="password">Password</label>
-			  <input type="password" name="password" id="password" [(ngModel)]="password">
+        <div class="password-container">
+          <input [type]="showPassword() ? 'text' : 'password'" name="password" id="password" [(ngModel)]="password">
+          <button class="toggle-password" type="button" (click)="togglePasswordVisibility()">
+            @if (showPassword()) {<img src="icons/password/password-on-icon.svg">}
+            @else              {<img src="icons/password/password-off-icon.svg">}
+          </button>
+        </div>
 		  </div>
 		  <button class="sign-button" type="submit">Sign up</button>
 	  </form>

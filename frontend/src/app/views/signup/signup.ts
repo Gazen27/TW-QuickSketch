@@ -13,8 +13,11 @@ export class Signup {
   username = '';
   password = '';
   errorMessage = signal('');
+  showPassword = signal(false);
 
   constructor(private authService: AuthService, private router: Router){}
+
+  togglePasswordVisibility(): void { this.showPassword.update(value => !value); }
 
   onSubmit(){
     this.errorMessage.set('');
