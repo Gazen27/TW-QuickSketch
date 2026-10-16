@@ -1,6 +1,7 @@
 import { Component                       } from '@angular/core';
 import { signal, inject, effect          } from '@angular/core';
 import { WordService                     } from '../../services/word.service';
+import { SketchService                   } from '../../services/sketch.service';
 import { UpperCasePipe                   } from '@angular/common';
 import { SingleWord                      } from '../../models/word.model';
 import { ElementRef                      } from '@angular/core';
@@ -24,6 +25,7 @@ type Phase =
 })
 export class Draw {
   private wordService = inject(WordService);
+  private sketchService = inject(SketchService);
 
   categories = signal<string[]>([]);
   words = signal<SingleWord[]>([]);
@@ -163,6 +165,33 @@ export class Draw {
     else { this.sketchUrl.set(null); }
     
     this.currentPhase.set('preview');
+  }
+
+  deleteDraft(): void {
+    const confirmed = window.confirm('Are you sure you want to delete your drawing?');
+    if(confirmed){ window.location.href = '/'; }
+  }
+
+  // Publish sketch
+  publishSketch(): void {
+    const word = this.selectedWord();
+    const drawing = this.sketchUrl();
+
+    if (!word || !drawing) { return; }
+
+    this.sketchService.publishSketch({
+      wordId: word.id,
+      drawing: drawing
+    }).subscribe({
+      next: () => {
+        window.alert('Sketch published successfully!');
+        window.location.href = '/';
+      },
+      error: (error) => {
+        console.error('Error publishing sketch:', error);
+        window.alert('Unable to publish the sketch. Please try again.');
+      }
+    });
   }
 
   ///////////////////////////// Signature Pad /////////////////////////////
