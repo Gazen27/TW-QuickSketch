@@ -9,10 +9,11 @@
 }
 
 .line {
-  border-left: 0.1rem solid var(--color-secondary);
+  height: 20rem;
+  border-left: 0.1rem solid var(--color-base);
   opacity: 0.4;
   margin-left: auto;
-  margin-right: auto;
+  margin-right: 0.9rem;
 }
 
 .container {
@@ -91,7 +92,7 @@ span {
   justify-content: center;
   align-items: center;
 
-  gap: 1rem;
+  gap: 1.2rem;
   padding: 1rem;
   border-radius: 0.8rem;
   background-color: var(--color-static);
@@ -108,6 +109,7 @@ span {
 
 .tutorial-title {
   margin: 0;
+  margin-top: 0.2rem;
 }
 
 .tutorial-text {
@@ -120,6 +122,11 @@ span {
   margin-left: auto;
   margin-right: auto;
   font-size: 1rem;
+}
+
+.tutorial-image img {
+  width: 28.05rem;
+  height: 21rem;
 }
 
 /******* Categories *******/
