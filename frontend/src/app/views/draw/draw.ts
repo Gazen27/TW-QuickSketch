@@ -39,6 +39,7 @@ export class Draw {
   eraserSize = signal(10);
 
   countdown = signal<number | null>(null);
+  pause = signal<number | null>(null);
   timer = signal<number | null>(null);
 
   currentPhase = signal<Phase>('intro');
@@ -46,6 +47,7 @@ export class Draw {
   // Pre-drawing countdown
   startCountdown(): void {
     this.countdown.set(3);
+
     const interval = setInterval(() => {
       const current = this.countdown();
       if(current === null){
@@ -63,6 +65,27 @@ export class Draw {
     }, 1000);
   }
 
+  // Post-drawing pause
+  stopDrawing(): void {
+    this.pause.set(3);
+
+    const interval = setInterval(() => {
+      const current = this.countdown();
+      if(current === null){
+        clearInterval(interval);
+        return;
+      }
+      
+      if(current > 1){ this.countdown.set(current-1);}
+      
+      else{
+        this.countdown.set(null);
+        clearInterval(interval);
+        this.showPreview();
+      }
+    }, 1000);
+  }
+
   // Drawing timer
   startDrawingTimer(): void {
     this.timer.set(90);
@@ -73,7 +96,7 @@ export class Draw {
       if (current === null || current <= 1) {
         this.timer.set(0);
         clearInterval(interval);
-        this.showPreview();
+        this.stopDrawing();
         return;
       }
 
