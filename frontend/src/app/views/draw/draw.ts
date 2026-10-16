@@ -70,16 +70,16 @@ export class Draw {
     this.pause.set(3);
 
     const interval = setInterval(() => {
-      const current = this.countdown();
+      const current = this.pause();
       if(current === null){
         clearInterval(interval);
         return;
       }
       
-      if(current > 1){ this.countdown.set(current-1);}
+      if(current > 1){ this.pause.set(current-1);}
       
       else{
-        this.countdown.set(null);
+        this.pause.set(null);
         clearInterval(interval);
         this.showPreview();
       }
