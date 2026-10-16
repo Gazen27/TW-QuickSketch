@@ -365,7 +365,7 @@ span {
   -webkit-backdrop-filter: blur(5px);
 }
 
-.countdown-popup {
+.popup {
   display: flex;
   flex-direction: column;
   align-items: center;

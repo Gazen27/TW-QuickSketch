@@ -134,7 +134,7 @@
       <!-- PRE-DRAWING COUNTDOWN -->
       @if (countdown() !== null) {
         <div class="overlay">
-          <div class="countdown-popup">
+          <div class="popup">
             <h1 class="title countdown-title">START DRAWING<br>IN...</h1>
             <p class="countdown-number">{{countdown()}}</p>
           </div>
@@ -144,18 +144,19 @@
       <!-- POST-DRAWING PAUSE -->
       @if (pause() !== null) {
         <div class="overlay">
-          <div class="countdown-popup">
+          <div class="popup">
             <h1 class="title">HANDS UP!</h1>
           </div>
         </div>
       }
-
     </section>
   }
 
   <!-- RESULTS -->
   @if (currentPhase() === 'preview') {
-    ...
+    <section class="preview">
+
+    </section>
   }
 
 </main>

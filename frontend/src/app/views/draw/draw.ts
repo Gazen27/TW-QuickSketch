@@ -23,7 +23,6 @@ type Phase =
   styleUrl: './draw.css',
 })
 export class Draw {
-
   private wordService = inject(WordService);
 
   categories = signal<string[]>([]);
@@ -34,9 +33,10 @@ export class Draw {
   
   selectedColor = signal('#171717');
   selectedTool = signal<'pen' | 'eraser'>('pen');
-
   penSize = signal(2);
   eraserSize = signal(10);
+
+  sketchUrl = signal<string | null>(null);
 
   countdown = signal<number | null>(null);
   pause = signal<number | null>(null);
@@ -134,6 +134,13 @@ export class Draw {
 
   // Showing results
   showPreview(): void {
+    const canvas = this.canvasRef?.nativeElement;
+
+    if (canvas && this.signaturePad && !this.signaturePad.isEmpty()) {
+      this.sketchUrl.set(canvas.toDataURL('image/png'));
+    } 
+    else { this.sketchUrl.set(null); }
+
     this.currentPhase.set('preview');
   }
 
