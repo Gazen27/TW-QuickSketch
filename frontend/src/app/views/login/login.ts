@@ -15,8 +15,11 @@ export class Login {
   username = '';
   password = '';
   errorMessage = signal('');
+  showPassword = signal(false);
 
   constructor(private authService: AuthService, private router: Router){}
+
+  togglePasswordVisibility(): void { this.showPassword.update(value => !value); }
 
   onSubmit(){
     this.authService.login(this.username, this.password).subscribe({
