@@ -175,4 +175,28 @@
     </section>
   }
 
+  <!-- Published alert -->
+  @if (showPublishSuccessDialog()) {
+    <app-dialog
+      title="PUBLISHED"
+      message="Your sketch has been published successfully."
+      mode="alert"
+      confirmText="GREAT"
+      (confirmed)="closePublishSuccessDialog()"
+    />
+  }
+
+  <!-- Delete draft alert -->
+  @if (showDeleteDialog()) {
+    <app-dialog
+      title="DELETE DRAFT"
+      message="Are you sure you want to delete your drawing? This action cannot be undone."
+      mode="confirm"
+      confirmText="DELETE"
+      cancelText="CANCEL"
+      (confirmed)="confirmDeleteDraft()"
+      (cancelled)="showDeleteDialog.set(false)"
+    />
+  }
+
 </main>

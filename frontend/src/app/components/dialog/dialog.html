@@ -1,1 +1,28 @@
-<p>dialog works!</p>
+<!-- TOAST -->
+@if (mode === 'toast') {
+  <div class="toast" role="status">
+    <div class="toast-content">
+      <h2>{{ title }}</h2>
+      <p>{{ message }}</p>
+    </div>
+  </div>
+}
+
+<!-- WITH BUTTONS -->
+@else {
+  <div class="dialog-overlay">
+    <section class="dialog" role="dialog">
+      <h2>{{ title }}</h2>
+      <p>{{ message }}</p>
+
+      <div class="dialog-actions">
+        <!-- CONFIRMATION (double button) -->
+        @if (mode === 'confirm') {
+          <button type="button" class="cancel-button" (click)="cancel()">{{ cancelText }}</button>
+        }
+        <button type="button" class="confirm-button" (click)="confirm()">{{ confirmText }}</button>
+      
+      </div>
+    </section>
+  </div>
+}

@@ -7,6 +7,7 @@ import { SingleWord                      } from '../../models/word.model';
 import { ElementRef                      } from '@angular/core';
 import { ViewChild, afterNextRender      } from '@angular/core';
 import { Injector, runInInjectionContext } from '@angular/core';
+import { DialogComponent                 } from '../../components/dialog/dialog';
 
 import SignaturePad from 'signature_pad';
 
@@ -19,7 +20,7 @@ type Phase =
 
 @Component({
   selector: 'app-draw',
-  imports: [UpperCasePipe],
+  imports: [UpperCasePipe, DialogComponent],
   templateUrl: './draw.html',
   styleUrl: './draw.css',
 })
@@ -28,9 +29,8 @@ export class Draw {
   private sketchService = inject(SketchService);
 
   categories = signal<string[]>([]);
-  words = signal<SingleWord[]>([]);
-
   selectedCategory = signal<string | null>(null);
+  words = signal<SingleWord[]>([]);
   selectedWord = signal<SingleWord | null>(null);
   
   selectedColor = signal('#171717');
@@ -45,6 +45,9 @@ export class Draw {
   timer = signal<number | null>(null);
 
   currentPhase = signal<Phase>('intro');
+
+  showDeleteDialog = signal(false);
+  showPublishSuccessDialog = signal(false);
 
   // Pre-drawing countdown
   startCountdown(): void {
@@ -167,9 +170,14 @@ export class Draw {
     this.currentPhase.set('preview');
   }
 
+  // Sketch draft deletion
   deleteDraft(): void {
-    const confirmed = window.confirm('Are you sure you want to delete your drawing?');
-    if(confirmed){ window.location.href = '/'; }
+    this.showDeleteDialog.set(true);
+  }
+
+  confirmDeleteDraft(): void {
+    this.showDeleteDialog.set(false);
+    window.location.href = '/';
   }
 
   // Publish sketch
@@ -183,10 +191,7 @@ export class Draw {
       wordId: word.id,
       drawing: drawing
     }).subscribe({
-      next: () => {
-        window.alert('Sketch published successfully!');
-        window.location.href = '/';
-      },
+      next: () => { this.showPublishSuccessDialog.set(true); },
       error: (error) => {
         console.error('Error publishing sketch:', error);
         window.alert('Unable to publish the sketch. Please try again.');
@@ -194,6 +199,10 @@ export class Draw {
     });
   }
 
+closePublishSuccessDialog(): void {
+  this.showPublishSuccessDialog.set(false);
+  window.location.href = '/';
+}
   ///////////////////////////// Signature Pad /////////////////////////////
   @ViewChild('canvas') canvasRef?: ElementRef<HTMLCanvasElement>;
   private injector = inject(Injector);
