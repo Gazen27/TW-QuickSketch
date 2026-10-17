@@ -109,7 +109,7 @@
 }
 
 .side-menu .link:hover {
-  color: var(var(--color-secondary));
+  color: var(--color-secondary);
 }
 
 /*********************************** Tablet and mobile version ***********************************/
