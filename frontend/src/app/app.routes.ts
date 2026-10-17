@@ -37,7 +37,8 @@ export const routes: Routes = [
   },
   {
     path: 'profile',
-    component: Profile
+    component: Profile,
+    canActivate: [authGuard]
   },
   {
     path: 'info',
