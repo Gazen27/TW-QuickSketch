@@ -161,7 +161,6 @@ export class DrawSession {
     this.finish.emit(image);
   }
 
-
   // Change color
   setPenColor(color: string): void {
     this.selectedColor.set(color);
