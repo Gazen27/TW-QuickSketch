@@ -43,7 +43,6 @@ export async function getSketches(req: Request, res: Response, next: NextFunctio
   catch(error) { next(error); }
 }
 
-
 // retrieving the word associated to a sketch
 export async function getSolution(req: Request, res: Response, next: NextFunction){
   try{
