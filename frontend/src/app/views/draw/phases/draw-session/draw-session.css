@@ -1,6 +1,17 @@
 @import "../../draw.css";
 
 /******* Draw Session *******/
+.draw-session {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  height: 100%;
+  width: 100%;
+
+  position: relative;
+}
+
 /* Header Zone */
 .drawing-header {
   display: flex;
