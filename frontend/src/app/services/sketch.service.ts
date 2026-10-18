@@ -1,15 +1,17 @@
-
-import { Injectable, inject } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { Observable, map } from 'rxjs';
-
-import { CreateSketch, Sketch } from '../models/sketch.model';
+import { Injectable, inject                    } from '@angular/core';
+import { HttpClient, HttpParams                } from '@angular/common/http';
+import { Observable, map                       } from 'rxjs';
+import { CreateSketch, Sketch, ExploreSketches } from '../models/sketch.model';
+import { ApiResponse                           } from '../models/leaderboard.model';
 
 interface CreateSketchResponse {
   status: 'success';
   message: string;
   data: Sketch;
 }
+
+export type SketchSortBy = 'createdAt' | 'guessCount';
+export type SortOrder = 'asc' | 'desc';
 
 @Injectable({
   providedIn: 'root'
@@ -23,5 +25,26 @@ export class SketchService {
     return this.http
       .post<CreateSketchResponse>(this.apiUrl, data)
       .pipe(map(response => response.data));
+  }
+
+  getExploreSketches(
+    page: number,
+    limit: number,
+    sortBy: SketchSortBy,
+    order: SortOrder
+  ): Observable<ApiResponse<ExploreSketches>> {
+    const params = new HttpParams()
+      .set('page', page)
+      .set('limit', limit)
+      .set('sortBy', sortBy)
+      .set('order', order);
+    
+      return this.http.get<ApiResponse<ExploreSketches>>(this.apiUrl, { params }).pipe(
+  map(response => {
+    console.log('RISPOSTA GET SKETCHES:', response);
+    return response;
+  })
+);
+    //return this.http.get<ApiResponse<ExploreSketches>>(this.apiUrl, { params });
   }
 }

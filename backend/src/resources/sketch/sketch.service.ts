@@ -24,14 +24,15 @@ export async function getSketches(
   sortBy: SketchSortBy,
   order: SortOrder
 ) {
-  const skip = (page - 1) * limit;
+    const skip = (page - 1) * limit;
 
-  return prisma.sketch.findMany({
-    skip,
-    take: limit,
-    orderBy: { [sortBy]: order }
-  });
-}
+    return prisma.sketch.findMany({
+      skip,
+      take: limit,
+      orderBy: { [sortBy]: order },
+      include: { author: { select: { username: true } } }
+    });
+  }
 
 // Counting total sketches
 export async function countTotalSketches() {

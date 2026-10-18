@@ -16,7 +16,6 @@ export async function postSketch(req: Request, res: Response, next: NextFunction
   catch (error) { next(error); }
 }
 
-
 // sketches retrieval with pagination and sorting
 export async function getSketches(req: Request, res: Response, next: NextFunction){
   try {
@@ -30,8 +29,9 @@ export async function getSketches(req: Request, res: Response, next: NextFunctio
       service.countTotalSketches()
     ]);
 
+    console.log('GET SKETCHES - PAGINATION CONTROLLER');
     return res.status(200).json(
-      APIResponse.success('Sketches retrieved', {
+      APIResponse.success('TEST 123', {
         items: sketches,
         page,
         limit,

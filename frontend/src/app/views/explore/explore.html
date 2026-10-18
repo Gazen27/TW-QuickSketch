@@ -1,0 +1,69 @@
+<main class="explore">
+  <div class="explore-header">
+    <label class="sort-control">
+      <span>ORDER BY</span>
+
+      <select
+        [value]="selectedSort()"
+        (change)="changeSort($any($event.target).value)"
+      >
+        <option value="newest">Most recent</option>
+        <option value="oldest">Least recent</option>
+        <option value="most-guessed">Most guessed</option>
+        <option value="least-guessed">Least guessed</option>
+      </select>
+    </label>
+  </div>
+
+  @if (loading()) {
+    <p class="status-message">Caricamento disegni...</p>
+  } @else if (errorMessage()) {
+    <p class="status-message">{{ errorMessage() }}</p>
+    <button class="button" (click)="loadSketches()">RIPROVA</button>
+  } @else {
+    <section class="sketch-grid">
+      @for (sketch of sketches(); track sketch.id) {
+        <article class="sketch-card">
+          <div class="drawing-container">
+            <img
+              class="drawing"
+              [src]="sketch.drawing"
+              [alt]="'Disegno di ' + sketch.author.username"
+              loading="lazy"
+            />
+          </div>
+
+          <div class="sketch-info">
+            <span class="author">{{ sketch.author.username }}</span>
+            <span class="guess-count">
+              {{ sketch.guessCount }}
+              {{ sketch.guessCount === 1 ? 'risposta corretta' : 'risposte corrette' }}
+            </span>
+          </div>
+        </article>
+      } @empty {
+        <p class="status-message">Nessun disegno disponibile.</p>
+      }
+    </section>
+
+    @if (totalPages() > 0) {
+      <nav class="pagination" aria-label="Paginazione disegni">
+        <button
+          (click)="previousPage()"
+          [disabled]="currentPage() <= 1"
+        >
+          PREVIOUS
+        </button>
+
+        <span>{{ currentPage() }} / {{ totalPages() }}</span>
+
+        <button
+          (click)="nextPage()"
+          [disabled]="currentPage() >= totalPages()"
+        >
+          NEXT
+        </button>
+      </nav>
+    }
+  }
+</main>

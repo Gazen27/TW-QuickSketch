@@ -1,0 +1,147 @@
+.explore {
+  width: min(100% - 2rem, 75rem);
+  margin: 0 auto;
+  padding: 2rem 0;
+  color: var(--color-base);
+}
+
+.explore-header {
+  width: 100%;
+  margin-bottom: 2rem;
+}
+
+.sort-control {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.5rem;
+  width: 100%;
+}
+
+.sort-control span {
+  font-weight: 700;
+}
+
+.sort-control select {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 0.8rem;
+  border: 1px solid var(--color-neutral);
+  border-radius: 0.6rem;
+  background: var(--color-static);
+  color: var(--color-base);
+  font: inherit;
+}
+
+.sketch-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1.5rem;
+}
+
+.sketch-card {
+  min-width: 0;
+  overflow: hidden;
+  border-radius: 1rem;
+  background: var(--color-static);
+}
+
+.drawing-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  aspect-ratio: 4 / 3;
+  overflow: hidden;
+  background: var(--color-static);
+}
+
+.drawing {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.sketch-info {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  padding: 1rem;
+}
+
+.author {
+  font-weight: 800;
+  overflow-wrap: anywhere;
+}
+
+.guess-count {
+  color: var(--color-neutral);
+  font-size: 0.9rem;
+}
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1.25rem;
+  margin-top: 2rem;
+}
+
+.pagination button,
+.button {
+  padding: 0.7rem 1rem;
+  border: none;
+  border-radius: 0.7rem;
+  background: var(--color-primary);
+  color: var(--color-contrast);
+  font-family: var(--font-standard);
+  font-weight: 850;
+  cursor: pointer;
+}
+
+.pagination button:hover:not(:disabled),
+.button:hover {
+  background: var(--color-secondary);
+}
+
+.pagination button:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
+.pagination span {
+  font-weight: 700;
+}
+
+.status-message {
+  padding: 2rem 0;
+  text-align: center;
+  color: var(--color-neutral);
+}
+
+@media (max-width: 700px) {
+  .explore {
+    width: min(100% - 1.5rem, 40rem);
+  }
+
+  .explore-header {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .sort-control {
+    width: 100%;
+    justify-content: space-between;
+  }
+
+  .sort-control select {
+    flex: 1;
+    min-width: 0;
+  }
+
+  .sketch-grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
