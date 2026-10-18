@@ -116,7 +116,10 @@ export class DrawSession {
 
     const context = canvas.getContext('2d');
     if (!context) return;
+
     context.setTransform(ratio, 0, 0, ratio, 0, 0);
+    context.fillStyle = '#ffffff';
+    context.fillRect(0, 0, rect.width, rect.height);
     this.signaturePad?.off();
 
     this.signaturePad = new SignaturePad(canvas, {
@@ -140,7 +143,21 @@ export class DrawSession {
       return;
     }
 
-    const image = canvas.toDataURL('image/png');
+    const exportCanvas = document.createElement('canvas');
+    exportCanvas.width = canvas.width;
+    exportCanvas.height = canvas.height;
+
+    const context = exportCanvas.getContext('2d');
+    if (!context) {
+      this.finish.emit(null);
+      return;
+    }
+
+    context.fillStyle = '#ffffff';
+    context.fillRect(0, 0, exportCanvas.width, exportCanvas.height);
+    context.drawImage(canvas, 0, 0);
+
+    const image = exportCanvas.toDataURL('image/png');
     this.finish.emit(image);
   }
 
