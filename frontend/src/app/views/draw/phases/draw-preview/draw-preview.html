@@ -1,0 +1,19 @@
+<section class="preview">
+  <div class="container results-container">
+    
+    <!-- Title field -->
+    <div class="title-field">
+      <h1 class="title results-title">YOUR MASTERPIECE</h1>
+      <p class="text results-subtitle">Finish! Do you want to publish it?</p>
+    </div>
+    
+    <!-- Result -->
+    <img class="drawing-preview" [src]="sketchUrl()!">
+
+    <!-- Buttons -->
+    <div class="buttons-field">
+      <button class="button delete-button" (click)="delete.emit()"><img src="icons/drawing/restart-icon.svg"></button>
+      <button class="button publish-button" (click)="publish.emit()">PUBLISH</button>
+    </div>
+  </div>
+</section>

@@ -2,177 +2,25 @@
 
   <!-- INTRO -->
   @if (currentPhase() === 'intro') {
-    <section class="draw-intro">
-      <!-- Sample image of drawing phase -->
-      <div class="tutorial-container">
-        <div class="tutorial-image"><img src="img/drawing-tutorial.webp" alt="tutorial-preview"></div>
-        
-        <div class="line"></div>
-        
-        <!-- Explanation -->
-        <div class="tutorial">
-          <h1 class="title tutorial-title">GET STARTED</h1>
-          <p class="text tutorial-text">
-            Create your own masterpiece!
-            <br><br>
-            <span>1. Choose a category</span> that inspires you.<br>
-            <span>2. Pick a word</span> from the three options.<br>
-            <span>3. Draw it your way</span> before the timer runs out!
-            <br><br>
-            You have <span>90 seconds</span> to bring your word to life.<br>
-            Don't worry about perfection, just have fun!
-            <br><br>
-            <span>Ready, set, draw!</span>
-          </p>
-
-          <!-- Start drawing button -->
-          <button class="button start-drawing" (click)="showCategories()">START DRAWING</button>
-        </div>
-      </div>
-    </section>
-  }
+    <app-draw-intro (start)="showCategories()"></app-draw-intro> }
 
   <!-- CATEGORIES -->
   @if (currentPhase() === 'categories') {
-    <section class="container draw-categories">
-      <div class="title-container">
-        <h1 class="title categories-title">CHOOSE A CATEGORY</h1>
-        <p class="text title-label">to get three random words</p>
-      </div>
-
-      <div class="inner-container categories-container">
-        @for (category of categories(); track category) {
-          <button class="button categories-button" (click)="showWords(category)">
-            <img class="dark-icon category-icon" [src]="'icons/categories/' + category.toLowerCase() + '-dark-icon.svg'">
-            <img class="light-icon category-icon" [src]="'icons/categories/' + category.toLowerCase() + '-light-icon.svg'">
-            <p class="categories-label">{{ category | uppercase }}</p>
-          </button>
-        }
-      </div>
-    </section>
-  }
+    <app-draw-categories [categories]="categories()" (categorySelected)="showWords($event)"></app-draw-categories>}
 
   <!-- WORDS -->
   @if (currentPhase() === 'words') {
-    <section class="container draw-words">
-      <div class="title-container">
-        <h1 class="title categories-title">CHOOSE A WORD</h1>
-        <p class="text title-label">and start drawing!</p>
-      </div>
-
-      <div class="inner-container words-container">
-        @for (word of words(); track word.id) {
-          <button class="button words-button" (click)="startDrawing(word)"><p class="words-label">{{ word.text| uppercase }}</p></button>
-        }
-      </div>
-    </section>
+    <app-draw-words [words]="words()" (wordSelected)="startDrawing($event)"></app-draw-words>
   }
 
   <!-- DRAWING -->
   @if (currentPhase() === 'drawing') {
-    <section class="draw-session">
-
-      <!-- Main drawing zone -->
-      <div class="container drawing-container">
-
-        <!-- Header -->
-        <div class="drawing-header">
-
-          <!-- Selected word -->
-          <div class="header-field word-field">
-            <p class="text header-label">YOUR WORD</p>
-            <p class="word-selected">{{ selectedWord()?.text | uppercase }}</p>
-          </div>
-
-          <!-- Remaining time -->
-          <div class="header-field timer-field">
-            <p class="text header-label">TIME LEFT</p>
-            <p class="timer">{{ timer() }}s</p>
-          </div>
-
-        </div>
-
-        <!-- Toolbar -->
-        <div class="drawing-toolbar">
-          
-          <!-- Drawing colors -->
-          <div class="drawing-colors">
-            <button class="color-button color-black" [class.selected]="selectedColor() === '#171717'" (click)="setPenColor('#171717')"></button>
-            <button class="color-button color-red" [class.selected]="selectedColor() === '#e53935'" (click)="setPenColor('#e53935')"></button>
-            <button class="color-button color-yellow" [class.selected]="selectedColor() === '#fdd835'" (click)="setPenColor('#fdd835')"></button>
-            <button class="color-button color-green" [class.selected]="selectedColor() === '#43a047'" (click)="setPenColor('#43a047')"></button>
-            <button class="color-button color-blue" [class.selected]="selectedColor() === '#1e88e5'" (click)="setPenColor('#1e88e5')"></button>
-            <button class="color-button color-purple" [class.selected]="selectedColor() === '#9C27B0'" (click)="setPenColor('#9C27B0')"></button>
-            <button class="color-button color-brown" [class.selected]="selectedColor() === '#795548'" (click)="setPenColor('#795548')"></button>
-          </div>
-
-          <!-- Pencil size -->
-          <input class="pencil-size" type="range" min="1" max="10" [value]="selectedTool() === 'pen' ? penSize() : eraserSize()" (input)="changeToolSize(+$any($event.target).value)">
-
-          <!-- Drawing tools -->
-          <div class="drawing-tools">
-            <button class="tool-button" [class.selected]="selectedTool() === 'pen'" (click)="selectPen()"><img class="tool-icon" src="icons/drawing/pencil-icon.svg"></button>
-            <button class="tool-button" [class.selected]="selectedTool() === 'eraser'" (click)="selectEraser()"><img class="tool-icon" src="icons/drawing/eraser-icon.svg"></button>
-            <button class="tool-button" (click)="undo()"><img class="tool-icon" src="icons/drawing/undo-icon.svg"></button>
-            <button class="tool-button" (click)="clearCanvas()"><img class="tool-icon" src="icons/drawing/restart-icon.svg"></button>
-          </div>
-
-        </div>
-
-        <!-- Canvas -->
-        <div class="drawing-canvas">
-          <canvas #canvas class="drawing-surface"></canvas>
-        </div>
-
-        <!-- Submit -->
-        <div class="finish-submit">
-          <button class="button finish-submit" (click)="stopDrawing()">FINISH</button>
-        </div>
-
-      </div>
-
-      <!-- PRE-DRAWING COUNTDOWN -->
-      @if (countdown() !== null) {
-        <div class="overlay">
-          <div class="popup">
-            <h1 class="title countdown-title">START DRAWING<br>IN...</h1>
-            <p class="countdown-number">{{countdown()}}</p>
-          </div>
-        </div>
-      }
-
-      <!-- POST-DRAWING PAUSE -->
-      @if (pause() !== null) {
-        <div class="overlay">
-          <div class="popup">
-            <h1 class="title">HANDS UP!</h1>
-          </div>
-        </div>
-      }
-    </section>
+    <app-draw-session [word]="selectedWord()!" (finish)="onDrawingFinished($event)"></app-draw-session>
   }
 
   <!-- RESULTS -->
   @if (currentPhase() === 'preview') {
-    <section class="preview">
-      <div class="container results-container">
-        
-        <!-- Title field -->
-        <div class="title-field">
-          <h1 class="title results-title">YOUR MASTERPIECE</h1>
-          <p class="text results-subtitle">Finish! Do you want to publish it?</p>
-        </div>
-        
-        <!-- Result -->
-        <img class="drawing-preview" [src]="sketchUrl()!">
-
-        <!-- Buttons -->
-        <div class="buttons-field">
-          <button class="button delete-button" (click)="deleteDraft()"><img src="icons/drawing/restart-icon.svg"></button>
-          <button class="button publish-button" (click)="publishSketch()">PUBLISH</button>
-        </div>
-      </div>
-    </section>
+    <app-draw-preview [sketchUrl]="sketchUrl()!" (delete)="deleteDraft()" (publish)="publishSketch()"></app-draw-preview>
   }
 
   <!-- Published alert -->

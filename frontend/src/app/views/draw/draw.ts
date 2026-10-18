@@ -1,15 +1,14 @@
 import { Component                       } from '@angular/core';
-import { signal, inject, effect          } from '@angular/core';
+import { signal, inject                  } from '@angular/core';
 import { WordService                     } from '../../services/word.service';
 import { SketchService                   } from '../../services/sketch.service';
-import { UpperCasePipe                   } from '@angular/common';
 import { SingleWord                      } from '../../models/word.model';
-import { ElementRef                      } from '@angular/core';
-import { ViewChild, afterNextRender      } from '@angular/core';
-import { Injector, runInInjectionContext } from '@angular/core';
 import { DialogComponent                 } from '../../components/dialog/dialog';
-
-import SignaturePad from 'signature_pad';
+import { DrawIntro                       } from './phases/draw-intro/draw-intro';
+import { DrawCategories                  } from './phases/draw-categories/draw-categories';
+import { DrawWords                       } from './phases/draw-words/draw-words';
+import { DrawSession                     } from './phases/draw-session/draw-session';
+import { DrawPreview                     } from './phases/draw-preview/draw-preview';
 
 type Phase =
   | 'intro'
@@ -20,7 +19,7 @@ type Phase =
 
 @Component({
   selector: 'app-draw',
-  imports: [UpperCasePipe, DialogComponent],
+  imports: [DialogComponent, DrawIntro, DrawCategories, DrawWords, DrawSession, DrawPreview],
   templateUrl: './draw.html',
   styleUrl: './draw.css',
 })
@@ -29,85 +28,14 @@ export class Draw {
   private sketchService = inject(SketchService);
 
   categories = signal<string[]>([]);
-  selectedCategory = signal<string | null>(null);
   words = signal<SingleWord[]>([]);
   selectedWord = signal<SingleWord | null>(null);
-  
-  selectedColor = signal('#171717');
-  selectedTool = signal<'pen' | 'eraser'>('pen');
-  penSize = signal(2);
-  eraserSize = signal(10);
-
   sketchUrl = signal<string | null>(null);
-
-  countdown = signal<number | null>(null);
-  pause = signal<number | null>(null);
-  timer = signal<number | null>(null);
 
   currentPhase = signal<Phase>('intro');
 
   showDeleteDialog = signal(false);
   showPublishSuccessDialog = signal(false);
-
-  // Pre-drawing countdown
-  startCountdown(): void {
-    this.countdown.set(3);
-
-    const interval = setInterval(() => {
-      const current = this.countdown();
-      if(current === null){
-        clearInterval(interval);
-        return;
-      }
-      
-      if(current > 1){ this.countdown.set(current-1);}
-      
-      else{
-        this.countdown.set(null);
-        clearInterval(interval);
-        this.startDrawingTimer();
-      }
-    }, 1000);
-  }
-
-  // Post-drawing pause
-  stopDrawing(): void {
-    this.pause.set(3);
-
-    const interval = setInterval(() => {
-      const current = this.pause();
-      if(current === null){
-        clearInterval(interval);
-        return;
-      }
-      
-      if(current > 1){ this.pause.set(current-1);}
-      
-      else{
-        this.pause.set(null);
-        clearInterval(interval);
-        this.showPreview();
-      }
-    }, 1000);
-  }
-
-  // Drawing timer
-  startDrawingTimer(): void {
-    this.timer.set(90);
-
-    const interval = setInterval(() => {
-      const current = this.timer();
-
-      if (current === null || current <= 1) {
-        this.timer.set(0);
-        clearInterval(interval);
-        this.stopDrawing();
-        return;
-      }
-
-      this.timer.set(current - 1);
-    }, 1000);
-  }
 
   // Category selection phase
   showCategories(): void {
@@ -121,7 +49,6 @@ export class Draw {
 
   // Words selection phase
   showWords(category: string): void {
-    this.selectedCategory.set(category);
     this.currentPhase.set('words');
 
     this.wordService.getRandomWords(category).subscribe({
@@ -133,40 +60,12 @@ export class Draw {
   // Drawing selection phase
   startDrawing(word: SingleWord): void {
     this.selectedWord.set(word);
+    this.sketchUrl.set(null);
     this.currentPhase.set('drawing');
-    this.startCountdown();
   }
 
-  // Showing results
-  showPreview(): void {
-    const canvas = this.canvasRef?.nativeElement;
-
-    if (canvas && this.signaturePad && !this.signaturePad.isEmpty()) {
-    const rect = canvas.getBoundingClientRect();
-
-    const exportCanvas = document.createElement('canvas');
-    exportCanvas.width = Math.round(rect.width);
-    exportCanvas.height = Math.round(rect.height);
-
-    const context = exportCanvas.getContext('2d');
-
-    if (context) {
-      context.fillStyle = '#ffffff';
-      context.fillRect(0, 0, exportCanvas.width, exportCanvas.height);
-
-      context.drawImage(
-        canvas,
-        0, 0, canvas.width, canvas.height,
-        0, 0, exportCanvas.width, exportCanvas.height
-      );
-
-      this.sketchUrl.set(exportCanvas.toDataURL('image/png'));
-    } 
-    else { this.sketchUrl.set(null); }
-
-    }
-    else { this.sketchUrl.set(null); }
-    
+  onDrawingFinished(drawing: string | null): void {
+    this.sketchUrl.set(drawing);
     this.currentPhase.set('preview');
   }
 
@@ -199,95 +98,8 @@ export class Draw {
     });
   }
 
-closePublishSuccessDialog(): void {
-  this.showPublishSuccessDialog.set(false);
-  window.location.href = '/';
-}
-  ///////////////////////////// Signature Pad /////////////////////////////
-  @ViewChild('canvas') canvasRef?: ElementRef<HTMLCanvasElement>;
-  private injector = inject(Injector);
-  private signaturePad?: SignaturePad;
-
-  constructor() {
-    effect(() => {
-      if (this.currentPhase() === 'drawing') {
-        runInInjectionContext(this.injector, () => { afterNextRender(() => { this.initializeCanvas();});});
-      }
-    });
-  }
-
-  private initializeCanvas(): void {
-    const canvas = this.canvasRef?.nativeElement;
-    if (!canvas) return;
-
-    const rect = canvas.getBoundingClientRect();
-    const ratio = Math.max(window.devicePixelRatio || 1, 1);
-    canvas.width = Math.round(rect.width * ratio);
-    canvas.height = Math.round(rect.height * ratio);
-
-    const context = canvas.getContext('2d');
-    if (!context) return;
-    context.setTransform(ratio, 0, 0, ratio, 0, 0);
-    this.signaturePad?.off();
-
-    this.signaturePad = new SignaturePad(canvas, {
-      penColor: this.selectedColor(),
-      minWidth: 2,
-      maxWidth: 2,
-      velocityFilterWeight: 1
-    });
-  }
-
-  // Pen color selection
-  setPenColor(color: string): void {
-    this.selectedColor.set(color);
-    if (this.selectedTool() === 'eraser') { this.selectPen() }
-    if (this.signaturePad) { this.signaturePad.penColor = color; }
-  }
-
-  // Tool selection
-  selectPen(): void {
-    this.selectedTool.set('pen');
-
-    if (this.signaturePad) {
-      this.signaturePad.minWidth = this.penSize();
-      this.signaturePad.maxWidth = this.penSize();
-      this.signaturePad.penColor = this.selectedColor();
-    }
-  }
-
-  selectEraser(): void {
-    this.selectedTool.set('eraser');
-
-    if (this.signaturePad) {
-      this.signaturePad.minWidth = this.eraserSize();
-      this.signaturePad.maxWidth = this.eraserSize();
-      this.signaturePad.penColor = '#ffffff';
-    }
-  }
-
-  undo(): void {
-    if(!this.signaturePad) { return; }
-
-    const signs = this.signaturePad.toData();
-    if(signs.length > 0) {
-      signs.pop();
-      this.signaturePad.fromData(signs);
-    }
-  }
-
-  clearCanvas(): void {
-    this.signaturePad?.clear();
-  }
-
-  // Change current tool size
-  changeToolSize(size: number): void {
-    if (this.selectedTool() === 'pen') { this.penSize.set(size); }
-    else { this.eraserSize.set(size); }
-
-    if (this.signaturePad) {
-      this.signaturePad.minWidth = size;
-      this.signaturePad.maxWidth = size;
-    }
+  closePublishSuccessDialog(): void {
+    this.showPublishSuccessDialog.set(false);
+    window.location.href = '/';
   }
 }

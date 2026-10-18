@@ -1,0 +1,14 @@
+<section class="container draw-words">
+  <!-- Text -->
+  <div class="title-container">
+    <h1 class="title words-title">CHOOSE A WORD</h1>
+    <p class="text title-label">and start drawing!</p>
+  </div>
+
+  <!-- Words -->
+  <div class="inner-container words-container">
+    @for (word of words(); track word.id) {
+      <button class="button words-button" (click)="wordSelected.emit(word)"><p class="words-label">{{ word.text| uppercase }}</p></button>
+    }
+  </div>
+</section>

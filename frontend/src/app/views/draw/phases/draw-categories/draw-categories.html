@@ -1,0 +1,18 @@
+<section class="container draw-categories">
+  <!-- Text -->
+  <div class="title-container">
+    <h1 class="title categories-title">CHOOSE A CATEGORY</h1>
+    <p class="text title-label">to get three random words</p>
+  </div>
+
+  <!-- Cateogories -->
+  <div class="inner-container categories-container">
+    @for (category of categories(); track category) {
+      <button class="button categories-button" (click)="categorySelected.emit(category)">
+        <img class="dark-icon category-icon" [src]="'icons/categories/' + category.toLowerCase() + '-dark-icon.svg'">
+        <img class="light-icon category-icon" [src]="'icons/categories/' + category.toLowerCase() + '-light-icon.svg'">
+        <p class="categories-label">{{ category | uppercase }}</p>
+      </button>
+    }
+  </div>
+</section>

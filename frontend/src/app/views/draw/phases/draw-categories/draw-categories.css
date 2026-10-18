@@ -1,0 +1,34 @@
+@import "../../draw.css";
+
+/******* Categories *******/
+.categories-container {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: repeat(2, 1fr);
+  gap: 1rem;
+}
+
+.categories-title {
+  margin: 0;
+}
+
+.categories-label {
+  font-size: 1rem;
+  margin: 0;
+}
+
+.categories-button {
+  width: 12rem;
+  padding: 1.5rem;
+  gap: 1rem;
+}
+
+.category-icon {
+  width: 6rem;
+  height: 6rem;
+}
+
+.light-icon { display: none; }
+.dark-icon  { display: block;}
+:host-context(.light-theme) .light-icon { display: block; }
+:host-context(.light-theme) .dark-icon { display: none; }

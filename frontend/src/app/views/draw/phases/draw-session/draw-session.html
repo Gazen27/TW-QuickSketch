@@ -1,0 +1,88 @@
+<section class="draw-session">
+
+  <!-- Main drawing zone -->
+  <div class="container drawing-container">
+
+    <!-- Header -->
+    <div class="drawing-header">
+
+      <!-- Selected word -->
+      <div class="header-field word-field">
+        <p class="text header-label">YOUR WORD</p>
+        <p class="word-selected">{{ word()?.text | uppercase }}</p>
+      </div>
+
+      <!-- Remaining time -->
+      <div class="header-field timer-field">
+        <p class="text header-label">TIME LEFT</p>
+        <p class="timer">{{ timer() }}s</p>
+      </div>
+    </div>
+
+    <!-- Toolbar -->
+    <div class="drawing-toolbar">
+      
+      <!-- Drawing colors -->
+      <div class="drawing-colors">
+        <button class="color-button color-black" [class.selected]="selectedColor() === '#171717'" (click)="setPenColor('#171717')"></button>
+        <button class="color-button color-red" [class.selected]="selectedColor() === '#e53935'" (click)="setPenColor('#e53935')"></button>
+        <button class="color-button color-yellow" [class.selected]="selectedColor() === '#fdd835'" (click)="setPenColor('#fdd835')"></button>
+        <button class="color-button color-green" [class.selected]="selectedColor() === '#43a047'" (click)="setPenColor('#43a047')"></button>
+        <button class="color-button color-blue" [class.selected]="selectedColor() === '#1e88e5'" (click)="setPenColor('#1e88e5')"></button>
+        <button class="color-button color-purple" [class.selected]="selectedColor() === '#9C27B0'" (click)="setPenColor('#9C27B0')"></button>
+        <button class="color-button color-brown" [class.selected]="selectedColor() === '#795548'" (click)="setPenColor('#795548')"></button>
+      </div>
+
+      <!-- Pencil size -->
+      <input class="pencil-size" type="range" min="1" max="10"
+      [value]="selectedTool() === 'pen' ? penSize() : eraserSize()" (input)="changeToolSize(+$any($event.target).value)">
+
+      <!-- Drawing tools -->
+      <div class="drawing-tools">
+        <!-- Pen -->
+        <button class="tool-button" [class.selected]="selectedTool() === 'pen'" (click)="selectPen()">
+          <img class="tool-icon" src="icons/drawing/pencil-icon.svg"></button>
+        <!-- Eraser -->  
+        <button class="tool-button" [class.selected]="selectedTool() === 'eraser'" (click)="selectEraser()">
+          <img class="tool-icon" src="icons/drawing/eraser-icon.svg"></button>
+        <!-- Undo -->  
+        <button class="tool-button" (click)="undo()">
+          <img class="tool-icon" src="icons/drawing/undo-icon.svg"></button>
+        <!-- Clear -->  
+        <button class="tool-button" (click)="clearCanvas()">
+          <img class="tool-icon" src="icons/drawing/restart-icon.svg"></button>
+      </div>
+
+    </div>
+
+    <!-- Canvas -->
+    <div class="drawing-canvas">
+      <canvas #canvas class="drawing-surface"></canvas>
+    </div>
+
+    <!-- Submit -->
+    <div class="finish-submit">
+      <button class="button finish-submit" (click)="stopDrawing()">FINISH</button>
+    </div>
+
+  </div>
+
+  <!-- PRE-DRAWING COUNTDOWN -->
+  @if (countdown() !== null) {
+    <div class="overlay">
+      <div class="popup">
+        <h1 class="title countdown-title">START DRAWING<br>IN...</h1>
+        <p class="countdown-number">{{countdown()}}</p>
+      </div>
+    </div>
+  }
+
+  <!-- POST-DRAWING PAUSE -->
+  @if (pause() !== null) {
+    <div class="overlay">
+      <div class="popup">
+        <h1 class="title">HANDS UP!</h1>
+      </div>
+    </div>
+  }
+</section>
