@@ -90,11 +90,11 @@ export class DrawSession {
 
   // Signature Pad
   @ViewChild('canvas') canvasRef?: ElementRef<HTMLCanvasElement>;
-
   private injector = inject(Injector);
   private signaturePad?: SignaturePad;
 
-  constructor() { effect(() => {
+  constructor() {
+    effect(() => {
     this.word();
     runInInjectionContext(this.injector, () => { afterNextRender(() => {
       this.initializeCanvas();
@@ -104,13 +104,13 @@ export class DrawSession {
     });
   }
 
+  // Initializing blank canvas
   private initializeCanvas(): void {
     const canvas = this.canvasRef?.nativeElement;
     if (!canvas) return;
 
     const rect = canvas.getBoundingClientRect();
     const ratio = Math.max(window.devicePixelRatio || 1, 1);
-
     canvas.width = Math.round(rect.width * ratio);
     canvas.height = Math.round(rect.height * ratio);
 
@@ -121,45 +121,29 @@ export class DrawSession {
 
     this.signaturePad = new SignaturePad(canvas, {
       penColor: this.selectedColor(),
-      minWidth: this.penSize(),
-      maxWidth: this.penSize(),
+      minWidth: 2,
+      maxWidth: 2,
       velocityFilterWeight: 1
     });
   }
 
-  // Esportazione del disegno e comunicazione al padre
+  // Exporting drawing to parent component
   private emitDrawing(): void {
+    if (!this.signaturePad || this.signaturePad.isEmpty()) {
+      this.finish.emit(null);
+      return;
+    }
+
     const canvas = this.canvasRef?.nativeElement;
-
-    if (!canvas || !this.signaturePad || this.signaturePad.isEmpty()) {
+    if (!canvas) {
       this.finish.emit(null);
       return;
     }
 
-    const rect = canvas.getBoundingClientRect();
-
-    const exportCanvas = document.createElement('canvas');
-    exportCanvas.width = Math.round(rect.width);
-    exportCanvas.height = Math.round(rect.height);
-
-    const context = exportCanvas.getContext('2d');
-
-    if (!context) {
-      this.finish.emit(null);
-      return;
-    }
-
-    context.fillStyle = '#ffffff';
-    context.fillRect(0, 0, exportCanvas.width, exportCanvas.height);
-
-    context.drawImage(
-      canvas,
-      0, 0, canvas.width, canvas.height,
-      0, 0, exportCanvas.width, exportCanvas.height
-    );
-
-    this.finish.emit(exportCanvas.toDataURL('image/png'));
+    const image = canvas.toDataURL('image/png');
+    this.finish.emit(image);
   }
+
 
   // Change color
   setPenColor(color: string): void {
