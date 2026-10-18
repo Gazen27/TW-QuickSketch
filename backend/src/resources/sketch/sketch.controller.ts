@@ -1,6 +1,7 @@
 import type { Request, Response, NextFunction } from 'express';
 import      { APIResponse                     } from '../../common/utils/api.response.js';
 import      { AppError                        } from '../../common/errors/app.error.js';
+import      { exploreQuerySchema              } from './sketch.schema.js';
 import * as service                             from './sketch.service.js'
 
 // posting a new sketch
@@ -15,14 +16,33 @@ export async function postSketch(req: Request, res: Response, next: NextFunction
   catch (error) { next(error); }
 }
 
-// sketches retrieval
+
+// sketches retrieval with pagination and sorting
 export async function getSketches(req: Request, res: Response, next: NextFunction){
-  try{
-    const sketches = await service.getSketches();
-    return res.status(200).json(APIResponse.success('Sketches retrieved', sketches));
+  try {
+    const result = exploreQuerySchema.safeParse(req.query);
+    if (!result.success) { throw new AppError('Invalid pagination or sorting parameters', 400); }
+
+    const { page, limit, sortBy, order } = result.data;
+
+    const [sketches, total] = await Promise.all([
+      service.getSketches(page, limit, sortBy, order),
+      service.countTotalSketches()
+    ]);
+
+    return res.status(200).json(
+      APIResponse.success('Sketches retrieved', {
+        items: sketches,
+        page,
+        limit,
+        total,
+        totalPages: Math.ceil(total / limit)
+      })
+    );
   }
-  catch(error){ next(error); }
+  catch(error) { next(error); }
 }
+
 
 // retrieving the word associated to a sketch
 export async function getSolution(req: Request, res: Response, next: NextFunction){

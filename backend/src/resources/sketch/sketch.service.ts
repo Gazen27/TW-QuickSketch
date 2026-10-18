@@ -3,6 +3,9 @@ import { prisma                } from '../../common/utils/prisma.js';
 import { incrementSketchCount  } from '../user/user.service.js';
 import { calculateDrawingScore } from '../user/user.service.js';
 
+type SketchSortBy = 'createdAt' | 'guessCount';
+type SortOrder = 'asc' | 'desc';
+
 // posting a new sketch
 export async function postSketch(authorId : string, wordId: string, drawing : string){
   const word = await prisma.word.findUnique({where: { id: wordId }});
@@ -14,9 +17,25 @@ export async function postSketch(authorId : string, wordId: string, drawing : st
   return sketch;
 }
 
-// retrieving all sketches
-export async function getSketches(){
-  return prisma.sketch.findMany();
+// retrieving all sketches with pagination and sorting
+export async function getSketches(
+  page: number,
+  limit: number,
+  sortBy: SketchSortBy,
+  order: SortOrder
+) {
+  const skip = (page - 1) * limit;
+
+  return prisma.sketch.findMany({
+    skip,
+    take: limit,
+    orderBy: { [sortBy]: order }
+  });
+}
+
+// Counting total sketches
+export async function countTotalSketches() {
+  return prisma.sketch.count();
 }
 
 // retrieving a specific sketch with associated word field
