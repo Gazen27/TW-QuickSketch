@@ -1,14 +1,13 @@
-import { Component                       } from '@angular/core';
-import { signal, inject                  } from '@angular/core';
-import { WordService                     } from '../../services/word.service';
-import { SketchService                   } from '../../services/sketch.service';
-import { SingleWord                      } from '../../models/word.model';
-import { DialogComponent                 } from '../../components/dialog/dialog';
-import { DrawIntro                       } from './phases/draw-intro/draw-intro';
-import { DrawCategories                  } from './phases/draw-categories/draw-categories';
-import { DrawWords                       } from './phases/draw-words/draw-words';
-import { DrawSession                     } from './phases/draw-session/draw-session';
-import { DrawPreview                     } from './phases/draw-preview/draw-preview';
+import { Component, signal, inject } from '@angular/core';
+import { WordService               } from '../../services/word.service';
+import { SketchService             } from '../../services/sketch.service';
+import { SingleWord                } from '../../models/word.model';
+import { DialogComponent           } from '../../components/dialog/dialog';
+import { DrawIntro                 } from './phases/draw-intro/draw-intro';
+import { DrawCategories            } from './phases/draw-categories/draw-categories';
+import { DrawWords                 } from './phases/draw-words/draw-words';
+import { DrawSession               } from './phases/draw-session/draw-session';
+import { DrawPreview               } from './phases/draw-preview/draw-preview';
 
 type Phase =
   | 'intro'
