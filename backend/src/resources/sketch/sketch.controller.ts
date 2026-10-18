@@ -29,9 +29,8 @@ export async function getSketches(req: Request, res: Response, next: NextFunctio
       service.countTotalSketches()
     ]);
 
-    console.log('GET SKETCHES - PAGINATION CONTROLLER');
     return res.status(200).json(
-      APIResponse.success('TEST 123', {
+      APIResponse.success('Sketches retrieved', {
         items: sketches,
         page,
         limit,
