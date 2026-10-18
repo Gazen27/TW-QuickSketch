@@ -24,12 +24,19 @@
     <section class="sketch-grid">
       @for (sketch of sketches(); track sketch.id) {
         <article class="sketch-card">
+
+          <!-- Author -->
+          <div class="author-zone">@{{ sketch.author.username }}</div>
+
           <!-- Drawing -->
-          <div class="drawing-container"><img class="drawing" [src]="sketch.drawing"/></div>
-          <!-- Info -->
+          <div class="drawing-container">
+            <img class="drawing" [src]="sketch.drawing"/>
+          </div>
+
+          <!-- Info and action -->
           <div class="sketch-info">
-            <span class="author">{{ sketch.author.username }}</span>
             <span class="guess-count">{{ sketch.guessCount }} Correct</span>
+            <button class="guess-button" type="button">GUESS</button>
           </div>
         </article>
       }
@@ -40,13 +47,13 @@
     @if (totalPages() > 0) {
       <nav class="pagination">
         <button (click)="previousPage()" [disabled]="currentPage() <= 1">
-          PREVIOUS
+          &lt;
         </button>
 
         <span>{{ currentPage() }} / {{ totalPages() }}</span>
 
         <button (click)="nextPage()" [disabled]="currentPage() >= totalPages()">
-          NEXT
+          &gt;
         </button>
       </nav>
     }
