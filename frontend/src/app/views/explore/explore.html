@@ -1,12 +1,9 @@
 <main class="explore">
+  <!-- Sketches sorting -->
   <div class="explore-header">
     <label class="sort-control">
       <span>ORDER BY</span>
-
-      <select
-        [value]="selectedSort()"
-        (change)="changeSort($any($event.target).value)"
-      >
+      <select [value]="selectedSort()" (change)="changeSort($any($event.target).value)">
         <option value="newest">Most recent</option>
         <option value="oldest">Least recent</option>
         <option value="most-guessed">Most guessed</option>
@@ -15,52 +12,40 @@
     </label>
   </div>
 
-  @if (loading()) {
-    <p class="status-message">Caricamento disegni...</p>
-  } @else if (errorMessage()) {
+  <!-- Loading and error message -->
+  @if (loading()) { <p class="status-message">Loading...</p> }
+  @else if (errorMessage()) {
     <p class="status-message">{{ errorMessage() }}</p>
     <button class="button" (click)="loadSketches()">RIPROVA</button>
-  } @else {
+  }
+
+  <!-- Sketches -->
+  @else {
     <section class="sketch-grid">
       @for (sketch of sketches(); track sketch.id) {
         <article class="sketch-card">
-          <div class="drawing-container">
-            <img
-              class="drawing"
-              [src]="sketch.drawing"
-              [alt]="'Disegno di ' + sketch.author.username"
-              loading="lazy"
-            />
-          </div>
-
+          <!-- Drawing -->
+          <div class="drawing-container"><img class="drawing" [src]="sketch.drawing"/></div>
+          <!-- Info -->
           <div class="sketch-info">
             <span class="author">{{ sketch.author.username }}</span>
-            <span class="guess-count">
-              {{ sketch.guessCount }}
-              {{ sketch.guessCount === 1 ? 'risposta corretta' : 'risposte corrette' }}
-            </span>
+            <span class="guess-count">{{ sketch.guessCount }} Correct</span>
           </div>
         </article>
-      } @empty {
-        <p class="status-message">Nessun disegno disponibile.</p>
       }
+      @empty { <p class="status-message">No drawings available.</p> }
     </section>
 
+    <!-- Pages navigation -->
     @if (totalPages() > 0) {
-      <nav class="pagination" aria-label="Paginazione disegni">
-        <button
-          (click)="previousPage()"
-          [disabled]="currentPage() <= 1"
-        >
+      <nav class="pagination">
+        <button (click)="previousPage()" [disabled]="currentPage() <= 1">
           PREVIOUS
         </button>
 
         <span>{{ currentPage() }} / {{ totalPages() }}</span>
 
-        <button
-          (click)="nextPage()"
-          [disabled]="currentPage() >= totalPages()"
-        >
+        <button (click)="nextPage()" [disabled]="currentPage() >= totalPages()">
           NEXT
         </button>
       </nav>
