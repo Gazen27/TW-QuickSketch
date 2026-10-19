@@ -1,0 +1,243 @@
+.guess-page {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 24px;
+  box-sizing: border-box;
+}
+
+.guess-page h1 {
+  margin: 0 0 12px;
+  text-align: center;
+}
+
+.sketch-author {
+  margin: 0 0 20px;
+  text-align: center;
+  color: #777;
+}
+
+.guess-container {
+  display: grid;
+  grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr);
+  gap: 20px;
+  padding: 20px;
+  border: 1px solid #ddd;
+  border-radius: 16px;
+  background: #fff;
+  box-sizing: border-box;
+}
+
+/* Pannello del disegno */
+.drawing-panel {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 0;
+  min-height: 400px;
+  padding: 12px;
+  border-radius: 12px;
+  background: #f5f5f5;
+}
+
+.sketch-image {
+  display: block;
+  width: 100%;
+  max-height: 600px;
+  object-fit: contain;
+  border-radius: 8px;
+}
+
+/* Pannello dei tentativi */
+.guess-chat {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  min-width: 0;
+}
+
+/* Campo e pulsante */
+.guess-form {
+  display: flex;
+  gap: 10px;
+  width: 100%;
+}
+
+.guess-form input {
+  flex: 1;
+  min-width: 0;
+  padding: 14px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 1rem;
+  text-transform: uppercase;
+}
+
+.guess-form button {
+  padding: 14px 20px;
+  border: none;
+  border-radius: 8px;
+  background: #222;
+  color: #fff;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.guess-form button:hover {
+  background: #444;
+}
+
+/* Cronologia */
+.guess-history {
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+  flex: 1;
+  padding: 16px;
+  border: 1px solid #e5e5e5;
+  border-radius: 12px;
+}
+
+.guess-history h2 {
+  margin: 0 0 16px;
+  font-size: 1rem;
+}
+
+.empty-history {
+  color: #888;
+  text-align: center;
+  margin: 20px 0;
+}
+
+.error-message {
+  text-align: center;
+  color: #c62828;
+}
+
+/* Tablet e cellulare */
+@media (max-width: 768px) {
+  .guess-page {
+    padding: 16px;
+  }
+
+  .guess-container {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 16px;
+    padding: 12px;
+  }
+
+  .drawing-panel {
+    min-height: 250px;
+  }
+
+  .sketch-image {
+    max-height: 420px;
+  }
+
+  .guess-chat {
+    gap: 12px;
+  }
+
+  .guess-history {
+    max-height: 280px;
+    overflow-y: auto;
+  }
+}
+
+.attempts-left {
+  margin: 0 0 12px;
+  color: #777;
+  font-size: 0.9rem;
+}
+
+.guess-history-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  overflow-y: auto;
+  min-height: 0;
+}
+
+.guess-attempt {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px;
+  border-radius: 8px;
+  background: #f5f5f5;
+}
+
+.attempt-number {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 32px;
+  height: 32px;
+  border-radius: 6px;
+  background: #e5e5e5;
+  font-size: 0.85rem;
+  font-weight: 600;
+}
+
+.attempt-content {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  min-width: 0;
+}
+
+.attempt-text {
+  overflow-wrap: anywhere;
+  font-weight: 600;
+}
+
+.attempt-result {
+  font-size: 0.75rem;
+  color: #777;
+}
+
+.guess-attempt.correct {
+  background: #e8f5e9;
+}
+
+.guess-attempt.correct .attempt-result {
+  color: #2e7d32;
+  font-weight: 600;
+}
+
+.guess-attempt.incorrect .attempt-result {
+  color: #c62828;
+}
+
+/* CellularI stretti */
+@media (max-width: 420px) {
+  .guess-page {
+    padding: 10px;
+  }
+
+  .guess-page h1 {
+    font-size: 1.4rem;
+  }
+
+  .guess-container {
+    padding: 8px;
+  }
+
+  .drawing-panel {
+    min-height: 200px;
+    padding: 8px;
+  }
+
+  .guess-form {
+    gap: 6px;
+  }
+
+  .guess-form input {
+    padding: 12px 10px;
+    font-size: 0.9rem;
+  }
+
+  .guess-form button {
+    padding: 12px;
+  }
+}

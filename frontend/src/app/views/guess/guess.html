@@ -1,24 +1,55 @@
 <div class="guess-page">
-  @if (errorMessage()) {
-    <p class="error-message">{{ errorMessage() }}</p>
-  } @else if (sketch(); as currentSketch) {
-    <h1>GUESS THE SKETCH</h1>
+  <!-- Title --> 
+  <h1>GUESS THE SKETCH</h1>
 
-    <p class="sketch-author">
-      Drawn by {{ currentSketch.author.username }}
-    </p>
+  <!-- Error message -->
+  @if (errorMessage()) { <p class="error-message">{{ errorMessage() }}</p> }
 
-    <div class="sketch-container">
-      <img
-        [src]="currentSketch.drawing"
-        alt="Disegno da indovinare"
-      />
+  <!-- Main container -->
+  @else if (sketch(); as currentSketch) {
+    <p class="sketch-author">Drawn by @{{ currentSketch.author.username }}</p>
+    <div class="guess-container">
+
+      <!-- Sketch -->
+      <section class="drawing-panel">
+        <img [src]="currentSketch.drawing" class="sketch-image"/>
+      </section>
+
+      <!-- Guesses zone -->
+      <section class="guess-chat">
+
+        <!-- Guess form -->
+        <form class="guess-form" (ngSubmit)="submitGuess()">
+          <!-- Sending an empty guess -->
+          @if (guessError()) { <p class="error-message">{{ guessError() }}</p> }
+
+          <!-- Guess input -->
+          <input type="text" placeholder="TYPE YOUR GUESS..."
+          autocomplete="off" [value]="guessInput()" (input)="onGuessInput($any($event.target).value)"/>
+          <button type="submit" >SEND</button>
+        </form>
+
+        <!-- Previous attempts log -->
+        <div class="guess-history">
+          <h2>YOUR ATTEMPTS</h2>
+
+          <p class="attempts-left">Attempts left: {{ attemptsLeft() }}/10</p>
+          <div class="guess-history-list">
+            @for (attempt of guessHistory(); track attempt.id; let i = $index) {
+              <div class="guess-attempt" [class.correct]="attempt.isCorrect" [class.incorrect]="!attempt.isCorrect">
+                
+                <span class="attempt-number">{{ (i + 1).toString().padStart(2, '0') }}</span>
+                <div class="attempt-content">
+                  <span class="attempt-text">{{ attempt.text }}</span>
+                  <span class="attempt-result">{{ attempt.isCorrect ? 'CORRETTO' : 'ERRATO' }}</span>
+                </div>
+              </div>
+            }
+          </div>
+        </div>
+      </section>
     </div>
-
-    <p class="guess-count">
-      Tentativi totali: {{ currentSketch.guessCount }}
-    </p>
-  } @else {
-    <p>Loading...</p>
   }
+  
+  @else { <p>Loading...</p> }
 </div>

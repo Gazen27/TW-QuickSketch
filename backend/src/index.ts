@@ -21,7 +21,7 @@ app.use(express.json());
 app.use('/users', userRouter);
 app.use('/words', wordRouter);
 app.use('/sketches', sketchRouter);
-app.use('/guess', guessRouter);
+app.use('/guesses', guessRouter);
 app.use('/leaderboard', leaderboardRouter);
 
 // error handler
