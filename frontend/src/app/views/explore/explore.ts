@@ -1,12 +1,13 @@
-import { Component, inject, OnInit, signal } from '@angular/core';
+import { Component, inject, OnInit, signal      } from '@angular/core';
 import { SketchService, SketchSortBy, SortOrder } from '../../services/sketch.service.js';
-import { ExploreSketch } from '../../models/sketch.model.js';
+import { ExploreSketch                          } from '../../models/sketch.model.js';
+import { RouterLink                             } from '@angular/router';
 
 type ExploreSort = 'newest' | 'oldest' | 'most-guessed' | 'least-guessed';
 
 @Component({
   selector: 'app-explore',
-  imports: [],
+  imports: [RouterLink],
   templateUrl: './explore.html',
   styleUrl: './explore.css',
 })

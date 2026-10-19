@@ -16,7 +16,7 @@
   @if (loading()) { <p class="status-message">Loading...</p> }
   @else if (errorMessage()) {
     <p class="status-message">{{ errorMessage() }}</p>
-    <button class="button" (click)="loadSketches()">RIPROVA</button>
+    <button class="button" (click)="loadSketches()">RETRY</button>
   }
 
   <!-- Sketches -->
@@ -35,8 +35,8 @@
 
           <!-- Info and action -->
           <div class="sketch-info">
+            <button class="guess-button" type="button" routerLink="/guess">GUESS</button>
             <span class="guess-count">{{ sketch.guessCount }} Correct</span>
-            <button class="guess-button" type="button">GUESS</button>
           </div>
         </article>
       }

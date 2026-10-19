@@ -8,6 +8,7 @@ import { Login       } from './views/login/login';
 import { Signup      } from './views/signup/signup';
 import { Profile     } from './views/profile/profile';
 import { Info        } from './views/info/info';
+import { Guess       } from './views/guess/guess';
 
 export const routes: Routes = [
   {
@@ -30,6 +31,11 @@ export const routes: Routes = [
   {
     path: 'explore',
     component: Explore
+  },
+  {
+    path: 'guess',
+    component: Guess,
+    canActivate: [authGuard]
   },
   {
     path: 'leaderboard',
