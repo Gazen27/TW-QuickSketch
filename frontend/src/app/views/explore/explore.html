@@ -35,7 +35,7 @@
 
           <!-- Info and action -->
           <div class="sketch-info">
-            <button class="guess-button" type="button" routerLink="/guess">GUESS</button>
+            <button class="guess-button" type="button" [routerLink]="['/guess', sketch.id]">GUESS</button>
             <span class="guess-count">{{ sketch.guessCount }} Correct</span>
           </div>
         </article>

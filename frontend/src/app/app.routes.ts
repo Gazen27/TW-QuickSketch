@@ -33,7 +33,7 @@ export const routes: Routes = [
     component: Explore
   },
   {
-    path: 'guess',
+    path: 'guess/:id',
     component: Guess,
     canActivate: [authGuard]
   },
