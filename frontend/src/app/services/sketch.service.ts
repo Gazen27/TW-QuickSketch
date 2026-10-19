@@ -40,11 +40,31 @@ export class SketchService {
       .set('order', order);
     
       return this.http.get<ApiResponse<ExploreSketches>>(this.apiUrl, { params }).pipe(
-  map(response => {
-    console.log('RISPOSTA GET SKETCHES:', response);
-    return response;
+      map(response => {
+        console.log('RISPOSTA GET SKETCHES:', response);
+      return response;
   })
 );
     //return this.http.get<ApiResponse<ExploreSketches>>(this.apiUrl, { params });
+  }
+
+  getSketchById(id: string): Observable<ApiResponse<{
+    id: string;
+    drawing: string;
+    createdAt: string;
+    guessCount: number;
+    author: {
+      username: string;
+    };
+  }>> {
+    return this.http.get<ApiResponse<{
+      id: string;
+      drawing: string;
+      createdAt: string;
+      guessCount: number;
+      author: {
+        username: string;
+      };
+    }>>(`${this.apiUrl}/${id}`);
   }
 }

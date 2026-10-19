@@ -42,6 +42,29 @@ export async function getSketches(req: Request, res: Response, next: NextFunctio
   catch(error) { next(error); }
 }
 
+// retrieving a specific sketch by id
+export async function getSketchById(req: Request, res: Response, next: NextFunction) {
+  try {
+    const { id } = req.params;
+    if (typeof id !== 'string') { throw new AppError('Invalid sketch id', 400); }
+    
+    const sketch = await service.getSpecificSketch(id);
+
+    if (!sketch) { throw new AppError('Sketch not found', 404); }
+
+    return res.status(200).json(
+      APIResponse.success('Sketch retrieved', {
+        id: sketch.id,
+        drawing: sketch.drawing,
+        createdAt: sketch.createdAt,
+        guessCount: sketch.guessCount,
+        author: sketch.author
+      })
+    );
+  }
+  catch (error) { next(error); }
+}
+
 // retrieving the word associated to a sketch
 export async function getSolution(req: Request, res: Response, next: NextFunction){
   try{

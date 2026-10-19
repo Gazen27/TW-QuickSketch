@@ -1,0 +1,24 @@
+<div class="guess-page">
+  @if (errorMessage()) {
+    <p class="error-message">{{ errorMessage() }}</p>
+  } @else if (sketch(); as currentSketch) {
+    <h1>GUESS THE SKETCH</h1>
+
+    <p class="sketch-author">
+      Drawn by {{ currentSketch.author.username }}
+    </p>
+
+    <div class="sketch-container">
+      <img
+        [src]="currentSketch.drawing"
+        alt="Disegno da indovinare"
+      />
+    </div>
+
+    <p class="guess-count">
+      Tentativi totali: {{ currentSketch.guessCount }}
+    </p>
+  } @else {
+    <p>Loading...</p>
+  }
+</div>

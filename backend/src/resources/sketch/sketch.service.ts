@@ -39,11 +39,14 @@ export async function countTotalSketches() {
   return prisma.sketch.count();
 }
 
-// retrieving a specific sketch with associated word field
-export async function getSpecificSketch(sketchId : string){
+// retrieving a specific sketch with associated word and author
+export async function getSpecificSketch(sketchId: string) {
   return prisma.sketch.findUnique({
-    where:   { id: sketchId },
-    include: { word: { include: { aliases: true } } }
+    where: { id: sketchId },
+    include: {
+      word: { include: { aliases: true } },
+      author: { select: { username: true } }
+    }
   });
 }
 
