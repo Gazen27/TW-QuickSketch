@@ -40,19 +40,33 @@ export class Guess implements OnInit {
     const id = this.route.snapshot.paramMap.get('id');
 
     this.sketchId.set(id);
-
     if (!id) {
       this.errorMessage.set('Missing sketch ID');
       return;
     }
 
+    this.loadSketch(id);
+  }
+
+  // loading selected sketch from explore view
+  private loadSketch(id: string): void {
     this.sketchService.getSketchById(id).subscribe({
       next: (response) => {
         this.sketch.set(response.data);
+        this.loadGuessHistory(id);
       },
-      error: () => {
-        this.errorMessage.set('Error loading selcted sketch');
-      }
+      error: () => { this.errorMessage.set('Error loading selected sketch'); }
+    });
+  }
+
+  // loading attempts history of the current user refered to the selected sketch
+  private loadGuessHistory(sketchId: string): void {
+    this.guessService.getGuessHistory(sketchId).subscribe({
+      next: (guesses) => {
+        this.guessHistory.set(guesses);
+        this.attemptsLeft.set(10 - guesses.length);
+      },
+      error: () => { this.guessError.set('Unable to load your guess history'); }
     });
   }
   

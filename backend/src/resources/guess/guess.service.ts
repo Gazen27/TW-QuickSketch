@@ -45,3 +45,13 @@ export async function postGuess(userId : string, sketchId : string, text : strin
   const attemptsLeft = 10 - (attempts +1);
   return { guess, attemptsLeft };
 }
+
+
+// retrieving guess history from an user for a specific sketch
+export async function getGuessHistory(userId: string, sketchId: string) {
+  const guesses = await prisma.guess.findMany({
+    where: { userId, sketchId }
+  });
+
+  return guesses;
+}
