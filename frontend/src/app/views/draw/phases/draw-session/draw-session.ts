@@ -118,7 +118,7 @@ export class DrawSession {
     if (!context) return;
 
     context.setTransform(ratio, 0, 0, ratio, 0, 0);
-    context.fillStyle = '#ffffff';
+    context.fillStyle = '#faf9f6';
     context.fillRect(0, 0, rect.width, rect.height);
     this.signaturePad?.off();
 
@@ -153,7 +153,7 @@ export class DrawSession {
       return;
     }
 
-    context.fillStyle = '#ffffff';
+    context.fillStyle = '#faf9f6';
     context.fillRect(0, 0, exportCanvas.width, exportCanvas.height);
     context.drawImage(canvas, 0, 0);
 
@@ -186,7 +186,7 @@ export class DrawSession {
     if (this.signaturePad) {
       this.signaturePad.minWidth = this.eraserSize();
       this.signaturePad.maxWidth = this.eraserSize();
-      this.signaturePad.penColor = '#ffffff';
+      this.signaturePad.penColor = '#faf9f6';
     }
   }
 
