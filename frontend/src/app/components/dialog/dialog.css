@@ -35,13 +35,13 @@
   text-align: center;
 }
 
-.dialog h2 {
+.dialog .title {
   margin: 0;
   color: var(--color-primary);
   font-size: 1.6rem;
 }
 
-.dialog p {
+.dialog .message {
   margin: 0;
   color: var(--color-neutral);
   line-height: 1.5;
@@ -105,13 +105,13 @@
   box-shadow: 0 0.3rem 1.5rem rgba(0, 0, 0, 0.2);
 }
 
-.toast h2 {
+.toast .title {
   margin: 0 0 0.4rem;
   color: var(--color-primary);
   font-size: 1.1rem;
 }
 
-.toast p {
+.toast .message {
   margin: 0;
   color: var(--color-neutral);
   line-height: 1.4;

@@ -2,8 +2,8 @@
 @if (mode === 'toast') {
   <div class="toast" role="status">
     <div class="toast-content">
-      <h2>{{ title }}</h2>
-      <p>{{ message }}</p>
+      <h2 class="title">{{ title }}</h2>
+      <p class="message">{{ message }}</p>
     </div>
   </div>
 }
@@ -12,8 +12,8 @@
 @else {
   <div class="dialog-overlay">
     <section class="dialog" role="dialog">
-      <h2>{{ title }}</h2>
-      <p>{{ message }}</p>
+      <h2 class="title">{{ title }}</h2>
+      <p class="message">{{ message }}</p>
 
       <div class="dialog-actions">
         <!-- CONFIRMATION (double button) -->
