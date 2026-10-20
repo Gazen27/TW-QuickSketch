@@ -9,12 +9,12 @@
 	  <form class="form" (ngSubmit)="onSubmit()">
 		  <div class="input-group">
 			  <label for="username">Username</label>
-			  <input type="text" name="username" id="username" [(ngModel)]="username">
+			  <input type="text" name="username" id="username" [(ngModel)]="username" (input)="clearAuthRequiredMessage()">
 		  </div>
 		  <div class="input-group">
 			  <label for="password">Password</label>
         <div class="password-container">
-          <input [type]="showPassword() ? 'text' : 'password'" name="password" id="password" [(ngModel)]="password">
+          <input [type]="showPassword() ? 'text' : 'password'" name="password" id="password" [(ngModel)]="password" (input)="clearAuthRequiredMessage()">
           <button class="toggle-password" type="button" (click)="togglePasswordVisibility()">
             @if (showPassword()) {<img src="icons/password/password-on-icon.svg">}
             @else              {<img src="icons/password/password-off-icon.svg">}
@@ -30,7 +30,8 @@
 	  </p>
   </div>
 
-  @if(errorMessage()){
-    <p class="error-message" role="alert">{{errorMessage()}}</p>
-  }
+
+  @if (authRequired()) {<p class="message warning" role="status">You must be logged in</p>}
+  @else if (errorMessage()) {<p class="message error" role="alert">{{ errorMessage() }}</p>}
+
 </main>

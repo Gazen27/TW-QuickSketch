@@ -1,9 +1,8 @@
-import { Component   } from '@angular/core';
-import { Router      } from '@angular/router';
-import { RouterLink  } from '@angular/router';
-import { FormsModule } from '@angular/forms';
-import { AuthService } from '../../services/auth.service';
-import { signal      } from '@angular/core';
+import { Component, signal  } from '@angular/core';
+import { Router, RouterLink } from '@angular/router';
+import { ActivatedRoute     } from '@angular/router';
+import { FormsModule        } from '@angular/forms';
+import { AuthService        } from '../../services/auth.service';
 
 @Component({
   selector: 'app-login',
@@ -16,10 +15,15 @@ export class Login {
   password = '';
   errorMessage = signal('');
   showPassword = signal(false);
+  authRequired = signal(false);
 
-  constructor(private authService: AuthService, private router: Router){}
+  constructor(private authService: AuthService, private router: Router, private route: ActivatedRoute){
+    this.authRequired.set(this.route.snapshot.queryParamMap.get('authRequired') === 'true');
+  }
 
   togglePasswordVisibility(): void { this.showPassword.update(value => !value); }
+
+  clearAuthRequiredMessage(): void { this.authRequired.set(false); }
 
   onSubmit(){
     this.authService.login(this.username, this.password).subscribe({
