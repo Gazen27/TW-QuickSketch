@@ -38,14 +38,24 @@
   border-radius: 12px;
   background: #faf9f6;
   overflow: hidden;
+  gap: 2.5rem;
 }
 
 /***** Title header *****/
+.drawing-header {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5rem;
+  max-width: 100%;
+}
+
 .title {
   font-size: 1.9rem;
   font-weight: 800;
   text-align: center;
-  margin: 0 0 8px;
+  margin: 0;
 }
 
 .sketch-author {
@@ -53,6 +63,7 @@
   text-align: center;
   color: #777777;
   margin: 0;
+  overflow-wrap: anywhere;
 }
 
 /***** Sketch *****/
@@ -64,10 +75,10 @@
   max-height: 480px;
   border-radius: 8px;
   object-fit: contain;
-  margin: 1.5rem 0;
 }
 
-.guess-chat {
+/***** Guess container *****/
+.guess-container {
   display: grid;
   grid-template-areas:
     "history"
@@ -80,6 +91,7 @@
   overflow: hidden;
 }
 
+/***** Guess form *****/
 .guess-form {
   display: flex;
   align-items: center;
@@ -94,7 +106,7 @@
   min-width: 0;
   padding: 11px 12px;
   box-sizing: border-box;
-  border: 1px solid #ccc;
+  border: 1px solid #c4c4c4;
   border-radius: 8px;
   font-size: 0.95rem;
   text-transform: uppercase;
@@ -105,19 +117,22 @@
   padding: 11px 16px;
   border: none;
   border-radius: 8px;
-  background: #222;
-  color: #fff;
+  background: var(--color-static);
+  color: var(--color-base);
   font-weight: 600;
   cursor: pointer;
+  letter-spacing: 0.5px;
 }
 
 .guess-form button:hover {
-  background: #444;
+  background: var(--color-neutral);
 }
 
+/***** Messages *****/
 .error-message {
   text-align: center;
   color: #c62828;
+  overflow-wrap: anywhere;
 }
 
 .guess-feedback {
@@ -126,21 +141,23 @@
   border-radius: 8px;
   font-weight: 700;
   text-align: center;
+  overflow-wrap: anywhere;
 }
 
 .guess-feedback.error {
   color: #b91c1c;
-  background-color: #fee2e2;
-  border: 1px solid #fca5a5;
+  background-color: #fecaca;
+  border: 1px solid #f87171;
 }
 
 .guess-feedback.success {
   color: #15803d;
-  background-color: #dcfce7;
-  border: 1px solid #86efac;
+  background-color: #bbf7d0;
+  border: 1px solid #4ade80;
 }
 
-.guess-history {
+/***** Previous attempts history *****/
+.history-container {
   display: flex;
   flex-direction: column;
   grid-area: history;
@@ -148,24 +165,38 @@
   min-height: 0;
   padding: 12px;
   box-sizing: border-box;
-  border: 1px solid #e5e5e5;
+  border: 1px solid #c4c4c4;
   border-radius: 12px;
   overflow: hidden;
+
+  gap: 1rem;
 }
 
-.guess-history h2 {
+/***** Info header *****/
+.history-header {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+
+  gap: 0.5rem;
+}
+
+.history-header h2 {
   flex-shrink: 0;
-  margin: 0 0 12px;
+  margin: 0;
   font-size: 0.95rem;
 }
 
 .attempts-left {
+  font-weight: 600;
   flex-shrink: 0;
-  margin: 0 0 10px;
-  color: #777;
+  margin: 0;
+  color: #777777;
   font-size: 0.85rem;
 }
 
+/***** Previous attempts list *****/
 .guess-history-list {
   display: flex;
   flex-direction: column;
@@ -179,6 +210,7 @@
 }
 
 .guess-attempt {
+  width: 90%;
   display: flex;
   align-items: center;
   flex-shrink: 0;
@@ -232,23 +264,51 @@
   font-weight: 600;
 }
 
-@media (max-width: 420px) {
+/***** Tablet and smartphones *****/
+@media (max-width: 1024px) {
   .guess-page {
+    justify-content: flex-start;
+    min-height: 100vh;
     padding: 10px;
+  }
+
+  .main-container {
+    grid-template-columns: minmax(0, 1fr);
+    grid-template-rows: auto auto;
+    height: auto;
+    gap: 12px;
+    padding: 8px;
+    overflow: visible;
+  }
+
+  .drawing-container {
+    min-height: 0;
+    gap: 1rem;
+    padding: 8px;
   }
 
   .title {
     font-size: 1.3rem;
   }
 
-  .guess-container {
-    gap: 12px;
-    padding: 8px;
+  .sketch-image {
+    max-height: 260px;
   }
 
-  .drawing-panel {
-    min-height: 200px;
-    padding: 8px;
+  .guess-container {
+    grid-template-areas:
+      "form"
+      "history";
+    grid-template-rows: auto 260px;
+    height: auto;
+    min-height: 0;
+    gap: 10px;
+    overflow: visible;
+  }
+
+  .history-container {
+    min-height: 0;
+    padding: 10px;
   }
 
   .guess-form {
@@ -262,9 +322,5 @@
 
   .guess-form button {
     padding: 12px;
-  }
-
-  .guess-history {
-    padding: 10px;
   }
 }

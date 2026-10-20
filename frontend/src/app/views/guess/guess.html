@@ -10,15 +10,17 @@
       <!-- Sketch -->
       <section class="drawing-container">
         
-        <!-- Title -->
-        <h1 class="title">GUESS THE SKETCH</h1>
-        <p class="sketch-author">Drawn by @{{ currentSketch.author.username }}</p>
+        <!-- Title and author -->
+        <div class="drawing-header">
+          <h1 class="title">GUESS THE SKETCH</h1>
+          <p class="sketch-author">Drawn by @{{ currentSketch.author.username }}</p>
+        </div>
 
         <img [src]="currentSketch.drawing" class="sketch-image"/>
       </section>
 
       <!-- Guesses zone -->
-      <section class="guess-chat">
+      <section class="guess-container">
 
         <!-- Guess form -->
         <form class="guess-form" (ngSubmit)="submitGuess()">
@@ -30,10 +32,13 @@
         </form>
 
         <!-- Previous attempts log -->
-        <div class="guess-history">
-          <h2>YOUR ATTEMPTS</h2>
+        <div class="history-container">
 
-          <p class="attempts-left">Attempts left: {{ attemptsLeft() }}/10</p>
+          <!-- History header -->
+          <div class="history-header">
+            <h2>YOUR ATTEMPTS</h2>
+            <p class="attempts-left">Attempts left: {{ attemptsLeft() }}/10</p>
+          </div>
           <div class="guess-history-list">
             @for (attempt of guessHistory(); track attempt.id; let i = $index) {
               <div class="guess-attempt" [class.correct]="attempt.isCorrect" [class.incorrect]="!attempt.isCorrect">
