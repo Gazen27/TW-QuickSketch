@@ -1,17 +1,19 @@
 <div class="guess-page">
-  <!-- Title --> 
-  <h1>GUESS THE SKETCH</h1>
-
+  
   <!-- Error message -->
   @if (errorMessage()) { <p class="error-message">{{ errorMessage() }}</p> }
 
   <!-- Main container -->
   @else if (sketch(); as currentSketch) {
-    <p class="sketch-author">Drawn by @{{ currentSketch.author.username }}</p>
-    <div class="guess-container">
+    <div class="main-container">
 
       <!-- Sketch -->
-      <section class="drawing-panel">
+      <section class="drawing-container">
+        
+        <!-- Title -->
+        <h1 class="title">GUESS THE SKETCH</h1>
+        <p class="sketch-author">Drawn by @{{ currentSketch.author.username }}</p>
+
         <img [src]="currentSketch.drawing" class="sketch-image"/>
       </section>
 

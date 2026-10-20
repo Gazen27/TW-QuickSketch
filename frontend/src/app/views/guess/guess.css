@@ -1,65 +1,72 @@
-/* Pagina */
+/***** General *****/
 .guess-page {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
   width: 100%;
   max-width: 1200px;
   min-height: 95vh;
   margin: 0 auto;
   padding: 16px 24px;
   box-sizing: border-box;
-  display: flex;
-  flex-direction: column;
 }
 
-.guess-page h1 {
-  margin: 0 0 8px;
-  text-align: center;
-  font-size: 1.6rem;
-}
-
-.sketch-author {
-  margin: 0 0 12px;
-  text-align: center;
-  color: #777;
-}
-
-/* Container principale */
-.guess-container {
+/***** Main container *****/
+.main-container {
   display: grid;
   grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr);
   gap: 14px;
   height: 500px;
   min-height: 0;
   padding: 14px;
+  box-sizing: border-box;
   border: 1px solid #ddd;
   border-radius: 16px;
-  background: #fff;
-  box-sizing: border-box;
+  background: #ffffff;
   overflow: hidden;
 }
 
-/* Disegno */
-.drawing-panel {
+/***** Drawing container *****/
+.drawing-container {
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
   min-width: 0;
   min-height: 0;
-  padding: 8px;
+  padding: 0.5rem;
   border-radius: 12px;
-  background: #f5f5f5;
+  background: #faf9f6;
   overflow: hidden;
 }
 
-.sketch-image {
-  display: block;
-  width: 100%;
-  height: 100%;
-  max-height: 480px;
-  object-fit: contain;
-  border-radius: 8px;
+/***** Title header *****/
+.title {
+  font-size: 1.9rem;
+  font-weight: 800;
+  text-align: center;
+  margin: 0 0 8px;
 }
 
-/* Area dei tentativi */
+.sketch-author {
+  font-weight: 600;
+  text-align: center;
+  color: #777777;
+  margin: 0;
+}
+
+/***** Sketch *****/
+.sketch-image {
+  display: block;
+  width: auto;
+  height: auto;
+  max-width: 100%;
+  max-height: 480px;
+  border-radius: 8px;
+  object-fit: contain;
+  margin: 1.5rem 0;
+}
+
 .guess-chat {
   display: grid;
   grid-template-areas:
@@ -73,12 +80,11 @@
   overflow: hidden;
 }
 
-/* Form */
 .guess-form {
-  grid-area: form;
   display: flex;
   align-items: center;
   gap: 8px;
+  grid-area: form;
   width: 100%;
   min-width: 0;
 }
@@ -87,11 +93,11 @@
   flex: 1;
   min-width: 0;
   padding: 11px 12px;
+  box-sizing: border-box;
   border: 1px solid #ccc;
   border-radius: 8px;
   font-size: 0.95rem;
   text-transform: uppercase;
-  box-sizing: border-box;
 }
 
 .guess-form button {
@@ -109,24 +115,42 @@
   background: #444;
 }
 
-/* Messaggi */
 .error-message {
   text-align: center;
   color: #c62828;
 }
 
-/* Cronologia */
+.guess-feedback {
+  margin: 16px 0 0;
+  padding: 12px 16px;
+  border-radius: 8px;
+  font-weight: 700;
+  text-align: center;
+}
+
+.guess-feedback.error {
+  color: #b91c1c;
+  background-color: #fee2e2;
+  border: 1px solid #fca5a5;
+}
+
+.guess-feedback.success {
+  color: #15803d;
+  background-color: #dcfce7;
+  border: 1px solid #86efac;
+}
+
 .guess-history {
-  grid-area: history;
   display: flex;
   flex-direction: column;
+  grid-area: history;
   min-width: 0;
   min-height: 0;
   padding: 12px;
+  box-sizing: border-box;
   border: 1px solid #e5e5e5;
   border-radius: 12px;
   overflow: hidden;
-  box-sizing: border-box;
 }
 
 .guess-history h2 {
@@ -142,12 +166,11 @@
   font-size: 0.85rem;
 }
 
-/* Scroll interno della cronologia */
 .guess-history-list {
   display: flex;
   flex-direction: column;
-  gap: 8px;
   flex: 1 1 0;
+  gap: 8px;
   min-width: 0;
   min-height: 0;
   overflow-x: hidden;
@@ -186,13 +209,13 @@
 }
 
 .attempt-text {
-  overflow-wrap: anywhere;
   font-weight: 600;
+  overflow-wrap: anywhere;
 }
 
 .attempt-result {
-  font-size: 0.7rem;
   color: #777;
+  font-size: 0.7rem;
 }
 
 .guess-attempt.correct {
@@ -209,108 +232,12 @@
   font-weight: 600;
 }
 
-.guess-feedback {
-  margin: 16px 0 0;
-  padding: 12px 16px;
-  border-radius: 8px;
-  font-weight: 700;
-  text-align: center;
-}
-
-.guess-feedback.error {
-  color: #b91c1c;
-  background-color: #fee2e2;
-  border: 1px solid #fca5a5;
-}
-
-.guess-feedback.success {
-  color: #15803d;
-  background-color: #dcfce7;
-  border: 1px solid #86efac;
-}
-
-/* Schermi desktop bassi */
-@media (min-width: 1025px) and (max-height: 800px) {
-  .guess-page {
-    padding-top: 8px;
-    padding-bottom: 8px;
-  }
-
-  .guess-page h1 {
-    font-size: 1.4rem;
-    margin-bottom: 4px;
-  }
-
-  .sketch-author {
-    margin-bottom: 8px;
-  }
-
-  .guess-container {
-    height: calc(95vh - 140px);
-    min-height: 320px;
-    gap: 12px;
-    padding: 12px;
-  }
-
-  .sketch-image {
-    max-height: 100%;
-  }
-}
-
-/* Tablet e cellulare */
-@media (max-width: 1024px) {
-  .guess-page {
-    min-height: 0;
-    padding: 16px;
-  }
-
-  .guess-page h1 {
-    font-size: 1.5rem;
-  }
-
-  .guess-container {
-    grid-template-columns: minmax(0, 1fr);
-    grid-template-rows: auto auto;
-    height: auto;
-    gap: 16px;
-    padding: 12px;
-    overflow: visible;
-  }
-
-  .drawing-panel {
-    min-height: 250px;
-  }
-
-  .sketch-image {
-    width: 100%;
-    height: auto;
-    max-height: 420px;
-  }
-
-  .guess-chat {
-    grid-template-areas:
-      "form"
-      "history";
-    grid-template-rows: auto 280px;
-    gap: 12px;
-    height: auto;
-    min-height: 0;
-    overflow: hidden;
-  }
-
-  .guess-history {
-    height: 280px;
-    min-height: 0;
-  }
-}
-
-/* CellularI stretti */
 @media (max-width: 420px) {
   .guess-page {
     padding: 10px;
   }
 
-  .guess-page h1 {
+  .title {
     font-size: 1.3rem;
   }
 
