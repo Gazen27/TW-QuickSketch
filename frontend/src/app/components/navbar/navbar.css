@@ -61,26 +61,87 @@
   transform: scale(1.2);
 }
 
-.link img {
-  width: 1.9rem;
-  height: 1.9rem;
+/********* Theme toggle *********/
+.theme-toggle {
+  display: inline-flex;
+  align-items: center;
+  cursor: pointer;
 }
 
-.dark-icon {
-  display: none;
+.theme-toggle input {
+  position: absolute;
+  opacity: 0;
+  width: 1px;
+  height: 1px;
 }
 
-.white-icon {
-  display: block;
+.toggle-track {
+  position: relative;
+  display: flex;
+  flex-direction: row-reverse;
+  align-items: center;
+  justify-content: space-between;
+  width: 3.35rem;
+  height: 1.775rem;
+  padding: 0 0.325rem;
+  box-sizing: border-box;
+  border-radius: 2rem;
+  background-color: #343434;
+  transition: background-color 0.25s ease;
 }
 
-:host-context(.light-theme) .dark-icon {
-  display: block;
+.toggle-track img {
+  position: absolute;
+  z-index: 1;
+  width: 0.95rem;
+  height: 0.95rem;
+  object-fit: contain;
 }
 
-:host-context(.light-theme) .white-icon {
-  display: none;
+.toggle-track .moon-icon { left: 0.36rem; }
+.toggle-track .sun-icon { right: 0.36rem; }
+
+.toggle-thumb {
+  position: absolute;
+  top: 0.15rem;
+  left: 0.15rem;
+  width: 1.475rem;
+  height: 1.475rem;
+  border-radius: 50%;
+  background-color: #fff;
+  transition: transform 0.25s ease;
 }
+
+.theme-toggle input:checked + .toggle-track {
+  background-color: var(--color-primary);
+}
+
+.theme-toggle input:checked + .toggle-track .toggle-thumb {
+  transform: translateX(1.575rem);
+}
+
+.theme-toggle input:focus-visible + .toggle-track {
+  outline: 2px solid var(--color-secondary);
+  outline-offset: 3px;
+}
+
+.theme-toggle:hover .toggle-track {
+  filter: brightness(1.1);
+}
+
+/****** Dark theme ******/
+.moon-icon { display: block; }
+.sun-icon { display: none; }
+
+.dark-icon { display: none; }
+.white-icon { display: block; }
+
+/****** Light theme ******/
+:host-context(.light-theme) .sun-icon { display: block; }
+:host-context(.light-theme) .moon-icon { display: none; }
+
+:host-context(.light-theme) .dark-icon { display: block; }
+:host-context(.light-theme) .white-icon { display: none; }
 
 /********* Right menu *********/
 .menu-button {

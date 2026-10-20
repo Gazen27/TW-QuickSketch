@@ -2,16 +2,26 @@
   <!-- App logo -->
   <a class="logo" routerLink="/">QUICKSKETCH</a>
 
-  <!-- Navigation and theme -->
+  <!-- Navigation -->
   <div class="navbar-links">
     @if(isLoggedIn$ | async){ <a class="link" routerLink="/draw">DRAW</a> }
     <a class="link" routerLink="/explore">EXPLORE</a>
     <a class="link" routerLink="/leaderboard">LEADERBOARD</a>
-    <p class="link" (click)="toggleTheme()">THEME</p>
   </div>
 
-  <!-- Login action -->
+  <!-- Login and theme -->
   <div class="navbar-actions">
+    
+    <!-- Toggle theme-->
+     <label class="theme-toggle">
+      <input type="checkbox" [checked]="isLightTheme" (change)="toggleTheme()">
+      <span class="toggle-track">
+        <img class="sun-icon" src="icons/theme/sun.svg">
+        <img class="moon-icon" src="icons/theme/moon.svg">
+        <span class="toggle-thumb"></span>
+      </span>
+    </label>
+
     @if(isLoggedIn$ | async){ <a class="link" routerLink="/profile">
       <img class="white-icon" src="icons/profile/profile-light-icon.svg">
       <img class="dark-icon" src="icons/profile/profile-dark-icon.svg">
