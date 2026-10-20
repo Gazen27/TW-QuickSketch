@@ -13,7 +13,7 @@
           <div class="user-row">
             <span class="position">{{ (playersCurrentPage() - 1) * playersPageSize + $index + 1 }}</span>
             <span class="username">{{ player.username }}</span>
-            <span class="score">{{ player.guessedScore }}pt</span>
+            <span class="score">{{ player.guessedScore }} pt</span>
           </div>
         }
         @empty { <p>No players found</p> }
@@ -39,8 +39,7 @@
           <div class="user-row">
             <span class="position">{{ (artistsCurrentPage() - 1) * artistsPageSize + $index + 1 }}</span>
             <span class="username">{{ artist.username }}</span>
-            <span class="score">{{ artist.drawingScore }}</span>
-            <span> pt</span>
+            <span class="score">{{ artist.drawingScore }} %</span>
           </div>
         }
         @empty { <p>No artists found</p> }

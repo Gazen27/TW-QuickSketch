@@ -32,7 +32,7 @@ export async function calculateDrawingScore(sketchId: string){
 
   if(!user){ throw new AppError('User not found', 404); }
   
-  const drawingScore = (guessedSketches / user.sketchCount) * 100;
+  const drawingScore = Number(((guessedSketches / user.sketchCount) * 100).toFixed(2));
   return prisma.user.update({
     where: { id: sketch.authorId },
     data: { drawingScore }

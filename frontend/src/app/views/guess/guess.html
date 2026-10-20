@@ -20,7 +20,7 @@
 
         <!-- Guess form -->
         <form class="guess-form" (ngSubmit)="submitGuess()">
-          <!-- Sending an empty guess -->
+          <!-- Message -->
           @if (guessError()) { <p class="error-message">{{ guessError() }}</p> }
 
           <!-- Guess input -->
