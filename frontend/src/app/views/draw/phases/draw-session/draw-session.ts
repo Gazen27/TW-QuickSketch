@@ -4,12 +4,13 @@ import { ElementRef, ViewChild                  } from '@angular/core';
 import { afterNextRender, runInInjectionContext } from '@angular/core';
 import { SingleWord                             } from '../../../../models/word.model';
 import { UpperCasePipe                          } from '@angular/common';
+import { DialogComponent                        } from '../../../../components/dialog/dialog';
 
 import SignaturePad from 'signature_pad';
 
 @Component({
   selector: 'app-draw-session',
-  imports: [UpperCasePipe],
+  imports: [UpperCasePipe, DialogComponent],
   templateUrl: './draw-session.html',
   styleUrl: './draw-session.css',
 })

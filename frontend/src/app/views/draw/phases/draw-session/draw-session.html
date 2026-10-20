@@ -69,20 +69,19 @@
 
   <!-- PRE-DRAWING COUNTDOWN -->
   @if (countdown() !== null) {
-    <div class="overlay">
-      <div class="popup">
-        <h1 class="title countdown-title">START DRAWING<br>IN...</h1>
-        <p class="countdown-number">{{countdown()}}</p>
-      </div>
-    </div>
+    <app-dialog
+      title="START DRAWING IN..."
+      message="{{countdown()}}"
+      mode="toast"
+    />
   }
 
   <!-- POST-DRAWING PAUSE -->
   @if (pause() !== null) {
-    <div class="overlay">
-      <div class="popup">
-        <h1 class="title">HANDS UP!</h1>
-      </div>
-    </div>
+    <app-dialog
+      title="HANDS UP!"
+      message="Let's see what you created"
+      mode="toast"
+    />
   }
 </section>
