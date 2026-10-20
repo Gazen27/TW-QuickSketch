@@ -41,7 +41,7 @@ npm run dev
 ```
 5. Start the Angular frontend from the `frontend/` directory:
 ```
-ng serve
+npx ng serve
 ```
 6. Open http://localhost:4200 in your browser
 ## Future improvements
