@@ -50,10 +50,23 @@
 
 /* Pannello dei tentativi */
 .guess-chat {
-  display: flex;
-  flex-direction: column;
+  display: grid;
+  grid-template-areas:
+    "history"
+    "form";
+  grid-template-rows: minmax(0, 1fr) auto;
   gap: 16px;
   min-width: 0;
+  min-height: 0;
+}
+
+.guess-form {
+  grid-area: form;
+}
+
+.guess-history {
+  grid-area: history;
+  min-height: 0;
 }
 
 /* Campo e pulsante */
@@ -115,7 +128,7 @@
 }
 
 /* Tablet e cellulare */
-@media (max-width: 768px) {
+@media (max-width: 1024px) {
   .guess-page {
     padding: 16px;
   }
@@ -135,6 +148,10 @@
   }
 
   .guess-chat {
+    grid-template-areas:
+      "form"
+      "history";
+    grid-template-rows: auto auto;
     gap: 12px;
   }
 
