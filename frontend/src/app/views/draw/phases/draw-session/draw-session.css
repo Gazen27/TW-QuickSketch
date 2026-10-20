@@ -4,7 +4,7 @@
 .draw-session {
   display: flex;
   flex-direction: column;
-  justify-content: flex-start;
+  justify-content: center;
   align-items: center;
 
   width: 100%;
@@ -19,7 +19,6 @@
   padding: 1.5rem;
   gap: 1rem;
 }
-
 
 /* Header Zone */
 .drawing-header {
@@ -157,7 +156,6 @@
   touch-action: none;
 }
 
-
 /* Submit Zone */
 .finish-submit {
   width: 100%;
@@ -165,4 +163,9 @@
   font-family: var(--font-standard);
   font-size: 1.1rem;
   font-weight: 850;
+}
+
+.finish-submit:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
 }

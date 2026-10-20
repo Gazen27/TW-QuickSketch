@@ -214,4 +214,9 @@ export class DrawSession {
       this.signaturePad.maxWidth = size;
     }
   }
+
+  // Checking if canvas is empty
+  isCanvasEmpty(): boolean {
+    return !this.signaturePad || this.signaturePad.isEmpty();
+  }
 }

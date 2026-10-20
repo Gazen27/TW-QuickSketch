@@ -62,7 +62,7 @@
 
     <!-- Submit -->
     <div class="finish-submit">
-      <button class="button finish-submit" (click)="stopDrawing()">FINISH</button>
+      <button class="button finish-submit" (click)="stopDrawing()" [disabled]="isCanvasEmpty()">FINISH</button>
     </div>
 
   </div>
