@@ -157,6 +157,7 @@
 }
 
 .pagination span {
+  color: var(--color-secondary);
   font-weight: 700;
 }
 
