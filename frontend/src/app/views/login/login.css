@@ -135,7 +135,7 @@
 /*********** LIGHT MODE ***********/
 :host-context(.light-theme) .form-container {
   background-color: var(--color-static);
-  border-color: var(--color-static);
+  border-color: var(--color-primary);
 }
 
 :host-context(.light-theme) .warning {
