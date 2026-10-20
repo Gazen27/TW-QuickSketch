@@ -20,8 +20,6 @@
 
         <!-- Guess form -->
         <form class="guess-form" (ngSubmit)="submitGuess()">
-          <!-- Message -->
-          @if (guessError()) { <p class="error-message">{{ guessError() }}</p> }
 
           <!-- Guess input -->
           <input type="text" placeholder="TYPE YOUR GUESS..."
@@ -49,6 +47,17 @@
         </div>
       </section>
     </div>
+
+    <!-- Message -->
+    @if (guessError()) {
+    <p
+    class="guess-feedback"
+    [class.success]="guessError()?.toLowerCase()?.includes('correct') || guessError()?.toLowerCase()?.includes('indovinato')"
+    [class.error]="!(guessError()?.toLowerCase()?.includes('correct') || guessError()?.toLowerCase()?.includes('indovinato'))"
+    >
+    {{ guessError() }}
+    </p>
+}
   }
   
   @else { <p>Loading...</p> }

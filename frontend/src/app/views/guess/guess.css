@@ -209,6 +209,26 @@
   font-weight: 600;
 }
 
+.guess-feedback {
+  margin: 16px 0 0;
+  padding: 12px 16px;
+  border-radius: 8px;
+  font-weight: 700;
+  text-align: center;
+}
+
+.guess-feedback.error {
+  color: #b91c1c;
+  background-color: #fee2e2;
+  border: 1px solid #fca5a5;
+}
+
+.guess-feedback.success {
+  color: #15803d;
+  background-color: #dcfce7;
+  border: 1px solid #86efac;
+}
+
 /* Schermi desktop bassi */
 @media (min-width: 1025px) and (max-height: 800px) {
   .guess-page {

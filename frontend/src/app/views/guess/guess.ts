@@ -116,5 +116,4 @@ export class Guess implements OnInit {
     complete: () => { this.isSubmitting.set(false); }
     });
   }
-
 }
