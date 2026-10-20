@@ -1,6 +1,13 @@
 @import "../../draw.css";
 
 /******* Introduction *******/
+.draw-intro {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
 .tutorial-container {
   display: flex;
   flex-direction: row;
@@ -11,6 +18,9 @@
   padding: 1rem;
   border-radius: 0.8rem;
   background-color: var(--color-static);
+
+  box-sizing: border-box;
+  max-width: calc(100% - 2rem);
 }
 
 .tutorial {
@@ -20,6 +30,8 @@
   align-items: flex-start;
 
   gap: 1.2rem;
+  flex: 1 1 20rem;
+  min-width: 0;
 }
 
 .tutorial-title {
@@ -39,15 +51,67 @@
   font-size: 1rem;
 }
 
+.tutorial-image {
+  flex: 0 1 28.05rem;
+  min-width: 0;
+}
+
 .tutorial-image img {
-  width: 28.05rem;
-  height: 21rem;
+  display: block;
+  width: 100%;
+  max-width: 28.05rem;
+  height: auto;
 }
 
 .line {
   height: 20rem;
+  flex-shrink: 0;
   border-left: 0.1rem solid var(--color-base);
   opacity: 0.4;
   margin-left: auto;
   margin-right: 0.9rem;
+}
+
+/******* Tablet and mobile *******/
+@media (max-width: 1000px) {
+  .tutorial-container {
+    flex-direction: column;
+    width: calc(100% - 2rem);
+    gap: 1rem;
+    padding: 1rem;
+    margin-bottom: 1rem;
+  }
+
+  .tutorial-image {
+    order: 3;
+    width: 100%;
+    flex: none;
+  }
+
+  .tutorial-image img {
+    margin: 0 auto;
+  }
+
+  .line {
+    order: 2;
+    width: 100%;
+    height: 0;
+    border-left: none;
+    border-top: 0.1rem solid var(--color-base);
+    margin: 0;
+  }
+
+  .tutorial {
+    order: 1;
+    width: 100%;
+    flex: none;
+    align-items: stretch;
+    gap: 1rem;
+  }
+
+  .tutorial-title {
+    font-size: 1.8rem;
+    text-align: center;
+    align-self: center;
+  }
 }
