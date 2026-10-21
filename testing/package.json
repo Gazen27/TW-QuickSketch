@@ -1,0 +1,23 @@
+{
+  "name": "tw-quicksketch",
+  "version": "1.0.0",
+  "description": "Draw it. Guess it.\\\r A web platform where creativity and intuition meet in a drawing challenge.\r ## Overview\r QuickSketch is a full-stack web application where registered users can create sketches by choosing a word from a predefined set and drawing it on a canvas within a limited amount of time. Once published, sketches become available to other users, who can try to guess the associated word with up to 10 attempts.",
+  "main": "index.js",
+  "scripts": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Gazen27/TW-QuickSketch.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/Gazen27/TW-QuickSketch/issues"
+  },
+  "homepage": "https://github.com/Gazen27/TW-QuickSketch#readme",
+  "devDependencies": {
+    "@playwright/test": "^1.64.1",
+    "@types/node": "^26.6.5"
+  }
+}
