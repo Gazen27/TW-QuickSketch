@@ -149,3 +149,68 @@ test('leaderboard-pagination', async ({ page }) => {
   }
   else { await expect(artistsNext).toBeDisabled(); }
 });
+
+// TEST: complete draw flow (with publishing check)
+test('draw-flow', async ({ page }) => {
+  await login(page, 'admin', 'password123');
+  await expect(page).toHaveURL('/');
+
+  await page.goto('/draw');
+  await expect(page.getByRole('heading', { name: 'GET STARTED' })).toBeVisible();
+  await page.getByRole('button', { name: 'START DRAWING' }).click();
+
+
+  await expect(page.getByRole('heading', { name: 'CHOOSE A CATEGORY' })).toBeVisible();
+  const categoryButtons = page.locator('app-draw-categories button.categories-button');
+  await expect(categoryButtons).toHaveCount(4);
+  const categoryCount = await categoryButtons.count();
+  const randomCategoryIndex = Math.floor(Math.random() * categoryCount);
+  await categoryButtons.nth(randomCategoryIndex).click();
+
+  
+  await expect(page.getByRole('heading', { name: 'CHOOSE A WORD' })).toBeVisible();
+  const wordButtons = page.locator('app-draw-words button.words-button');
+  await expect(wordButtons).toHaveCount(3);
+  const wordCount = await wordButtons.count();
+  const randomWordIndex = Math.floor(Math.random() * wordCount);
+  await wordButtons.nth(randomWordIndex).click();
+
+  const canvas = page.locator('canvas.drawing-surface');
+  const finishButton = page.locator('button.finish-submit');
+  await expect(canvas).toBeVisible();
+  await expect(finishButton).toBeDisabled();
+  await expect(page.getByText('START DRAWING IN...')).toBeHidden();
+  await expect(page.locator('.timer')).toHaveText('90s', {timeout: 10000});
+
+  const canvasBox = await canvas.boundingBox();
+  expect(canvasBox).not.toBeNull();
+  if (!canvasBox) {throw new Error('Canvas non trovato sullo schermo');}
+  const startX = canvasBox.x + canvasBox.width * 0.3;
+  const startY = canvasBox.y + canvasBox.height * 0.4;
+  const endX = canvasBox.x + canvasBox.width * 0.7;
+  const endY = canvasBox.y + canvasBox.height * 0.6;
+  await page.mouse.move(startX, startY);
+  await page.mouse.down();
+  await page.mouse.move(endX, endY, { steps: 10 });
+  await page.mouse.up();
+  await expect(finishButton).toBeEnabled();
+  await finishButton.click();
+
+  await expect(page.getByRole('heading', { name: 'YOUR MASTERPIECE' })).toBeVisible({ timeout: 10000 });
+  await expect(page.locator('.drawing-preview')).toBeVisible();
+  await expect.poll(async () => page.locator('.drawing-preview').getAttribute('src')).toMatch(/^data:image\/png;base64,/);
+  
+  const publishResponsePromise = page.waitForResponse(response => response.url().includes('/sketches') && response.request().method() === 'POST' && response.status() === 201);
+  await page.getByRole('button', { name: 'PUBLISH' }).click();
+  const publishResponse = await publishResponsePromise;
+  const responseBody = await publishResponse.json();
+  const sketchId = responseBody.data.id;
+  expect(sketchId).toBeTruthy();
+  await expect(page.getByText('Your sketch has been published successfully.')).toBeVisible({ timeout: 10000 });
+
+
+  await page.getByRole('button', { name: 'GREAT' }).click();
+  await expect(page).toHaveURL('/');
+  await page.goto(`/guess/${sketchId}`);
+  await expect(page).toHaveURL(`/guess/${sketchId}`);
+});
