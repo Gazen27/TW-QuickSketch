@@ -167,5 +167,9 @@
 
 .finish-submit:disabled {
   opacity: 0.5;
+}
+
+.finish-submit:disabled:hover {
+  background-color: var(--color-primary);
   cursor: not-allowed;
 }
