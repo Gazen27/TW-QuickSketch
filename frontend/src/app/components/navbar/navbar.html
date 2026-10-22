@@ -23,8 +23,8 @@
     </label>
 
     @if(isLoggedIn$ | async){ <a class="link" routerLink="/profile">
-      <img class="white-icon" src="icons/profile/profile-light-icon.svg">
-      <img class="dark-icon" src="icons/profile/profile-dark-icon.svg">
+      <img class="profile-icon white-icon" src="icons/profile/profile-light-icon.svg">
+      <img class="profile-icon dark-icon" src="icons/profile/profile-dark-icon.svg">
     </a> }
     @else { <a class="link" routerLink="/login">LOGIN</a> }
   </div>
