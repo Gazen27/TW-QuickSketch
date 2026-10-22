@@ -112,3 +112,40 @@ test('auto-guess', async ({ page }) => {
   await expect(page.locator('.guess-feedback')).toContainText('Auto-guess not allowed');
   await expect(page.locator('.guess-attempt')).toHaveCount(0);
 });
+
+// TEST: navigating pagination in leaderboards
+test('leaderboard-pagination', async ({ page }) => {
+  await page.goto('/leaderboard');
+  const playersSide = page.locator('.leaderboard-side').filter({has: page.getByText('PLAYERS', { exact: true })});
+  const artistsSide = page.locator('.leaderboard-side').filter({has: page.getByText('ARTISTS', { exact: true })});
+  await expect(playersSide.locator('.paging span')).toHaveText(/\d+ \/ \d+/);
+  await expect(artistsSide.locator('.paging span')).toHaveText(/\d+ \/ \d+/);
+
+  await expect(playersSide.locator('.paging button').first()).toBeDisabled();
+  const playersPages = playersSide.locator('.paging span');
+  const playersNext = playersSide.locator('.paging button').last();
+  const playersPrevious = playersSide.locator('.paging button').first();
+  const playersTotal = Number((await playersPages.innerText()).split('/')[1].trim());
+  if (playersTotal > 1) {
+    await expect(playersNext).toBeEnabled();
+    await playersNext.click();
+    await expect(playersPages).toHaveText('2 / ' + playersTotal);
+    await playersPrevious.click();
+    await expect(playersPages).toHaveText('1 / ' + playersTotal);
+  }
+  else { await expect(playersNext).toBeDisabled(); }
+
+  await expect(artistsSide.locator('.paging button').first()).toBeDisabled();
+  const artistsPages = artistsSide.locator('.paging span');
+  const artistsNext = artistsSide.locator('.paging button').last();
+  const artistsPrevious = artistsSide.locator('.paging button').first();
+  const artistsTotal = Number((await artistsPages.innerText()).split('/')[1].trim());
+  if (artistsTotal > 1) {
+    await expect(artistsNext).toBeEnabled();
+    await artistsNext.click();
+    await expect(artistsPages).toHaveText('2 / ' + artistsTotal);
+    await artistsPrevious.click();
+    await expect(artistsPages).toHaveText('1 / ' + artistsTotal);
+  }
+  else { await expect(artistsNext).toBeDisabled(); }
+});
