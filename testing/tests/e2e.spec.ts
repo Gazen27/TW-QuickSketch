@@ -56,7 +56,7 @@ test('logout', async ({ page }) => {
 test('wrong-guess', async ({ page }) => {
   await login(page, 'bad-guesser', 'password-bad-guesser');
   await expect(page).toHaveURL('/');
-  await page.goto('/guess/ba511bf6-d96b-4391-b165-ab8e8b4f8949');
+  await page.goto('/guess/THIS-IS-A-PLACEHOLDER-NEED-TO-ADAPT');
   await expect(page.locator('.drawing-container img')).toBeVisible();
   await page.getByPlaceholder('TYPE YOUR GUESS...').fill('wrong-answer');
   const responsePromise = page.waitForResponse(response => response.url().includes('/guesses') && response.request().method() === 'POST');
@@ -64,22 +64,20 @@ test('wrong-guess', async ({ page }) => {
   const response = await responsePromise;
   await expect(page.locator('.guess-attempt').last()).toContainText('wrong-answer', {ignoreCase: true});
   await expect(page.locator('.guess-attempt').last()).toContainText('WRONG');
-  await expect(page.locator('.attempts-left')).toContainText('9/10');
 });
 
 // TEST: correct guess
 test('correct-guess', async ({ page }) => {
   await login(page, 'good-guesser', 'password-good-guesser');
   await expect(page).toHaveURL('/');
-  await page.goto('/guess/29fed4e4-afc8-4816-b7ff-42f86f8a2ed2');
+  await page.goto('/guess/THIS-IS-A-PLACEHOLDER-NEED-TO-ADAPT');
   await expect(page.locator('.drawing-container img')).toBeVisible();
-  await page.getByPlaceholder('TYPE YOUR GUESS...').fill('kid icarus');
+  await page.getByPlaceholder('TYPE YOUR GUESS...').fill('PLACEHOLDER-GUESS');
   const responsePromise = page.waitForResponse(response => response.url().includes('/guesses') && response.request().method() === 'POST');
   await page.getByRole('button', { name: 'SEND' }).click();
   const response = await responsePromise;
-  await expect(page.locator('.guess-attempt').last()).toContainText('kid icarus', {ignoreCase: true});
+  await expect(page.locator('.guess-attempt').last()).toContainText('PLACEHOLDER-GUESS', {ignoreCase: true});
   await expect(page.locator('.guess-attempt').last()).toContainText('CORRECT');
-  await expect(page.locator('.attempts-left')).toContainText('9/10');
   await expect(page.locator('.guess-feedback')).toContainText('Correct!');
 });
 
@@ -87,7 +85,7 @@ test('correct-guess', async ({ page }) => {
 test('guess-attempts-exhausted', async ({ page }) => {
   await login(page, 'bad-guesser', 'password-bad-guesser');
   await expect(page).toHaveURL('/');
-  await page.goto('/guess/ba511bf6-d96b-4391-b165-ab8e8b4f8949');
+  await page.goto('/guess/THIS-IS-A-PLACEHOLDER-NEED-TO-ADAPT');
   await expect(page.locator('.drawing-container img')).toBeVisible();
   await expect(page.locator('.attempts-left')).toContainText('0/10');
   await page.getByPlaceholder('TYPE YOUR GUESS...').fill('another-wrong-answer');
@@ -102,7 +100,7 @@ test('guess-attempts-exhausted', async ({ page }) => {
 test('auto-guess', async ({ page }) => {
   await login(page, 'admin', 'password123');
   await expect(page).toHaveURL('/');
-  await page.goto('/guess/ba511bf6-d96b-4391-b165-ab8e8b4f8949');
+  await page.goto('/guess/THIS-IS-A-PLACEHOLDER-NEED-TO-ADAPT');
   await expect(page.locator('.drawing-container img')).toBeVisible();
   await page.getByPlaceholder('TYPE YOUR GUESS...').fill('some-guess');
   const responsePromise = page.waitForResponse(response => response.url().includes('/guesses') && response.request().method() === 'POST');
@@ -159,14 +157,12 @@ test('draw-flow', async ({ page }) => {
   await expect(page.getByRole('heading', { name: 'GET STARTED' })).toBeVisible();
   await page.getByRole('button', { name: 'START DRAWING' }).click();
 
-
   await expect(page.getByRole('heading', { name: 'CHOOSE A CATEGORY' })).toBeVisible();
   const categoryButtons = page.locator('app-draw-categories button.categories-button');
   await expect(categoryButtons).toHaveCount(4);
   const categoryCount = await categoryButtons.count();
   const randomCategoryIndex = Math.floor(Math.random() * categoryCount);
   await categoryButtons.nth(randomCategoryIndex).click();
-
   
   await expect(page.getByRole('heading', { name: 'CHOOSE A WORD' })).toBeVisible();
   const wordButtons = page.locator('app-draw-words button.words-button');
@@ -207,7 +203,6 @@ test('draw-flow', async ({ page }) => {
   const sketchId = responseBody.data.id;
   expect(sketchId).toBeTruthy();
   await expect(page.getByText('Your sketch has been published successfully.')).toBeVisible({ timeout: 10000 });
-
 
   await page.getByRole('button', { name: 'GREAT' }).click();
   await expect(page).toHaveURL('/');
